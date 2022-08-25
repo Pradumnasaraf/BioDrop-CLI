@@ -1,4 +1,4 @@
-const jsonFormat = require("chalk");
+const jsonFormat = require("json-format");
 const fs = require("fs");
 
 function craeteUserJson(githubUsername, answers) {
