@@ -1,0 +1,39 @@
+{
+  "name": "linkfree-cli",
+  "version": "1.0.0",
+  "description": "Create LinkFree profile.json file though CLI",
+  "main": "src/index.js",
+  "bin": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"./**/*.{js,json}\""
+  },
+  "keywords": [
+    "LinkFree-cli",
+    "LinkFree"
+  ],
+  "files": [
+    "src",
+    "package.json",
+    "util",
+    "createUser.js"
+  ],
+  "author": "Pradumna Saraf",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "enquirer": "^2.3.6",
+    "json-format": "^1.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pradumnasaraf/LinkFree-CLI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pradumnasaraf/LinkFRee-CLI.git/issues"
+  }
+}
