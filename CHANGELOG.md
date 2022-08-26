@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.1...v1.1.2) (2022-08-26)
+
+
+### Bug Fixes
+
+* final prompt and error message ([#2](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/2)) ([d6335b7](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/d6335b765d66f1880b3289474c51f5321c2aa5f2))
+
+
+
 ## [1.1.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.0...v1.1.1) (2022-08-25)
 
 
