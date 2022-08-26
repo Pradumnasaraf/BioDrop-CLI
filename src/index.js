@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const chalk = require('chalk');
+const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const createUser = require("./util/createUser");
@@ -17,7 +17,9 @@ function questions() {
       const GHUsername = answers.name;
       if (fs.existsSync(`./public/data/${GHUsername}.json`)) {
         console.log(
-          `File with ${answers.name}.json already exists, try again!`
+          chalk.bgYellow.bold(
+            ` File with ${answers.name}.json already exists, try again! `
+          )
         );
         questions();
       } else {
@@ -41,8 +43,6 @@ function questions() {
         ])
           .then((answers) => {
             createUser(GHUsername, answers);
-
-            console.log(chalk.bgWhite.bold(`Woohoo, ${GHUsername}.json file created!`));
           })
           .catch((err) => {
             console.log(err);
