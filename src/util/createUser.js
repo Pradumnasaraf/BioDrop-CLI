@@ -1,4 +1,5 @@
 const jsonFormat = require("json-format");
+const chalk = require("chalk");
 const fs = require("fs");
 
 function craeteUserJson(githubUsername, answers) {
@@ -22,7 +23,19 @@ function craeteUserJson(githubUsername, answers) {
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
   fs.writeFile(`./public/data/${githubUsername}.json`, json, (err) => {
-    if (err) throw err;
+    if (err) {
+      console.log(
+        chalk.bgYellow.bold(
+          ` You are not in the root directory of LinkFree. Try again! `
+        )
+      );
+    } else {
+      console.log(
+        chalk.bgWhite.bold(
+          ` File with ${githubUsername}.json created successfully! `
+        )
+      );
+    }
   });
 }
 
