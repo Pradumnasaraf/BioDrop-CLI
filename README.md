@@ -19,7 +19,7 @@
 
 ## Using the CLI (Commands)
 
-> **Note** First fork the repo before using it.
+> **Note** First fork the [LinkFree](https://github.com/EddieHubCommunity/LinkFree) repo before using it.
 
 - **To install it globally.**
 
