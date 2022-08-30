@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.2...v1.1.3) (2022-08-30)
+
+
+### Bug Fixes
+
+* README and NPM rej docs ([7b55f6d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/7b55f6d9548c8ed9d5d45a2bef030e7aa4c2682f))
+
+
+
 ## [1.1.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.1...v1.1.2) (2022-08-26)
 
 
