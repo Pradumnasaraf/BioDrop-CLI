@@ -28,6 +28,7 @@ npm install -g linkfree-cli
 
 linkfree-Cli
 ```
+
 It will then prompt you to questions.
 
 - **To execute the package directly, without installing it.**
@@ -35,6 +36,7 @@ It will then prompt you to questions.
 ```bash
 npx linkfree-cli
 ```
+
 It will then prompt you to questions.
 
 ## Contributions
