@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.3...v1.2.0) (2022-09-03)
+
+
+### Features
+
+* check if user exists on GitHub ([#5](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/5)) ([925c956](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/925c9568edfa33063b2bcde589a4173d10c3db13))
+
+
+
 ## [1.1.3](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.2...v1.1.3) (2022-08-30)
 
 
