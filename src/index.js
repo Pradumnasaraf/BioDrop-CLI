@@ -30,7 +30,7 @@ function start() {
           } else {
             console.log(
               chalk.bgRed.bold(
-                ` User with username ${GHUsername} does not exist, try again! `
+                ` User with username ${GHUsername} does not exist on GitHub, try again! `
               )
             );
             start();
