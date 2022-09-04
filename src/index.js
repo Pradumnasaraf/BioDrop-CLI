@@ -1,10 +1,16 @@
 #! /usr/bin/env node
 
 const chalk = require("chalk");
-const { create } = require("domain");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const createUser = require("./util/createUser");
+
+
+console.log(
+  chalk.bgGreen.bold(
+    ` welcome to linkfree-cli`  )
+);
+
 
 function start() {
   prompt([
@@ -19,11 +25,20 @@ function start() {
       if (fs.existsSync(`./public/data/${GHUsername}.json`)) {
         console.log(
           chalk.bgYellow.bold(
-            ` File with ${answers.name}.json already exists, try again! `
+            ` File with ${answers.name}.json already exists, your data will be updated ! `  
           )
         );
-        start();
-      } else {
+       
+      } 
+      else
+      {
+        console.log(
+          chalk.bgYellow.bold(
+            ` creating ${answers.name}.json ... ! `  
+          )
+        );
+      }
+
         checkUser(GHUsername).then((result) => {
           if (result === true) {
             questions(GHUsername);
@@ -36,13 +51,14 @@ function start() {
             start();
           }
         });
-      }
+      
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
+//print questions to users
 function questions(username) {
   prompt([
     {
@@ -86,4 +102,6 @@ async function checkUser(username) {
   }
 }
 
+
+//start linkfree-cli
 start();

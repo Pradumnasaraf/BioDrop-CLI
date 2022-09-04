@@ -2,6 +2,7 @@ const jsonFormat = require("json-format");
 const chalk = require("chalk");
 const fs = require("fs");
 
+//create user data
 function craeteUserJson(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
@@ -22,7 +23,7 @@ function craeteUserJson(githubUsername, answers) {
   };
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
-  fs.writeFile(`./public/data/${githubUsername}.json`, json, (err) => {
+  fs.writeFileSync(`./public/data/${githubUsername}.json`, json, (err) => {
     if (err) {
       console.log(
         chalk.bgYellow.bold(
