@@ -25,7 +25,7 @@ function start() {
       if (fs.existsSync(`./public/data/${GHUsername}.json`)) {
         console.log(
           chalk.bgYellow.bold(
-            ` File with ${answers.name}.json already exists, your data will be updated ! `  
+            ` File with ${answers.name}.json already exists, your data will be updated! `
           )
         );
        
