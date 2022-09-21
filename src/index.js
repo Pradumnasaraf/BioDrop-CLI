@@ -4,6 +4,8 @@ const fs = require("fs");
 const createUser = require("./util/createUser");
 const checkUser = require("./util/checkUser");
 const { questions, addlinks } = require("./util/questions");
+let githubUsername;
+let json;
 
 console.log(
   chalk.bgBlue.bold(
@@ -13,7 +15,7 @@ console.log(
 
 init();
 
-function init() {
+async function init() {
   prompt([
     {
       type: "input",
@@ -22,7 +24,7 @@ function init() {
     },
   ])
     .then((answers) => {
-      const { githubUsername } = answers;
+      githubUsername = answers.githubUsername;
       if (githubUsername === "") {
         console.log(
           chalk.bgRed.bold(` Please enter a valid GitHub username. `)
@@ -60,9 +62,8 @@ function init() {
     });
 }
 
-let json;
-function start(githubUsername) {
-  checkUser(githubUsername).then((result) => {
+async function start(githubUsername) {
+  await checkUser(githubUsername).then((result) => {
     if (result === true) {
       questions().then((answers) => {
         json = answers;
@@ -70,22 +71,16 @@ function start(githubUsername) {
           {
             type: "confirm",
             name: "addLink",
-            message: "Do you want to add a link to your profile?",
+            message: "Do you want to add a link?",
           },
-        ])
-          .then((addLink) => {
-            if (addLink) {
-              addlinks().then((links) => {
-                json.links = links;
-                createUser(githubUsername, json);
-              });
-            } else {
-              createUser(githubUsername, json);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        ]).then((answers) => {
+          const { addLink } = answers;
+          if (addLink) {
+            addlinkstojson();
+          } else {
+            createUser(githubUsername, json);
+          }
+        });
       });
     } else {
       console.log(
@@ -96,4 +91,9 @@ function start(githubUsername) {
       init();
     }
   });
+}
+
+async function addlinkstojson() {
+  json.links = await addlinks(true);
+  createUser(githubUsername, json);
 }

@@ -2,7 +2,7 @@ const jsonFormat = require("json-format");
 const chalk = require("chalk");
 const fs = require("fs");
 
-function craeteUserJson(githubUsername, answers) {
+async function craeteUserJson(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
     type: `${answers.type}`,
