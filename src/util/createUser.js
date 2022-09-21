@@ -8,17 +8,8 @@ function craeteUserJson(githubUsername, answers) {
     type: `${answers.type}`,
     bio: `${answers.bio}`,
     avatar: `https://github.com/${githubUsername}.png`,
-    links: [
-      {
-        name: "Follow me on GitHub",
-        url: `https://github.com/${githubUsername}`,
-        icon: "github",
-      },
-      { name: "", url: "", icon: "" },
-    ],
-    milestones: [
-      { title: "", date: "", icon: "", color: "", description: "", url: "" },
-    ],
+    links: answers.links ? answers.links : [],
+    milestones: answers.milestones ? answers.milestones : [],
   };
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
