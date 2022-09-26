@@ -39,7 +39,6 @@ async function geticons() {
 }
 
 async function addlinks(bool) {
-
   // wait for the icons to be fetched
   await geticons();
 
