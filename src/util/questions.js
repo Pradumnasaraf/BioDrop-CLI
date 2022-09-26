@@ -1,5 +1,9 @@
 const { prompt } = require("enquirer");
 const chalk = require("chalk");
+const axios = require("axios");
+
+let links = [];
+let icons = [];
 
 async function questions() {
   const answers = await prompt([
@@ -23,8 +27,22 @@ async function questions() {
   return answers;
 }
 
-let links = [];
+async function geticons() {
+  try {
+    const response = await axios.get(
+      `https://raw.githubusercontent.com/EddieHubCommunity/LinkFree/main/src/config/links.json`
+    );
+    icons = Object.keys(response.data.validIcons);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function addlinks(bool) {
+
+  // wait for the icons to be fetched
+  await geticons();
+
   while (bool) {
     let answers = await prompt([
       {
@@ -38,9 +56,9 @@ async function addlinks(bool) {
         message: "What is the URL of the link?",
       },
       {
-        type: "input",
+        type: "select",
         name: "icon",
-        message: "What is the icon of the link?",
+        choices: icons,
       },
       {
         type: "confirm",
