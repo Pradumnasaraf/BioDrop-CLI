@@ -1,89 +1,99 @@
-#! /usr/bin/env node
-
 const chalk = require("chalk");
-const { create } = require("domain");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const createUser = require("./util/createUser");
+const checkUser = require("./util/checkUser");
+const { questions, addlinks } = require("./util/questions");
+let githubUsername;
+let json;
 
-function start() {
+console.log(
+  chalk.bgBlue.bold(
+    ` Welcome to LinkFree CLI! Let's get started by creating your JSON file. `
+  )
+);
+
+init();
+
+async function init() {
   prompt([
     {
       type: "input",
-      name: "name",
-      message: "What is your GitHub username (Case Sensitive)?",
+      name: "githubUsername",
+      message: "What is your GitHub username? (case sensitive)",
     },
   ])
     .then((answers) => {
-      const GHUsername = answers.name;
-      if (fs.existsSync(`./public/data/${GHUsername}.json`)) {
+      githubUsername = answers.githubUsername;
+      if (githubUsername === "") {
         console.log(
-          chalk.bgYellow.bold(
-            ` File with ${answers.name}.json already exists, try again! `
-          )
+          chalk.bgRed.bold(` Please enter a valid GitHub username. `)
         );
-        start();
-      } else {
-        checkUser(GHUsername).then((result) => {
-          if (result === true) {
-            questions(GHUsername);
-          } else {
+        init();
+      } else if (fs.existsSync(`./public/data/${githubUsername}.json`)) {
+        console.log(
+          chalk.bgYellow.bold(` File ${githubUsername}.json already exists!`)
+        );
+        prompt([
+          {
+            type: "confirm",
+            name: "overwrite",
+            message: "Do you want to overwrite the existing file?",
+          },
+        ]).then((answers) => {
+          const { overwrite } = answers;
+          if (overwrite) {
             console.log(
-              chalk.bgRed.bold(
-                ` User with username ${GHUsername} does not exist on GitHub, try again! `
-              )
+              chalk.bgGreen.bold(` Proceed with overwriting file... `)
             );
-            start();
+            start(githubUsername);
+          } else {
+            console.log(chalk.bgRed.bold(` File not overwritten! `));
+            console.log("Restart the program to try again.");
+            process.exit(0);
           }
         });
+      } else {
+        start(githubUsername);
       }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-function questions(username) {
-  prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?",
-    },
-    {
-      type: "select",
-      name: "type",
-      message: "Your profile type?",
-      choices: ["Personal", "Community"],
-    },
-    {
-      type: "input",
-      name: "bio",
-      message: "Add a short bio about yourself",
-    },
-  ])
-    .then((answers) => {
-      createUser(username, answers);
     })
     .catch((err) => {
       console.log(err);
     });
 }
 
-async function checkUser(username) {
-  const axios = require("axios");
-  try {
-    const response = await axios.get(
-      `https://api.github.com/users/${username}`
-    );
-    if (response.status === 200) {
-      return true;
+async function start(githubUsername) {
+  await checkUser(githubUsername).then((result) => {
+    if (result === true) {
+      questions().then((answers) => {
+        json = answers;
+        prompt([
+          {
+            type: "confirm",
+            name: "addLink",
+            message: "Do you want to add a link?",
+          },
+        ]).then((answers) => {
+          const { addLink } = answers;
+          if (addLink) {
+            addlinkstojson();
+          } else {
+            createUser(githubUsername, json);
+          }
+        });
+      });
     } else {
-      return false;
+      console.log(
+        chalk.bgRed.bold(
+          ` User with username '${githubUsername}' does not exist on GitHub, try again! `
+        )
+      );
+      init();
     }
-  } catch (error) {
-    return false;
-  }
+  });
 }
 
-start();
+async function addlinkstojson() {
+  json.links = await addlinks(true);
+  createUser(githubUsername, json);
+}
