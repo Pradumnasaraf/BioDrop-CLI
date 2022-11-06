@@ -6,6 +6,7 @@ async function craeteUserJson(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
     type: `${answers.type}`,
+    displayStatsPublic: `${answers.displaystatspublic}`,
     bio: `${answers.bio}`,
     avatar: `https://github.com/${githubUsername}.png`,
     links: answers.links ? answers.links : [],
@@ -13,7 +14,7 @@ async function craeteUserJson(githubUsername, answers) {
   };
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
-  fs.writeFile(`./public/data/${githubUsername}.json`, json, (err) => {
+  fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
     if (err) {
       console.log(
         chalk.bgYellow.bold(
