@@ -14,9 +14,7 @@
 
 ## Demo
 
-![LinkFree CLI](https://user-images.githubusercontent.com/51878265/186932476-37f5146e-efde-46e3-91fe-4009243cd90e.gif)
-
-<br>
+![LinkFree CLI](https://user-images.githubusercontent.com/51878265/200193639-0e2d6d23-5f85-48e8-9563-8879b4efb18a.gif)
 
 ## Using the CLI (Commands)
 
