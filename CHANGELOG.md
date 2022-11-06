@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.0...v1.4.1) (2022-11-06)
+
+
+### Bug Fixes
+
+* link addition option (Err: Link and key) ([#11](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/11)) ([050ee91](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/050ee911bcd42208debbc54f354a47d0e6cb3e14))
+
+
+
 # [1.4.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.3.0...v1.4.0) (2022-11-06)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * README and NPM rej docs ([7b55f6d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/7b55f6d9548c8ed9d5d45a2bef030e7aa4c2682f))
-
-
-
-## [1.1.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.1...v1.1.2) (2022-08-26)
-
-
-### Bug Fixes
-
-* final prompt and error message ([#2](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/2)) ([d6335b7](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/d6335b765d66f1880b3289474c51f5321c2aa5f2))
 
 
 
