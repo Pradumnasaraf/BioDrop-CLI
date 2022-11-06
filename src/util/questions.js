@@ -63,7 +63,7 @@ async function addlinks(bool) {
         type: "select",
         name: "icon",
         choices: icons,
-        message: "Choose an icon (Down arrow to see more options)",
+        message: "Choose an icon (Press down arrow to see more options)",
       },
       {
         type: "confirm",
