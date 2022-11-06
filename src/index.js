@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const fs = require("fs");
@@ -8,7 +10,7 @@ let githubUsername;
 let json;
 
 console.log(
-  chalk.bgBlue.bold(
+  chalk.bgYellowBright.bold(
     ` Welcome to LinkFree CLI! Let's get started by creating your JSON file. `
   )
 );
@@ -30,7 +32,7 @@ async function init() {
           chalk.bgRed.bold(` Please enter a valid GitHub username. `)
         );
         init();
-      } else if (fs.existsSync(`./public/data/${githubUsername}.json`)) {
+      } else if (fs.existsSync(`./data/${githubUsername}.json`)) {
         console.log(
           chalk.bgYellow.bold(` File ${githubUsername}.json already exists!`)
         );

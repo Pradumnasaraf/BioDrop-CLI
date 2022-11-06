@@ -13,6 +13,11 @@ async function questions() {
       message: "What is your name (e.g. Jone Doe)?",
     },
     {
+      type: "confirm",
+      name: "displaystatspublic",
+      message: "Do you want to display your stats publicly (e.g. Profile views)?",
+    },
+    {
       type: "select",
       name: "type",
       message: "Your profile type?",
