@@ -35,9 +35,9 @@ async function questions() {
 async function geticons() {
   try {
     const response = await axios.get(
-      `https://raw.githubusercontent.com/EddieHubCommunity/LinkFree/main/src/config/links.json`
+      `https://raw.githubusercontent.com/EddieHubCommunity/LinkFree/main/config/icons.json`
     );
-    icons = Object.keys(response.data.validIcons);
+    icons = Object.keys(response.data);
   } catch (error) {
     console.error(error);
   }
@@ -63,6 +63,7 @@ async function addlinks(bool) {
         type: "select",
         name: "icon",
         choices: icons,
+        message: "Choose an icon (Down arrow to see more options)",
       },
       {
         type: "confirm",
