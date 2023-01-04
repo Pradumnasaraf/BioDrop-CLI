@@ -2,7 +2,7 @@ const jsonFormat = require("json-format");
 const chalk = require("chalk");
 const fs = require("fs");
 
-async function craeteUserJson(githubUsername, answers) {
+async function createUserJson(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
     type: `${answers.type}`,
@@ -31,4 +31,4 @@ async function craeteUserJson(githubUsername, answers) {
   });
 }
 
-module.exports = craeteUserJson;
+module.exports = createUserJson;
