@@ -6,9 +6,7 @@ async function createUserJson(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
     type: `${answers.type}`,
-    displayStatsPublic: `${answers.displaystatspublic}`,
     bio: `${answers.bio}`,
-    avatar: `https://github.com/${githubUsername}.png`,
     links: answers.links ? answers.links : [],
     milestones: answers.milestones ? answers.milestones : [],
   };
