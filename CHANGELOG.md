@@ -1,3 +1,12 @@
+## [1.4.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.1...v1.4.2) (2023-02-15)
+
+
+### Bug Fixes
+
+* remove the displaystats function ([#17](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/17)) ([d80c327](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/d80c327ebc654b7267ffa587b88e54d7d4b049ed))
+
+
+
 ## [1.4.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.0...v1.4.1) (2022-11-06)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * check if user exists on GitHub ([#5](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/5)) ([925c956](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/925c9568edfa33063b2bcde589a4173d10c3db13))
-
-
-
-## [1.1.3](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.2...v1.1.3) (2022-08-30)
-
-
-### Bug Fixes
-
-* README and NPM rej docs ([7b55f6d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/7b55f6d9548c8ed9d5d45a2bef030e7aa4c2682f))
 
 
 
