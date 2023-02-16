@@ -7,9 +7,19 @@ async function createUserJson(githubUsername, answers) {
     name: `${answers.name}`,
     type: `${answers.type}`,
     bio: `${answers.bio}`,
-    links: answers.links ? answers.links : [],
-    milestones: answers.milestones ? answers.milestones : [],
   };
+  if (answers.links) {
+    sampleJson.links = answers.links;
+  }
+  if (answers.milestones) {
+    sampleJson.milestones = answers.milestones;
+  }
+  if (answers.events) {
+    sampleJson.events = answers.events;
+  }
+  if (answers.testimonials) {
+    sampleJson.testimonials = answers.testimonials;
+  }
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
@@ -19,10 +29,11 @@ async function createUserJson(githubUsername, answers) {
           ` You are not in the root directory of LinkFree. Try again! `
         )
       );
+      process.exit(0);
     } else {
       console.log(
         chalk.bgWhite.bold(
-          ` File with ${githubUsername}.json created successfully! `
+          ` File ${githubUsername}.json created successfully! `
         )
       );
     }
