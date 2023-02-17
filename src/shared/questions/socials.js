@@ -2,13 +2,12 @@ const { prompt } = require("enquirer");
 const { geticons } = require("../assets/icons");
 
 let socials = [];
+let icons = [];
 
 async function addsocials(bool) {
   icons = await geticons();
 
   while (bool) {
-    icons = await geticons();
-
     let answers = await prompt([
       {
         type: "input",

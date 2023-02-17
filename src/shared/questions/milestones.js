@@ -2,6 +2,7 @@ const { prompt } = require("enquirer");
 const { geticons } = require("../assets/icons");
 
 let milestones = [];
+let icons = [];
 
 async function addmilestones(bool) {
   icons = await geticons();
