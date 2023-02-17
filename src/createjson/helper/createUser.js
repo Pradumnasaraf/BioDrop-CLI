@@ -3,19 +3,26 @@ const chalk = require("chalk");
 const fs = require("fs");
 
 async function createUser(githubUsername, answers) {
-  sampleJson = {
+  jsonSchema = {
     name: `${answers.name}`,
     type: `${answers.type}`,
     bio: `${answers.bio}`,
   };
   if (answers.links) {
-    sampleJson.links = answers.links;
+    jsonSchema.links = answers.links;
   }
-  // if (answers.milestones) {
-  //   sampleJson.milestones = answers.milestones;
-  // }
+  if (answers.milestones) {
+    jsonSchema.milestones = answers.milestones;
+  }
+  if (answers.tags) {
+    jsonSchema.tags = answers.tags;
+  }
 
-  const json = jsonFormat(sampleJson, { type: "space", size: 2 });
+  if (answers.social) {
+    jsonSchema.social = answers.social;
+  }
+
+  const json = jsonFormat(jsonSchema, { type: "space", size: 2 });
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
     if (err) {
       console.log(
