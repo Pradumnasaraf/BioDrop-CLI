@@ -1,12 +1,11 @@
 #! /usr/bin/env node
-
+const fs = require("fs");
 const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const createJson = require("./createjson/createJson");
-const updateJson = require("./updatejson/updateJson");
-const addTestimonial = require("./addtestimonial/addTestimonial");
-const createTestimonial = require("./createtestimonial/createTestimonial");
-
+const checkUpdate = require("./updatejson/helper/checkUpdate");
+const giveTestimonial = require("./givetestimonial/giveTestimonial");
+const addEvent = require("./addevent/addEvent");
 console.log(
   chalk.bgWhite.bold(` Welcome to LinkFree CLI! Let's get started. `)
 );
@@ -15,7 +14,7 @@ const choices = [
   "Create a LinkFree JSON file",
   "Update an existing JSON file",
   "Provide a testimonial to a LinkFree user",
-  "Add a given testimonial to your JSON file",
+  "Add an event",
 ];
 
 prompt([
@@ -23,19 +22,26 @@ prompt([
     type: "select",
     name: "selectedtask",
     choices: choices,
-    message: "Choose an icon (Press down arrow to see more options)",
+    message: "Choose one option (Press down arrow to traverse the list)",
   },
 ])
-  .then((answers) => {
+  .then(async (answers) => {
     const { selectedtask } = answers;
-    if (selectedtask === "Create a LinkFree JSON file") {
-      createJson();
-    } else if (selectedtask === "Update an existing JSON file") {
-      updateJson();
-    } else if (selectedtask === "Provide a testimonial to a LinkFree user") {
-      addTestimonial();
-    } else if (selectedtask === "Add a given testimonial to your JSON file") {
-      createTestimonial();
+    switch (selectedtask) {
+      case "Create a LinkFree JSON file": {
+        createJson();
+        break;
+      }
+      case "Update an existing JSON file": {
+        checkUpdate();
+        break;
+      }
+      case "Provide a testimonial to a LinkFree user": {
+        giveTestimonial();
+        break;
+      }
+      default:
+        addEvent();
     }
   })
   .catch((error) => {

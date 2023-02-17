@@ -4,9 +4,10 @@ const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const createUser = require("./helper/createUser");
-const checkUser = require("./helper/checkUser");
-const { questions, addlinks } = require("./helper/questions");
-let githubUsername;
+const checkUser = require("../shared/checkUser");
+const { basics } = require("../shared/questions/basics");
+const { addlinks } = require("../shared/questions/links");
+const updateJson = require("../updatejson/updateJson");
 let json;
 
 const createJson = () => {
@@ -18,7 +19,7 @@ const createJson = () => {
     },
   ])
     .then((answers) => {
-      githubUsername = answers.githubUsername;
+      const { githubUsername } = answers;
       if (githubUsername === "") {
         console.log(
           chalk.bgRed.bold(` Please enter a valid GitHub username. `)
@@ -32,17 +33,15 @@ const createJson = () => {
           {
             type: "confirm",
             name: "overwrite",
-            message: "Do you want to overwrite the existing file?",
+            message: "Do you want to update the existing file?",
           },
         ]).then((answers) => {
           const { overwrite } = answers;
           if (overwrite) {
-            console.log(
-              chalk.bgGreen.bold(` Proceed with overwriting file... `)
-            );
-            start(githubUsername);
+            console.log(chalk.bgGreen.bold(` Proceed with updating file... `));
+            updateJson(githubUsername);
           } else {
-            console.log(chalk.bgRed.bold(` File not overwritten! `));
+            console.log(chalk.bgRed.bold(` File not updated! `));
             console.log("Restart the program to try again.");
             process.exit(0);
           }
@@ -59,22 +58,33 @@ const createJson = () => {
 async function start(githubUsername) {
   await checkUser(githubUsername).then((result) => {
     if (result === true) {
-      questions().then((answers) => {
+      basics().then(async (answers) => {
         json = answers;
-        prompt([
+        await prompt([
           {
             type: "confirm",
             name: "addLink",
             message: "Do you want to add a link?",
           },
-        ]).then((answers) => {
-          const { addLink } = answers;
-          if (addLink) {
-            addlinkstojson();
-          } else {
-            createUser(githubUsername, json);
+        ]).then(async (answers) => {
+          if (answers.addLink) {
+            json.links = await addlinks(true);
           }
         });
+
+        // await prompt([
+        //   {
+        //     type: "confirm",
+        //     name: "addMilestone",
+        //     message: "Do you want to add a milestone?",
+        //   },
+        // ]).then(async (answers) => {
+        //   if (answers.addMilestone) {
+        //     json.milestones = await addmilestones(true);
+        //   }
+        // });
+
+        createUser(githubUsername, json);
       });
     } else {
       console.log(
@@ -85,11 +95,6 @@ async function start(githubUsername) {
       createJson();
     }
   });
-}
-
-async function addlinkstojson() {
-  json.links = await addlinks(true);
-  createUser(githubUsername, json);
 }
 
 module.exports = createJson;
