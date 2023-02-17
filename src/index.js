@@ -3,7 +3,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const createJson = require("./createjson/createJson");
-const updateJson = require("./updatejson/updateJson");
+const checkUpdate = require("./updatejson/helper/checkUpdate");
 const giveTestimonial = require("./givetestimonial/giveTestimonial");
 const addEvent = require("./addevent/addEvent");
 console.log(
@@ -33,7 +33,7 @@ prompt([
         break;
       }
       case "Update an existing JSON file": {
-        update();
+        checkUpdate();
         break;
       }
       case "Provide a testimonial to a LinkFree user": {
@@ -47,34 +47,3 @@ prompt([
   .catch((error) => {
     console.error(error);
   });
-
-const update = async () => {
-  const githubUsername = await getUsername();
-  if (fs.existsSync(`./data/${githubUsername}.json`)) {
-    updateJson(githubUsername);
-  } else {
-    console.log(
-      chalk.bgYellow.bold(
-        ` File ${githubUsername}.json doesn't exist! Please enter valid username`
-      )
-    );
-    update();
-  }
-};
-
-const getUsername = async () => {
-  const answers = await prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your GitHub username? (case sensitive)",
-    },
-  ]);
-
-  if (answers.name === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
-    getUsername();
-  } else {
-    return answers.name;
-  }
-};

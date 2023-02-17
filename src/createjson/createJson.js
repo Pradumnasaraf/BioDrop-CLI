@@ -4,13 +4,9 @@ const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const createUser = require("./helper/createUser");
-const checkUser = require("./helper/checkUser");
-const {
-  questions,
-  addlinks,
-  addmilestones,
-  addtestimonials,
-} = require("./helper/questions");
+const checkUser = require("../shared/checkUser");
+const { basics } = require("../shared/questions/basics");
+const { addlinks } = require("../shared/questions/links");
 const updateJson = require("../updatejson/updateJson");
 let json;
 
@@ -62,7 +58,7 @@ const createJson = () => {
 async function start(githubUsername) {
   await checkUser(githubUsername).then((result) => {
     if (result === true) {
-      questions().then(async (answers) => {
+      basics().then(async (answers) => {
         json = answers;
         await prompt([
           {
@@ -76,29 +72,17 @@ async function start(githubUsername) {
           }
         });
 
-        await prompt([
-          {
-            type: "confirm",
-            name: "addMilestone",
-            message: "Do you want to add a milestone?",
-          },
-        ]).then(async (answers) => {
-          if (answers.addMilestone) {
-            json.milestones = await addmilestones(true);
-          }
-        });
-
-        await prompt([
-          {
-            type: "confirm",
-            name: "addTestimonial",
-            message: "Do you want to add a testimonial?",
-          },
-        ]).then(async (answers) => {
-          if (answers.addTestimonial) {
-            json.testimonials = await addtestimonials(true);
-          }
-        });
+        // await prompt([
+        //   {
+        //     type: "confirm",
+        //     name: "addMilestone",
+        //     message: "Do you want to add a milestone?",
+        //   },
+        // ]).then(async (answers) => {
+        //   if (answers.addMilestone) {
+        //     json.milestones = await addmilestones(true);
+        //   }
+        // });
 
         createUser(githubUsername, json);
       });

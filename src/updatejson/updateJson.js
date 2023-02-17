@@ -6,7 +6,12 @@ const {
   addlinks,
   removelinks,
   updatelinks,
-} = require("../createjson/helper/questions");
+} = require("../shared/questions/links");
+const {
+  addtestimonials,
+  removetestimonials,
+  updatetestimonials,
+} = require("../shared/questions/testimonials");
 
 let json;
 const updateJson = async (githubUsername) => {
@@ -92,15 +97,95 @@ const updateJson = async (githubUsername) => {
       ]).then(async (answers) => {
         switch (answers.operation) {
           case "add a link?": {
-            json.links = [...json.links, ...(await addlinks(true))];
+            if (json.links) {
+              json.links = [...json.links, ...(await addlinks(true))];
+            } else {
+              json.links = [...(await addlinks(true))];
+            }
             break;
           }
           case "remove a link?": {
-            json.links = [...(await removelinks(json.links))];
+            if (json.links) {
+              json.links = [...(await removelinks(json.links))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any links to remove!")
+              );
+            }
             break;
           }
           default: {
-            json.links = [...(await updatelinks(json.links))];
+            if (json.links) {
+              json.links = [...(await updatelinks(json.links))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any links to update!")
+              );
+            }
+          }
+        }
+      });
+    }
+  });
+
+  await prompt([
+    {
+      type: "confirm",
+      name: "testimonial",
+      message: "Do you want to update your testimonials?",
+    },
+  ]).then(async (answers) => {
+    if (answers.testimonial) {
+      await prompt([
+        {
+          type: "select",
+          name: "operation",
+          message: "What you want to do?",
+          choices: [
+            "add a testimonial?",
+            "remove a testimonial?",
+            "update a testimonial?",
+          ],
+        },
+      ]).then(async (answers) => {
+        switch (answers.operation) {
+          case "add a testimonial?": {
+            if (json.testimonials) {
+              json.testimonials = [
+                ...json.testimonials,
+                ...(await addtestimonials(true)),
+              ];
+            } else {
+              json.testimonials = [...(await addtestimonials(true))];
+            }
+            break;
+          }
+          case "remove a testimonial?": {
+            if (json.testimonials) {
+              json.testimonials = [
+                ...(await removetestimonials(json.testimonials)),
+              ];
+            } else {
+              console.log(
+                chalk.bgYellow.bold(
+                  "You don't have any testimonials to remove!"
+                )
+              );
+            }
+            break;
+          }
+          default: {
+            if (json.testimonials) {
+              json.testimonials = [
+                ...(await updatetestimonials(json.testimonials)),
+              ];
+            } else {
+              console.log(
+                chalk.bgYellow.bold(
+                  "You don't have any testimonials to update!"
+                )
+              );
+            }
           }
         }
       });

@@ -2,7 +2,7 @@ const jsonFormat = require("json-format");
 const chalk = require("chalk");
 const fs = require("fs");
 
-async function createUserJson(githubUsername, answers) {
+async function createUser(githubUsername, answers) {
   sampleJson = {
     name: `${answers.name}`,
     type: `${answers.type}`,
@@ -11,15 +11,9 @@ async function createUserJson(githubUsername, answers) {
   if (answers.links) {
     sampleJson.links = answers.links;
   }
-  if (answers.milestones) {
-    sampleJson.milestones = answers.milestones;
-  }
-  if (answers.events) {
-    sampleJson.events = answers.events;
-  }
-  if (answers.testimonials) {
-    sampleJson.testimonials = answers.testimonials;
-  }
+  // if (answers.milestones) {
+  //   sampleJson.milestones = answers.milestones;
+  // }
 
   const json = jsonFormat(sampleJson, { type: "space", size: 2 });
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
@@ -40,4 +34,4 @@ async function createUserJson(githubUsername, answers) {
   });
 }
 
-module.exports = createUserJson;
+module.exports = createUser;
