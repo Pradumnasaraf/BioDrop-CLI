@@ -7,7 +7,11 @@ const createUser = require("./helper/createUser");
 const checkUser = require("../shared/checkUser");
 const { basics } = require("../shared/questions/basics");
 const { addlinks } = require("../shared/questions/links");
+const { addtags } = require("../shared/questions/tags");
+const { addmilestones } = require("../shared/questions/milestones");
+const { addsocials } = require("../shared/questions/socials");
 const updateJson = require("../updatejson/updateJson");
+
 let json;
 
 const createJson = () => {
@@ -72,17 +76,41 @@ async function start(githubUsername) {
           }
         });
 
-        // await prompt([
-        //   {
-        //     type: "confirm",
-        //     name: "addMilestone",
-        //     message: "Do you want to add a milestone?",
-        //   },
-        // ]).then(async (answers) => {
-        //   if (answers.addMilestone) {
-        //     json.milestones = await addmilestones(true);
-        //   }
-        // });
+        await prompt([
+          {
+            type: "confirm",
+            name: "addTag",
+            message: "Do you want to add a tag?",
+          },
+        ]).then(async (answers) => {
+          if (answers.addTag) {
+            json.tags = await addtags(true);
+          }
+        });
+
+        await prompt([
+          {
+            type: "confirm",
+            name: "addSocial",
+            message: "Do you want to add a social?",
+          },
+        ]).then(async (answers) => {
+          if (answers.addSocial) {
+            json.social = await addsocials(true);
+          }
+        });
+
+        await prompt([
+          {
+            type: "confirm",
+            name: "addMilestone",
+            message: "Do you want to add a milestone?",
+          },
+        ]).then(async (answers) => {
+          if (answers.addMilestone) {
+            json.milestones = await addmilestones(true);
+          }
+        });
 
         createUser(githubUsername, json);
       });
