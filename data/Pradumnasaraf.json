@@ -1,0 +1,13 @@
+{
+  "name": "Prad",
+  "type": "Personal",
+  "bio": "dev",
+  "links": [
+    {
+      "name": "git",
+      "url": "jfhjhgjf",
+      "icon": "FaGithub"
+    }
+  ],
+  "testimonials": ["eddiejaoude"]
+}
