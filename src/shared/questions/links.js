@@ -76,9 +76,58 @@ async function removelinks(links) {
   }
 }
 
-function updatelinks(links) {
-  console.log("updating links");
-  return links;
+async function updatelinks(links) {
+  icons = await geticons();
+  let choiceLinks = links;
+  let stop = false;
+  while (!stop) {
+    const answers = await prompt([
+      {
+        type: "select",
+        name: "link",
+        choices: choiceLinks,
+        message: "Choose which one you want to update",
+      },
+    ]);
+    const { name, url, icon, updateLink } = await prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is the new name of the link?",
+      },
+      {
+        type: "input",
+        name: "url",
+        message: "What is the new URL of the link?",
+      },
+      {
+        type: "select",
+        name: "icon",
+        choices: icons,
+        message: "Choose a new icon (Press down arrow to see more options)",
+      },
+      {
+        type: "confirm",
+        name: "updateLink",
+        message: "Do you want to update another link?",
+      },
+    ]);
+    choiceLinks.map((link) => {
+      if (link.name === answers.link) {
+        link.name = name;
+        link.url = url;
+        link.icon = icon;
+      }
+    });
+    if (!updateLink) {
+      let result = [];
+      choiceLinks.map((link) => {
+        const { name, url, icon } = link;
+        result.push({ name, url, icon });
+      });
+      return result;
+    }
+  }
 }
 
 module.exports = {

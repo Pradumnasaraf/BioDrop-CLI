@@ -60,8 +60,43 @@ async function removetestimonials(testimonials) {
 }
 
 async function updatetestimonials(testimonials) {
-  console.log("updating testimonials");
-  return testimonials;
+  let choiceTestimonials = testimonials;
+  let stop = false;
+  while (!stop) {
+    const answers = await prompt([
+      {
+        type: "select",
+        name: "testimonial",
+        choices: choiceTestimonials,
+        message: "Choose which one you want to update",
+      },
+    ]);
+    const { name, updateTestimonial } = await prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is the new username?",
+      },
+      {
+        type: "confirm",
+        name: "updateTestimonial",
+        message: "Do you want to update another testimonial?",
+      },
+    ]);
+    choiceTestimonials.map((testimonial) => {
+      if (testimonial.name === answers.testimonial) {
+        testimonial.name = name;
+      }
+    });
+    if (!updateTestimonial) {
+      let result = [];
+      choiceTestimonials.map((testimonial) => {
+        const { name } = testimonial;
+        result.push(name);
+      });
+      return result;
+    }
+  }
 }
 
 module.exports = {

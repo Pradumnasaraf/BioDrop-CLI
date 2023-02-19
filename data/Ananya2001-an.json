@@ -9,10 +9,24 @@
       "icon": "FaYoutube"
     },
     {
-      "name": "GitHub: Collaborate on Open Source",
-      "url": "https://github.com/eddiejaoude",
-      "icon": "FaGithub"
+      "name": "Github",
+      "url": "jsdhjsdhsjkds",
+      "icon": "FaFacebook"
     }
   ],
-  "milestones": []
+  "milestones": [],
+  "testimonials": [
+    "Prad"
+  ],
+  "tags": [
+    "devops",
+    "reactjs",
+    "open source"
+  ],
+  "socials": [
+    {
+      "url": "abc",
+      "icon": "FaApple"
+    }
+  ]
 }
