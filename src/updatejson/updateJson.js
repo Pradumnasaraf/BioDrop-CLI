@@ -8,6 +8,17 @@ const {
   updatelinks,
 } = require("../shared/questions/links");
 const {
+  addmilestones,
+  removemilestones,
+  updatemilestones,
+} = require("../shared/questions/milestones");
+const { addtags, removetags, updatetags } = require("../shared/questions/tags");
+const {
+  addsocials,
+  removesocials,
+  updatesocials,
+} = require("../shared/questions/socials");
+const {
   addtestimonials,
   removetestimonials,
   updatetestimonials,
@@ -76,6 +87,104 @@ const updateJson = async (githubUsername) => {
           message: "Your new bio?",
         },
       ]).then((answers) => (json.bio = answers.bio));
+    }
+  });
+
+  await prompt([
+    {
+      type: "confirm",
+      name: "tag",
+      message: "Do you want to update your tags?",
+    },
+  ]).then(async (answers) => {
+    if (answers.tag) {
+      await prompt([
+        {
+          type: "select",
+          name: "operation",
+          message: "What you want to do?",
+          choices: ["add a tag?", "remove a tag?", "update a tag?"],
+        },
+      ]).then(async (answers) => {
+        switch (answers.operation) {
+          case "add a tag?": {
+            if (json.tags) {
+              json.tags = [...json.tags, ...(await addtags(true))];
+            } else {
+              json.tags = [...(await addtags(true))];
+            }
+            break;
+          }
+          case "remove a tag?": {
+            if (json.tags) {
+              json.tags = [...(await removetags(json.tags))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any tags to remove!")
+              );
+            }
+            break;
+          }
+          default: {
+            if (json.tags) {
+              json.tags = [...(await updatetags(json.tags))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any tags to update!")
+              );
+            }
+          }
+        }
+      });
+    }
+  });
+
+  await prompt([
+    {
+      type: "confirm",
+      name: "social",
+      message: "Do you want to update your socials?",
+    },
+  ]).then(async (answers) => {
+    if (answers.social) {
+      await prompt([
+        {
+          type: "select",
+          name: "operation",
+          message: "What you want to do?",
+          choices: ["add a social?", "remove a social?", "update a social?"],
+        },
+      ]).then(async (answers) => {
+        switch (answers.operation) {
+          case "add a social?": {
+            if (json.socials) {
+              json.socials = [...json.socials, ...(await addsocials(true))];
+            } else {
+              json.socials = [...(await addsocials(true))];
+            }
+            break;
+          }
+          case "remove a social?": {
+            if (json.socials) {
+              json.socials = [...(await removesocials(json.socials))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any socials to remove!")
+              );
+            }
+            break;
+          }
+          default: {
+            if (json.socials) {
+              json.socials = [...(await updatesocials(json.socials))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any socials to update!")
+              );
+            }
+          }
+        }
+      });
     }
   });
 
@@ -184,6 +293,62 @@ const updateJson = async (githubUsername) => {
                 chalk.bgYellow.bold(
                   "You don't have any testimonials to update!"
                 )
+              );
+            }
+          }
+        }
+      });
+    }
+  });
+
+  await prompt([
+    {
+      type: "confirm",
+      name: "milestone",
+      message: "Do you want to update your milestones?",
+    },
+  ]).then(async (answers) => {
+    if (answers.milestone) {
+      await prompt([
+        {
+          type: "select",
+          name: "operation",
+          message: "What you want to do?",
+          choices: [
+            "add a milestone?",
+            "remove a milestone?",
+            "update a milestone?",
+          ],
+        },
+      ]).then(async (answers) => {
+        switch (answers.operation) {
+          case "add a milestone?": {
+            if (json.milestones) {
+              json.milestones = [
+                ...json.milestones,
+                ...(await addmilestones(true)),
+              ];
+            } else {
+              json.milestones = [...(await addmilestones(true))];
+            }
+            break;
+          }
+          case "remove a milestone?": {
+            if (json.milestones) {
+              json.milestones = [...(await removemilestones(json.milestones))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any milestones to remove!")
+              );
+            }
+            break;
+          }
+          default: {
+            if (json.milestones) {
+              json.milestones = [...(await updatemilestones(json.milestones))];
+            } else {
+              console.log(
+                chalk.bgYellow.bold("You don't have any milestones to update!")
               );
             }
           }
