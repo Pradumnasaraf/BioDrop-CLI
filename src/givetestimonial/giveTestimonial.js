@@ -4,7 +4,7 @@ const chalk = require("chalk");
 const createtestimonialfile = require("./helper/createTestimonialFile");
 const checktestimonial = require("./helper/checkTestimonial");
 
-let testimonialWritter;
+let testimonialWriter;
 let testimonialReceiver;
 
 async function givetestimonial() {
@@ -16,7 +16,7 @@ async function givetestimonial() {
     },
   ]);
   const { githubUsername } = answers;
-  testimonialWritter = githubUsername;
+  testimonialWriter = githubUsername;
   if (githubUsername === "") {
     console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
     givetestimonial();
@@ -49,13 +49,13 @@ async function givetestimonial() {
       );
       process.exit(0);
     } else {
-      if (testimonialReceiver == testimonialWritter) {
+      if (testimonialReceiver == testimonialWriter) {
         console.log(
           chalk.bgRed.bold(` You can't give a testimonial to yourself! `)
         );
         process.exit(0);
       } else if (
-        await checktestimonial(testimonialWritter, testimonialReceiver)
+        await checktestimonial(testimonialWriter, testimonialReceiver)
       ) {
         console.log(
           chalk.bgRed.bold(
@@ -67,7 +67,7 @@ async function givetestimonial() {
         let title = await testimonialtitle();
         let description = await testimonialdescription();
         createtestimonialfile(
-          testimonialWritter,
+          testimonialWriter,
           testimonialReceiver,
           title,
           description
@@ -105,7 +105,7 @@ async function testimonialdescription() {
   const { testimonial } = answers;
   if (testimonial === "") {
     console.log(chalk.bgRed.bold(` Please enter a valid testimonial. `));
-    testimonialdata();
+    testimonialdescription();
   } else {
     return testimonial;
   }
