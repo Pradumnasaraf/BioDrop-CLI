@@ -12,8 +12,8 @@ function createEventFile(eventWriter, answers) {
     name: name,
     description: description,
     date: {
-      start: new Date(startDate),
-      end: new Date(endDate),
+      start: startDate,
+      end: endDate,
     },
     url: url,
   };
@@ -23,7 +23,7 @@ function createEventFile(eventWriter, answers) {
   if (fs.existsSync("./data")) {
     if (fs.existsSync(`./data/${eventWriter}/events`)) {
       fs.writeFile(
-        `./data/${eventWriter}/events/${startDate}-${name.toLowerCase().split(' ').join('-')}.json`,
+        `./data/${eventWriter}/events/${startDate.split('T')[0]}-${name.toLowerCase().split(' ').join('-')}.json`,
         json,
         (err) => {
           if (err) {
@@ -36,7 +36,7 @@ function createEventFile(eventWriter, answers) {
           } else {
             console.log(
               chalk.bgWhite.bold(
-                ` File ${startDate}-${name
+                ` File ${startDate.split("T")[0]}-${name
                   .toLowerCase()
                   .split(" ")
                   .join("-")}.json created successfully! `
@@ -53,7 +53,7 @@ function createEventFile(eventWriter, answers) {
         })
         .then(() => {
           fs.writeFile(
-            `./data/${eventWriter}/events/${startDate}-${name
+            `./data/${eventWriter}/events/${startDate.split("T")[0]}-${name
               .toLowerCase()
               .split(" ")
               .join("-")}.json`,
@@ -69,7 +69,7 @@ function createEventFile(eventWriter, answers) {
               } else {
                 console.log(
                   chalk.bgWhite.bold(
-                    ` File ${startDate}-${name
+                    ` File ${startDate.split("T")[0]}-${name
                       .toLowerCase()
                       .split(" ")
                       .join("-")}.json created successfully! `

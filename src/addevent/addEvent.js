@@ -53,12 +53,12 @@ const addEvent = async () => {
       {
         type: "input",
         name: "startDate",
-        message: "Give event start date in this format: (YYYY-MM-DD)",
+        message: "Give event start date",
       },
       {
         type: "input",
         name: "endDate",
-        message: "Give event end date in this format: (YYYY-MM-DD)",
+        message: "Give event end date",
       },
       {
         type: "input",
