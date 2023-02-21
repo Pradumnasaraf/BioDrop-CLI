@@ -2,26 +2,28 @@ const fs = require("fs");
 const chalk = require("chalk");
 const jsonFormat = require("json-format");
 
-async function createtestimonialfile(
-  testimonialWriter,
-  testimonialReceiver,
-  title,
-  description
-) {
+function createEventFile(eventWriter, answers) {
+  const { virtual, inperson, name, description, url, startDate, endDate, color } =
+    answers;
   let jsonSchema = {
-    title: `${title}`,
-    description: `${description}`,
-    date: `${getdate()}`,
+    isVirtual: Boolean(virtual),
+    isInPerson: Boolean(inperson),
+    color:color,
+    name: name,
+    description: description,
+    date: {
+      start: startDate,
+      end: endDate,
+    },
+    url: url,
   };
 
   const json = jsonFormat(jsonSchema, { type: "space", size: 2 });
 
-  // Check if we are in the root directory of LinkFree
   if (fs.existsSync("./data")) {
-    // Check if user reciving the testimonial has a "testimonials" directory.
-    if (fs.existsSync(`./data/${testimonialReceiver}/testimonials`)) {
+    if (fs.existsSync(`./data/${eventWriter}/events`)) {
       fs.writeFile(
-        `./data/${testimonialReceiver}/testimonials/${testimonialWriter}.json`,
+        `./data/${eventWriter}/events/${startDate.split('T')[0]}-${name.toLowerCase().split(' ').join('-')}.json`,
         json,
         (err) => {
           if (err) {
@@ -34,21 +36,27 @@ async function createtestimonialfile(
           } else {
             console.log(
               chalk.bgWhite.bold(
-                ` File ${testimonialReceiver}.json created successfully! `
+                ` File ${startDate.split("T")[0]}-${name
+                  .toLowerCase()
+                  .split(" ")
+                  .join("-")}.json created successfully! `
               )
             );
           }
         }
       );
     } else {
-      // If the user doesn't have a "testimonials" directory, create one.
+      // If the user doesn't have a "events" directory, create one.
       fs.promises
-        .mkdir(`./data/${testimonialReceiver}/testimonials`, {
+        .mkdir(`./data/${eventWriter}/events`, {
           recursive: true,
         })
         .then(() => {
           fs.writeFile(
-            `./data/${testimonialReceiver}/testimonials/${testimonialWriter}.json`,
+            `./data/${eventWriter}/events/${startDate.split("T")[0]}-${name
+              .toLowerCase()
+              .split(" ")
+              .join("-")}.json`,
             json,
             (err) => {
               if (err) {
@@ -61,7 +69,10 @@ async function createtestimonialfile(
               } else {
                 console.log(
                   chalk.bgWhite.bold(
-                    ` File ${testimonialReceiver}.json created successfully! `
+                    ` File ${startDate.split("T")[0]}-${name
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")}.json created successfully! `
                   )
                 );
               }
@@ -87,19 +98,4 @@ async function createtestimonialfile(
   }
 }
 
-function getdate() {
-  // get in the format of YYYY-MM-DD
-  let date = new Date();
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  if (month < 10) {
-    month = "0" + month;
-  }
-  if (day < 10) {
-    day = "0" + day;
-  }
-  return year + "-" + month + "-" + day;
-}
-
-module.exports = createtestimonialfile;
+module.exports = createEventFile;

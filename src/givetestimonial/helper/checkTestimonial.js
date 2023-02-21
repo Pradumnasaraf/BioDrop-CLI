@@ -1,10 +1,10 @@
 const fs = require("fs");
 
 // Check if the user has already given a testimonial to the person
-async function checktestimonial(testimonialWritter, testimonialReceiver) {
+async function checktestimonial(testimonialWriter, testimonialReceiver) {
   if (
     fs.existsSync(
-      `./data/${testimonialReceiver}/testimonials/${testimonialWritter}.json`
+      `./data/${testimonialReceiver}/testimonials/${testimonialWriter}.json`
     )
   ) {
     return true;
