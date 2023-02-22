@@ -6,6 +6,7 @@ const createJson = require("./createjson/createJson");
 const checkUpdate = require("./updatejson/helper/checkUpdate");
 const giveTestimonial = require("./givetestimonial/giveTestimonial");
 const addEvent = require("./addevent/addEvent");
+const reportBug = require("./reportbug/reportBug");
 console.log(
   chalk.bgWhite.bold(` Welcome to LinkFree CLI! Let's get started. `)
 );
@@ -15,6 +16,7 @@ const choices = [
   "Update an existing JSON file",
   "Provide a testimonial to a LinkFree user",
   "Add an event",
+  "🐛 Report a bug",
 ];
 
 prompt([
@@ -40,8 +42,12 @@ prompt([
         giveTestimonial();
         break;
       }
-      default:
+      case "Add an event": {
         addEvent();
+        break;
+      }
+      default:
+        reportBug();
     }
   })
   .catch((error) => {
