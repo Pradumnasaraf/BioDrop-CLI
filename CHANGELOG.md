@@ -1,4 +1,4 @@
-## [2.0.0]((https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.2...v2.0.0) (2023-02-23)
+## [2.0.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.2...v2.0.0) (2023-02-23)
 
 ### Breaking Changes
 
