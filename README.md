@@ -1,4 +1,4 @@
-<img align="right" src="https://user-images.githubusercontent.com/51878265/186825286-499db16b-5b95-488d-b6d5-09d44521b890.png" height="70px"> <h2>LinkFree CLI </h2>
+<img align="right" src="https://user-images.githubusercontent.com/51878265/186825286-499db16b-5b95-488d-b6d5-09d44521b890.png" height="35px"> <h2>LinkFree CLI </h2>
 
 **LinkFree CLI** is a command line tool that helps you to create your **[LinkFree](https://github.com/EddieHubCommunity/LinkFree)** profile through CLI.
 
@@ -12,32 +12,31 @@
 
 </div>
 
-## Demo
-
 ![LinkFree CLI](https://user-images.githubusercontent.com/51878265/200193639-0e2d6d23-5f85-48e8-9563-8879b4efb18a.gif)
 
-## Using the CLI (Commands)
 
-> **Note** First fork the [LinkFree](https://github.com/EddieHubCommunity/LinkFree) repo before using it.
+### ⭐️ Features
 
-- **To install it globally.**
+- Creating a LinkFree profile.
+- Updating a LinkFree profile.
+- Giving a testimonial to a LinkFree profile.🛡
+- Adding evnts (conference, meetup, etc).
 
-```bash
-npm install -g linkfree-cli
 
-linkfree-Cli
-```
+### 👨‍💻 Using the CLI tool
 
-It will then prompt you to questions.
+Make sure you have cloned the [LinkFree](https://github.com/EddieHubCommunity/LinkFree) repo and in the root directory of the repo and install the dependencies.
 
-- **To execute the package directly, without installing it.**
+- To trigger the CLI, run the following command in the bash terminal.
 
 ```bash
 npx linkfree-cli
 ```
 
-It will then prompt you to questions.
+### 📝 License
 
-## Contributions
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) for details.
 
-Feel free to contribute to the repo. Just make sure you Open an [Issue](https://github.com/Pradumnasaraf/LinkFree-CLI/issues) first before raising the Pull Request
+### 🛡 Security
+
+If you discover a security vulnerability within this project, please check the [security policy](SECURITY.md) for more information.
