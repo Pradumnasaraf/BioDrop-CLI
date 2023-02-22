@@ -1,3 +1,22 @@
+## [2.0.0]((https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.2...v2.0.0) (2023-02-23)
+
+### Breaking Changes
+
+* The CLI now uses a diffent function/folder handling structure. This means the newer version features will not work with the older version of the CLI. Please update to the latest version of the CLI to use the new features.
+
+### Features
+
+* Added support to update the JSON function  https://github.com/Pradumnasaraf/LinkFree-CLI/pull/24 
+* Add support to add milestones, socials, and tags https://github.com/Pradumnasaraf/LinkFree-CLI/pull/26 
+* Add support to create remove and update keys by  https://github.com/Pradumnasaraf/LinkFree-CLI/pull/27 
+* Add support to add events https://github.com/Pradumnasaraf/LinkFree-CLI/pull/30
+* Add supported to for optional key to Events and Milestone https://github.com/Pradumnasaraf/LinkFree-CLI/pull/32 https://github.com/Pradumnasaraf/LinkFree-CLI/pull/33 
+* Support for reporting a bug from CLI https://github.com/Pradumnasaraf/LinkFree-CLI/pull/35
+
+### Fix
+* Removes empty keys from json when value is not there https://github.com/Pradumnasaraf/LinkFree-CLI/pull/34 
+
+
 ## [1.4.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.1...v1.4.2) (2023-02-15)
 
 
