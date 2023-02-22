@@ -118,6 +118,9 @@ const updateJson = async (githubUsername) => {
           case "remove a tag?": {
             if (json.tags) {
               json.tags = [...(await removetags(json.tags))];
+              if(json.tags.length === 0){
+                delete json.tags
+              }
             } else {
               console.log(
                 chalk.bgYellow.bold("You don't have any tags to remove!")
@@ -167,6 +170,9 @@ const updateJson = async (githubUsername) => {
           case "remove a social?": {
             if (json.socials) {
               json.socials = [...(await removesocials(json.socials))];
+              if (json.socials.length === 0) {
+                delete json.socials;
+              }
             } else {
               console.log(
                 chalk.bgYellow.bold("You don't have any socials to remove!")
@@ -216,6 +222,9 @@ const updateJson = async (githubUsername) => {
           case "remove a link?": {
             if (json.links) {
               json.links = [...(await removelinks(json.links))];
+              if (json.links.length === 0) {
+                delete json.links;
+              }
             } else {
               console.log(
                 chalk.bgYellow.bold("You don't have any links to remove!")
@@ -241,7 +250,7 @@ const updateJson = async (githubUsername) => {
     {
       type: "confirm",
       name: "testimonial",
-      message: "Do you want to update your testimonials?",
+      message: "Do you want to update your testimonials (usernames)?",
     },
   ]).then(async (answers) => {
     if (answers.testimonial) {
@@ -274,6 +283,9 @@ const updateJson = async (githubUsername) => {
               json.testimonials = [
                 ...(await removetestimonials(json.testimonials)),
               ];
+              if (json.testimonials.length === 0) {
+                delete json.testimonials;
+              }
             } else {
               console.log(
                 chalk.bgYellow.bold(
@@ -336,6 +348,9 @@ const updateJson = async (githubUsername) => {
           case "remove a milestone?": {
             if (json.milestones) {
               json.milestones = [...(await removemilestones(json.milestones))];
+              if (json.milestones.length === 0) {
+                delete json.milestones;
+              }
             } else {
               console.log(
                 chalk.bgYellow.bold("You don't have any milestones to remove!")
