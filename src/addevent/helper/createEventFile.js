@@ -3,27 +3,54 @@ const chalk = require("chalk");
 const jsonFormat = require("json-format");
 
 function createEventFile(eventWriter, answers) {
-  const { virtual, inperson, name, description, url, startDate, endDate, color } =
-    answers;
+  const {
+    userStatus,
+    speakerDetails,
+    isVirtual,
+    isInPerson,
+    name,
+    description,
+    url,
+    start,
+    end,
+    cfpClose,
+    color,
+  } = answers;
+
   let jsonSchema = {
-    isVirtual: Boolean(virtual),
-    isInPerson: Boolean(inperson),
-    color:color,
+    isVirtual: Boolean(isVirtual),
+    isInPerson: Boolean(isInPerson),
+    color: color,
     name: name,
     description: description,
     date: {
-      start: startDate,
-      end: endDate,
+      start: start,
+      end: end,
     },
     url: url,
   };
+
+  if (cfpClose) {
+    jsonSchema.date.cfpClose = cfpClose;
+  }
+
+  if (userStatus === "Organizer" || userStatus === "Participant") {
+    jsonSchema.userStatus = userStatus;
+  }
+
+  if (speakerDetails) {
+    jsonSchema.speakerDetails = speakerDetails;
+  }
 
   const json = jsonFormat(jsonSchema, { type: "space", size: 2 });
 
   if (fs.existsSync("./data")) {
     if (fs.existsSync(`./data/${eventWriter}/events`)) {
       fs.writeFile(
-        `./data/${eventWriter}/events/${startDate.split('T')[0]}-${name.toLowerCase().split(' ').join('-')}.json`,
+        `./data/${eventWriter}/events/${start.split("T")[0]}-${name
+          .toLowerCase()
+          .split(" ")
+          .join("-")}.json`,
         json,
         (err) => {
           if (err) {
@@ -36,7 +63,7 @@ function createEventFile(eventWriter, answers) {
           } else {
             console.log(
               chalk.bgWhite.bold(
-                ` File ${startDate.split("T")[0]}-${name
+                ` File ${start.split("T")[0]}-${name
                   .toLowerCase()
                   .split(" ")
                   .join("-")}.json created successfully! `
@@ -53,7 +80,7 @@ function createEventFile(eventWriter, answers) {
         })
         .then(() => {
           fs.writeFile(
-            `./data/${eventWriter}/events/${startDate.split("T")[0]}-${name
+            `./data/${eventWriter}/events/${start.split("T")[0]}-${name
               .toLowerCase()
               .split(" ")
               .join("-")}.json`,
@@ -69,7 +96,7 @@ function createEventFile(eventWriter, answers) {
               } else {
                 console.log(
                   chalk.bgWhite.bold(
-                    ` File ${startDate.split("T")[0]}-${name
+                    ` File ${start.split("T")[0]}-${name
                       .toLowerCase()
                       .split(" ")
                       .join("-")}.json created successfully! `
