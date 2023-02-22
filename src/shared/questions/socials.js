@@ -39,6 +39,9 @@ async function addsocials(bool) {
 async function removesocials(socials) {
   let choiceSocials = socials;
   let stop = false;
+  choiceSocials.map((social) => {
+    social.name = social.url;
+  });
   while (!stop) {
     const answers = await prompt([
       {

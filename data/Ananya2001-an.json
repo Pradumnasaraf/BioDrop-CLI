@@ -2,31 +2,10 @@
   "name": "Ananya Nayak",
   "type": "Personal",
   "bio": "Open source is fun",
-  "links": [
-    {
-      "name": "YouTube: Learn more about Open Source",
-      "url": "https://youtube.com/eddiejaoude",
-      "icon": "FaYoutube"
-    },
-    {
-      "name": "Github",
-      "url": "jsdhjsdhsjkds",
-      "icon": "FaFacebook"
-    }
-  ],
-  "milestones": [],
   "testimonials": [
     "Prad"
   ],
   "tags": [
-    "devops",
-    "reactjs",
     "open source"
-  ],
-  "socials": [
-    {
-      "url": "abc",
-      "icon": "FaApple"
-    }
   ]
 }
