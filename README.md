@@ -19,7 +19,7 @@
 
 - Creating a LinkFree profile.
 - Updating a LinkFree profile.
-- Giving a testimonial to a LinkFree profile.🛡
+- Giving a testimonial to a LinkFree profile.
 - Adding evnts (conference, meetup, etc).
 
 
