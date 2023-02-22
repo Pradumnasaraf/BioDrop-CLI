@@ -26,13 +26,25 @@ const addEvent = async () => {
   } else {
     let answers = await enquirer.prompt([
       {
+        type: "select",
+        name: "userStatus",
+        message: "Are you the event organizer or a participant? (This is optional.)",
+        choices: ["Organizer", "Participant", "None - Skip this question"],
+      },
+      {
+        type: "input",
+        name: "speakerDetails",
+        message:
+          "Give your topic of your talk at the event. (This is optional. Press enter to skip.)",
+      },
+      {
         type: "confirm",
-        name: "virtual",
+        name: "isVirtual",
         message: "Is the event virtual?",
       },
       {
         type: "confirm",
-        name: "inperson",
+        name: "isInPerson",
         message: "Is the event in person?",
       },
       {
@@ -52,13 +64,21 @@ const addEvent = async () => {
       },
       {
         type: "input",
-        name: "startDate",
-        message: "Give event start date and time (Supported format: 2023-08-09T00:00:00.000+00:00)",
+        name: "start",
+        message:
+          "Give event start date and time (Supported format: 2023-08-09T00:00:00.000+00:00)",
       },
       {
         type: "input",
-        name: "endDate",
-        message: "Give event end date and time (Supported format: 2023-08-09T00:00:00.000+00:00)",
+        name: "end",
+        message:
+          "Give event end date and time (Supported format: 2023-08-09T00:00:00.000+00:00)",
+      },
+      {
+        type: "input",
+        name: "cfpClose",
+        message:
+          "Give CFP end date and time (Supported format: 2023-08-09T00:00:00.000+00:00) - (This is optional. Press enter to skip.)",
       },
       {
         type: "input",
