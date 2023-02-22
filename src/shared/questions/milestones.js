@@ -41,6 +41,12 @@ async function addmilestones(bool) {
         message: "Give a color theme",
       },
       {
+        type: "select",
+        name: "isGoal",
+        message: "Is this a future goal? (This is optional question)",
+        choices: ["Yes", "Skip this question"],
+      },
+      {
         type: "confirm",
         name: "addMilestone",
         message: "Do you want to add another milestone?",
@@ -54,6 +60,10 @@ async function addmilestones(bool) {
       description: answers.description,
       color: answers.color,
     });
+
+    if (answers.isGoal === "Yes") {
+      milestones[milestones.length - 1].isGoal = true;
+    }
     if (!answers.addMilestone) {
       return milestones;
     }
