@@ -20,7 +20,7 @@
 - Creating a LinkFree profile.
 - Updating a LinkFree profile.
 - Giving a testimonial to a LinkFree profile.
-- Adding evnts (conference, meetup, etc).
+- Adding events (conference, meetup, etc).
 
 
 ### 👨‍💻 Using the CLI tool
