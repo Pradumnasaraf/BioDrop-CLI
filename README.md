@@ -3,7 +3,7 @@
 <div align="center">
 
 
-**LinkFree CLI** is a command line tool that helps you to create and update your **[LinkFree](https://github.com/EddieHubCommunity/LinkFree)** profile through CLI.
+**LinkFree CLI** is a command line tool that helps us to create and update your **[LinkFree](https://github.com/EddieHubCommunity/LinkFree)** profile through CLI. We can also give testimonials and events through it.
 
 <br>
   
