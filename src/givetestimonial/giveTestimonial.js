@@ -18,11 +18,13 @@ async function givetestimonial() {
   const { githubUsername } = answers;
   testimonialWriter = githubUsername;
   if (githubUsername === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
+    console.log(
+      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+    );
     givetestimonial();
   } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
     console.log(
-      chalk.bgYellow.bold(
+      chalk.black.bgYellow(
         ` You don't have a LinkFree JSON file!. Create an account first! `
       )
     );
@@ -39,11 +41,13 @@ async function givetestimonial() {
     const { githubUsername } = answers;
     testimonialReceiver = githubUsername;
     if (githubUsername === "") {
-      console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
+      console.log(
+        chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+      );
       givetestimonial();
     } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
       console.log(
-        chalk.bgYellow.bold(
+        chalk.black.bgYellow(
           ` The person you want to give a testimonial to doesn't have a LinkFree JSON file!. Ask them to create an account first! `
         )
       );
@@ -51,14 +55,14 @@ async function givetestimonial() {
     } else {
       if (testimonialReceiver == testimonialWriter) {
         console.log(
-          chalk.bgRed.bold(` You can't give a testimonial to yourself! `)
+          chalk.white.bgRed.bold(` You can't give a testimonial to yourself! `)
         );
         process.exit(0);
       } else if (
         await checktestimonial(testimonialWriter, testimonialReceiver)
       ) {
         console.log(
-          chalk.bgRed.bold(
+          chalk.white.bgRed.bold(
             ` You have already given a testimonial to this person! `
           )
         );
@@ -87,7 +91,9 @@ async function testimonialtitle() {
   ]);
   const { testimonialtitle } = answers;
   if (testimonialtitle === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid testimonial title. `));
+    console.log(
+      chalk.white.bgRed.bold(` Please enter a valid testimonial title. `)
+    );
     testimonialtitle();
   } else {
     return testimonialtitle;
@@ -104,7 +110,7 @@ async function testimonialdescription() {
   ]);
   const { testimonial } = answers;
   if (testimonial === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid testimonial. `));
+    console.log(chalk.white.bgRed.bold(` Please enter a valid testimonial. `));
     testimonialdescription();
   } else {
     return testimonial;

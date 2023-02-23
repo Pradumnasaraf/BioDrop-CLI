@@ -8,7 +8,7 @@ const giveTestimonial = require("./givetestimonial/giveTestimonial");
 const addEvent = require("./addevent/addEvent");
 const reportBug = require("./reportbug/reportBug");
 console.log(
-  chalk.bgWhite.bold(` Welcome to LinkFree CLI! Let's get started. `)
+  chalk.black.bgYellow(` Welcome to LinkFree CLI! Let's get started. `)
 );
 
 const choices = [

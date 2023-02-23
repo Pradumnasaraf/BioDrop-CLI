@@ -26,14 +26,14 @@ async function createUser(githubUsername, answers) {
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
     if (err) {
       console.log(
-        chalk.bgYellow.bold(
+        chalk.black.bgYellow(
           ` You are not in the root directory of LinkFree. Try again! `
         )
       );
       process.exit(0);
     } else {
       console.log(
-        chalk.bgWhite.bold(
+        chalk.black.bgYellow(
           ` File ${githubUsername}.json created successfully! `
         )
       );

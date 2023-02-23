@@ -55,14 +55,14 @@ function createEventFile(eventWriter, answers) {
         (err) => {
           if (err) {
             console.log(
-              chalk.bgYellow.bold(
+              chalk.black.bgYellow(
                 `Something went wrong while creating the file. Try again! part 1`
               )
             );
             process.exit(0);
           } else {
             console.log(
-              chalk.bgWhite.bold(
+              chalk.black.bgYellow(
                 ` File ${start.split("T")[0]}-${name
                   .toLowerCase()
                   .split(" ")
@@ -88,14 +88,14 @@ function createEventFile(eventWriter, answers) {
             (err) => {
               if (err) {
                 console.log(
-                  chalk.bgYellow.bold(
+                  chalk.black.bgYellow(
                     `Something went wrong while creating the file. Try again! part 2`
                   )
                 );
                 process.exit(0);
               } else {
                 console.log(
-                  chalk.bgWhite.bold(
+                  chalk.black.bgYellow(
                     ` File ${start.split("T")[0]}-${name
                       .toLowerCase()
                       .split(" ")
@@ -108,7 +108,7 @@ function createEventFile(eventWriter, answers) {
         })
         .catch(() => {
           console.log(
-            chalk.bgYellow.bold(
+            chalk.black.bgYellow(
               `Something went wrong while creating the directory. Try again!`
             )
           );
@@ -117,7 +117,7 @@ function createEventFile(eventWriter, answers) {
     }
   } else {
     console.log(
-      chalk.bgYellow.bold(
+      chalk.black.bgYellow(
         ` You are not in the root directory of LinkFree. Try again! `
       )
     );
