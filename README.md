@@ -2,7 +2,6 @@
 
 <div align="center">
 
-
 **LinkFree CLI** is a command line tool that helps us to create and update your **[LinkFree](https://github.com/EddieHubCommunity/LinkFree)** profile through CLI. We can also give testimonials and events through it.
 
 <br>
@@ -21,7 +20,6 @@
 - Updating a LinkFree profile.
 - Giving a testimonial to a LinkFree profile.
 - Adding events (conferences, meetups, etc).
-
 
 ### 👨‍💻 Using the CLI tool
 
