@@ -82,7 +82,9 @@ async function removemilestones(milestones) {
         message: "Choose which one you want to remove",
       },
     ]);
-    choiceMilestones = choiceMilestones.filter((milestone) => milestone.title !== answers.milestone);
+    choiceMilestones = choiceMilestones.filter(
+      (milestone) => milestone.title !== answers.milestone
+    );
     if (choiceMilestones.length !== 0) {
       const res = await prompt([
         {
@@ -106,77 +108,77 @@ async function removemilestones(milestones) {
 }
 
 async function updatemilestones(milestones) {
-    icons = await geticons();
-    let choiceMilestones = milestones;
-    let stop = false;
-    while (!stop) {
-      const answers = await prompt([
+  icons = await geticons();
+  let choiceMilestones = milestones;
+  let stop = false;
+  while (!stop) {
+    const answers = await prompt([
+      {
+        type: "select",
+        name: "milestone",
+        choices: choiceMilestones,
+        message: "Choose which one you want to update",
+      },
+    ]);
+    const { title, date, icon, description, url, color, updateMilestone } =
+      await prompt([
+        {
+          type: "input",
+          name: "title",
+          message: "What is the new title of the milestone?",
+        },
+        {
+          type: "input",
+          name: "date",
+          message: "What is the new date of the milestone?",
+        },
         {
           type: "select",
-          name: "milestone",
-          choices: choiceMilestones,
-          message: "Choose which one you want to update",
+          name: "icon",
+          choices: icons,
+          message: "Choose a new icon (Press down arrow to see more options)",
+        },
+        {
+          type: "input",
+          name: "description",
+          message: "What is the new description of the milestone?",
+        },
+        {
+          type: "input",
+          name: "url",
+          message: "What is the new URL of the milestone?",
+        },
+        {
+          type: "input",
+          name: "color",
+          message: "What is the new color theme of the milestone?",
+        },
+        {
+          type: "confirm",
+          name: "updateMilestone",
+          message: "Do you want to update another milestone?",
         },
       ]);
-      const { title, date, icon, description, url, color, updateMilestone } =
-        await prompt([
-          {
-            type: "input",
-            name: "title",
-            message: "What is the new title of the milestone?",
-          },
-          {
-            type: "input",
-            name: "date",
-            message: "What is the new date of the milestone?",
-          },
-          {
-            type: "select",
-            name: "icon",
-            choices: icons,
-            message: "Choose a new icon (Press down arrow to see more options)",
-          },
-          {
-            type: "input",
-            name: "description",
-            message: "What is the new description of the milestone?",
-          },
-          {
-            type: "input",
-            name: "url",
-            message: "What is the new URL of the milestone?",
-          },
-          {
-            type: "input",
-            name: "color",
-            message: "What is the new color theme of the milestone?",
-          },
-          {
-            type: "confirm",
-            name: "updateMilestone",
-            message: "Do you want to update another milestone?",
-          },
-        ]);
-      choiceMilestones.map((milestone) => {
-        if (milestone.title === answers.milestone) {
-          milestone.name = title
-          milestone.title = title;
-          milestone.date = date
-          milestone.url = url;
-          milestone.icon = icon;
-          milestone.description = description
-          milestone.color = color
-        }
-      });
-      if (!updateMilestone) {
-        let result = [];
-        choiceMilestones.map((milestone) => {
-          const { title, url, icon, description, date, color } = milestone;
-          result.push({ title, url, icon, description, date, color });
-        });
-        return result;
+    choiceMilestones.map((milestone) => {
+      if (milestone.title === answers.milestone) {
+        milestone.name = title;
+        milestone.title = title;
+        milestone.date = date;
+        milestone.url = url;
+        milestone.icon = icon;
+        milestone.description = description;
+        milestone.color = color;
       }
+    });
+    if (!updateMilestone) {
+      let result = [];
+      choiceMilestones.map((milestone) => {
+        const { title, url, icon, description, date, color } = milestone;
+        result.push({ title, url, icon, description, date, color });
+      });
+      return result;
     }
+  }
 }
 
 module.exports = {

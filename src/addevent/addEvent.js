@@ -28,7 +28,8 @@ const addEvent = async () => {
       {
         type: "select",
         name: "userStatus",
-        message: "Are you the event organizer or a participant? (This is optional.)",
+        message:
+          "Are you the event organizer or a participant? (This is optional.)",
         choices: ["Organizer", "Participant", "None - Skip this question"],
       },
       {

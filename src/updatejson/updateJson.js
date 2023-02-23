@@ -118,8 +118,8 @@ const updateJson = async (githubUsername) => {
           case "remove a tag?": {
             if (json.tags) {
               json.tags = [...(await removetags(json.tags))];
-              if(json.tags.length === 0){
-                delete json.tags
+              if (json.tags.length === 0) {
+                delete json.tags;
               }
             } else {
               console.log(
