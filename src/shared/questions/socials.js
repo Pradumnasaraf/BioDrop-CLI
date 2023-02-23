@@ -80,9 +80,9 @@ async function updatesocials(socials) {
   icons = await geticons();
   let choiceSocials = socials;
   let stop = false;
-  choiceSocials.map(social => {
-    social.name = social.url
-  })
+  choiceSocials.map((social) => {
+    social.name = social.url;
+  });
   while (!stop) {
     const answers = await prompt([
       {
@@ -112,16 +112,16 @@ async function updatesocials(socials) {
     ]);
     choiceSocials.map((social) => {
       if (social.name === answers.social) {
-        social.name = url
+        social.name = url;
         social.url = url;
-        social.icon = icon
+        social.icon = icon;
       }
     });
     if (!updateSocial) {
       let result = [];
       choiceSocials.map((social) => {
         const { url, icon } = social;
-        result.push({url, icon});
+        result.push({ url, icon });
       });
       return result;
     }
