@@ -17,7 +17,7 @@
 ### ⭐️ Features
 
 - Creating a LinkFree profile.
-- Updating a LinkFree profile.
+- Updating an existing LinkFree profile.
 - Giving a testimonial to a LinkFree profile.
 - Adding events (conferences, meetups, etc).
 
