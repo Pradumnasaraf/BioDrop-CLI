@@ -1,20 +1,32 @@
-## [2.0.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.2...v2.0.0) (2023-02-23)
+## [2.0.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.0.0...v2.0.1) (2023-02-23)
 
-### Breaking Changes
 
-* The CLI now uses a diffent function/folder handling structure. This means the newer version features will not work with the older version of the CLI. Please update to the latest version of the CLI to use the new features.
+### Bug Fixes
+
+* color combination for chalk prompt ([#39](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/39)) ([451c48d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/451c48dba6ea9aa1e85ebe9a674c420323d88d09))
+
+
+
+# [2.0.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.2...v2.0.0) (2023-02-23)
+
+
+### Bug Fixes
+
+* remove blank keys from JSON  ([#34](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/34)) ([45ce7b6](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/45ce7b680e3b07168706914fb9703d63cd87590f))
+
 
 ### Features
 
-* Added support to update the JSON function  https://github.com/Pradumnasaraf/LinkFree-CLI/pull/24 
-* Add support to add milestones, socials, and tags https://github.com/Pradumnasaraf/LinkFree-CLI/pull/26 
-* Add support to create remove and update keys by  https://github.com/Pradumnasaraf/LinkFree-CLI/pull/27 
-* Add support to add events https://github.com/Pradumnasaraf/LinkFree-CLI/pull/30
-* Add supported to for optional key to Events and Milestone https://github.com/Pradumnasaraf/LinkFree-CLI/pull/32 https://github.com/Pradumnasaraf/LinkFree-CLI/pull/33 
-* Support for reporting a bug from CLI https://github.com/Pradumnasaraf/LinkFree-CLI/pull/35
+* Add bug report from CLI ([#35](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/35)) ([486325c](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/486325c67b48dc1ce0f5cebc419258ea55034e26))
+* add events support - main prompt ([#30](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/30)) ([4311d58](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/4311d58e8f29f9bb9c292248f891f92b5f5f9592))
+* Add optional key in Milestone ([#33](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/33)) ([a849b47](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/a849b47e9bcb2b54a8505fe01ee6a380ac35ee43))
+* Add optional keys to Events ([#32](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/32)) ([e217884](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/e21788400f5cdbf7f15edcf5852ccc2ae30b8939))
+* Add support for milestones, socials, and tags ([#26](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/26)) ([2656aaf](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/2656aaf62e208f72dbd9d668c2b6bda3dd07c528))
+* Add support for testimonials - main prompt ([#29](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/29)) ([67d6324](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/67d6324d7bb8b3fcb6141e5b200c013df2a7b48e))
+* add update, create and testimonial feature ([#24](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/24)) ([22f2e28](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/22f2e28a103f64e8fd6e8ccb47850e9e7d5c818e))
+* break cli working into dir ([c35e1b6](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/c35e1b6c8483ae3b0782310d7ba694976d6bdfa6))
+* created remove and update functions for all keys ([#27](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/27)) ([f5a7b4d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/f5a7b4d3562f372ddcd7ecc3a26d47c0e3d1868d))
 
-### Fix
-* Removes empty keys from json when value is not there https://github.com/Pradumnasaraf/LinkFree-CLI/pull/34 
 
 
 ## [1.4.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.1...v1.4.2) (2023-02-15)
@@ -41,24 +53,6 @@
 ### Features
 
 * make compatible with LinkFree V2 - Next.js ([#10](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/10)) ([1977013](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/1977013174d5a288090aee1b018a04683105ad1c))
-
-
-
-# [1.3.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.2.0...v1.3.0) (2022-10-19)
-
-
-### Features
-
-* Added links suuport ([#8](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/8)) ([871ccea](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/871cceadc0c366afb96d4c8d6008cca4d93948e9))
-
-
-
-# [1.2.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.1.3...v1.2.0) (2022-09-03)
-
-
-### Features
-
-* check if user exists on GitHub ([#5](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/5)) ([925c956](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/925c9568edfa33063b2bcde589a4173d10c3db13))
 
 
 
