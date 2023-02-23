@@ -14,11 +14,13 @@ const addEvent = async () => {
   let eventWriter = answers.githubUsername;
 
   if (eventWriter === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
+    console.log(
+      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+    );
     addEvent();
   } else if (!fs.existsSync(`./data/${eventWriter}.json`)) {
     console.log(
-      chalk.bgYellow.bold(
+      chalk.black.bgYellow(
         ` You don't have a LinkFree JSON file!. Create an account first! `
       )
     );

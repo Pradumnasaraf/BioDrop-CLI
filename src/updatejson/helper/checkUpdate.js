@@ -9,7 +9,7 @@ async function checkUpdate() {
     updateJson(githubUsername);
   } else {
     console.log(
-      chalk.bgYellow.bold(
+      chalk.black.bgYellow(
         ` File ${githubUsername}.json doesn't exist! Please enter valid username`
       )
     );
@@ -27,7 +27,9 @@ const getUsername = async () => {
   ]);
 
   if (answers.name === "") {
-    console.log(chalk.bgRed.bold(` Please enter a valid GitHub username. `));
+    console.log(
+      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+    );
     getUsername();
   } else {
     return answers.name;

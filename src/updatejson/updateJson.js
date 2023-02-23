@@ -28,7 +28,7 @@ let json;
 const updateJson = async (githubUsername) => {
   await fs.readFile(`./data/${githubUsername}.json`, function (error, content) {
     if (error) {
-      console.log(chalk.bgRed.bold("You are not in the root folder!"));
+      console.log(chalk.white.bgRed.bold("You are not in the root folder!"));
       console.log("Restart the program to try again.");
       process.exit(0);
     }
@@ -123,7 +123,7 @@ const updateJson = async (githubUsername) => {
               }
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any tags to remove!")
+                chalk.black.bgYellow("You don't have any tags to remove!")
               );
             }
             break;
@@ -133,7 +133,7 @@ const updateJson = async (githubUsername) => {
               json.tags = [...(await updatetags(json.tags))];
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any tags to update!")
+                chalk.black.bgYellow("You don't have any tags to update!")
               );
             }
           }
@@ -175,7 +175,7 @@ const updateJson = async (githubUsername) => {
               }
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any socials to remove!")
+                chalk.black.bgYellow("You don't have any socials to remove!")
               );
             }
             break;
@@ -185,7 +185,7 @@ const updateJson = async (githubUsername) => {
               json.socials = [...(await updatesocials(json.socials))];
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any socials to update!")
+                chalk.black.bgYellow("You don't have any socials to update!")
               );
             }
           }
@@ -227,7 +227,7 @@ const updateJson = async (githubUsername) => {
               }
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any links to remove!")
+                chalk.black.bgYellow("You don't have any links to remove!")
               );
             }
             break;
@@ -237,7 +237,7 @@ const updateJson = async (githubUsername) => {
               json.links = [...(await updatelinks(json.links))];
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any links to update!")
+                chalk.black.bgYellow("You don't have any links to update!")
               );
             }
           }
@@ -288,7 +288,7 @@ const updateJson = async (githubUsername) => {
               }
             } else {
               console.log(
-                chalk.bgYellow.bold(
+                chalk.black.bgYellow(
                   "You don't have any testimonials to remove!"
                 )
               );
@@ -302,7 +302,7 @@ const updateJson = async (githubUsername) => {
               ];
             } else {
               console.log(
-                chalk.bgYellow.bold(
+                chalk.black.bgYellow(
                   "You don't have any testimonials to update!"
                 )
               );
@@ -353,7 +353,7 @@ const updateJson = async (githubUsername) => {
               }
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any milestones to remove!")
+                chalk.black.bgYellow("You don't have any milestones to remove!")
               );
             }
             break;
@@ -363,7 +363,7 @@ const updateJson = async (githubUsername) => {
               json.milestones = [...(await updatemilestones(json.milestones))];
             } else {
               console.log(
-                chalk.bgYellow.bold("You don't have any milestones to update!")
+                chalk.black.bgYellow("You don't have any milestones to update!")
               );
             }
           }
@@ -375,11 +375,11 @@ const updateJson = async (githubUsername) => {
   json = jsonFormat(json, { type: "space", size: 2 });
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
     if (err) {
-      console.log(chalk.bgYellow.bold(` Couldn't update file. Try again! `));
+      console.log(chalk.black.bgYellow(` Couldn't update file. Try again! `));
       process.exit(0);
     } else {
       console.log(
-        chalk.bgWhite.bold(
+        chalk.black.bgYellow(
           ` File ${githubUsername}.json updated successfully! `
         )
       );

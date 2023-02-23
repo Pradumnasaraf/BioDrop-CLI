@@ -20,7 +20,7 @@
     "createUser.js"
   ],
   "author": "Pradumna Saraf",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
