@@ -23,13 +23,7 @@
 
 ### 👨‍💻 Using the CLI tool
 
-Make sure you have cloned the [LinkFree](https://github.com/EddieHubCommunity/LinkFree) repo and in the root directory of the repo and installed the dependencies.
-
-- To trigger the CLI, run the following command in the bash terminal.
-
-```bash
-npx linkfree-cli
-```
+Check this detailed documentation out - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
 
 ### 📝 License
 
