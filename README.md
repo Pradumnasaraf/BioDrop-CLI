@@ -29,7 +29,7 @@ Check out this detailed documentation - [linkfree.eddiehub.io/docs/environments/
 
 You can choose to develop the CLI by setting up the project locally and installing the dependencies, or by using Gitpod to run the project in a cloud-based development environment without having to install anything locally.
 
-### Local Development
+#### Local Development
 
 After forking, cloning, and installing the dependencies, you can run the following commands to run the project locally. Create a folder named data in the root directory using the command below:
 
