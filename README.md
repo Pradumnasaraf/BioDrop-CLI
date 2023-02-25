@@ -23,15 +23,15 @@
 
 ### 👨‍💻 Using the CLI tool
 
-Check this detailed documentation out - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
+Check out this detailed documentation - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
 
 ### 📦 Development and Contribution
 
-You can use choose to devlop this by setting up the project locally and installing the dependencies or use Gitpod to run the project in a cloud-based development environment without having to install anything locally.
+You can choose to develop the CLI by setting up the project locally and installing the dependencies, or by using Gitpod to run the project in a cloud-based development environment without having to install anything locally.
 
-#### Local Development
+### Local Development
 
-After forking, cloning and installing the dependencies, you can run the following commands to run the project locally. Create a folder name `data` in the root directory. You can use use below command to create a folder.
+After forking, cloning, and installing the dependencies, you can run the following commands to run the project locally. Create a folder named data in the root directory using the command below:
 
 ```bash
 mkdir data
@@ -45,7 +45,7 @@ npm run start
 
 #### Gitpod
 
-Gitpod is easiest way to setup the project development environment. You can click on the button below and it will set everything up for you.
+Gitpod is the easiest way to set up the project development environment. Click on the button below, and it will set everything up for you.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Pradumnasaraf/LinkFree-CLI)
 
