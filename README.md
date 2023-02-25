@@ -25,7 +25,7 @@
 
 Check this detailed documentation out - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
 
-### 📦 Development and Contribution  
+### 📦 Development and Contribution
 
 You can use choose to devlop this by setting up the project locally and installing the dependencies or use Gitpod to run the project in a cloud-based development environment without having to install anything locally.
 
@@ -42,6 +42,7 @@ To run the project/CLI, use the following command:
 ```bash
 npm run start
 ```
+
 #### Gitpod
 
 Gitpod is easiest way to setup the project development environment. You can click on the button below and it will set everything up for you.
