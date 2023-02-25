@@ -9,6 +9,7 @@ body:
       description: A brief description of the question or issue, also include what you tried and what didn't work
       value: |
         ### What is your problem
+        
         ### What is your suggested solution
     validations:
       required: true
