@@ -23,13 +23,31 @@
 
 ### 👨‍💻 Using the CLI tool
 
-Make sure you have cloned the [LinkFree](https://github.com/EddieHubCommunity/LinkFree) repo and in the root directory of the repo and installed the dependencies.
+Check out this detailed documentation - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
 
-- To trigger the CLI, run the following command in the bash terminal.
+### 📦 Development and Contribution
+
+You can choose to develop the CLI by setting up the project locally and installing the dependencies, or by using Gitpod to run the project in a cloud-based development environment without having to install anything locally.
+
+#### Local Development
+
+After forking, cloning, and installing the dependencies, you can run the following commands to run the project locally. Create a folder named data in the root directory using the command below:
 
 ```bash
-npx linkfree-cli
+mkdir data
 ```
+
+To run the project/CLI, use the following command:
+
+```bash
+npm run start
+```
+
+#### Gitpod
+
+Gitpod is the easiest way to set up the project development environment. Click on the button below, and it will set everything up for you.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Pradumnasaraf/LinkFree-CLI)
 
 ### 📝 License
 

@@ -1,6 +1,8 @@
 tasks:
   - init: npm install
-    command: npm run start
+    command: |
+     mkdir data
+     npm run start
     
 github:
   prebuilds:
