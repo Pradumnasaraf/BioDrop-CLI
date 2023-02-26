@@ -1,17 +1,17 @@
-const axios = require("axios");
+const FaIcons = require("react-icons/fa");
+const SaIcons = require("react-icons/si");
 let icons = [];
+
 async function geticons() {
-  try {
-    const response = await axios.get(
-      `https://raw.githubusercontent.com/EddieHubCommunity/LinkFree/main/config/icons.json`
-    );
-    icons = Object.keys(response.data);
-    return icons;
-  } catch (error) {
-    console.error(error);
-  }
+  Object.keys(FaIcons).forEach((key) => {
+    icons.push(key);
+  });
+
+  Object.keys(SaIcons).forEach((key) => {
+    icons.push(key);
+  });
+
+  return icons;
 }
 
-module.exports = {
-  geticons,
-};
+module.exports = { geticons };
