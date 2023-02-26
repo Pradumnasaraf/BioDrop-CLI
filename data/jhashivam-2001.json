@@ -1,0 +1,15 @@
+{
+  "name": "Shivam Jha",
+  "type": "Personal",
+  "bio": "Hey there I am an aspiring developer and a 3rd year undergrad at NIT Patna.",
+  "links": [
+    {
+      "name": "Github",
+      "url": "https://github.com/jhashivam-2001",
+      "icon": "FaApple"
+    }
+  ],
+  "tags": [
+    "Ring me"
+  ]
+}
