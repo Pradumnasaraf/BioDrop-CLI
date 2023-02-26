@@ -1,3 +1,13 @@
+# [2.1.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.0.1...v2.1.0) (2023-02-26)
+
+
+### Features
+
+* Add support for react icons ([7fc1802](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/7fc1802c4bd2aa877dc35600b18810758474c1d9))
+* Trigger releases and README improvement ([#51](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/51)) ([ead5150](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/ead51508460e441e7c3f4d33fe31a491dc5fee29))
+
+
+
 ## [2.0.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.0.0...v2.0.1) (2023-02-23)
 
 
@@ -44,15 +54,6 @@
 ### Bug Fixes
 
 * link addition option (Err: Link and key) ([#11](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/11)) ([050ee91](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/050ee911bcd42208debbc54f354a47d0e6cb3e14))
-
-
-
-# [1.4.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.3.0...v1.4.0) (2022-11-06)
-
-
-### Features
-
-* make compatible with LinkFree V2 - Next.js ([#10](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/10)) ([1977013](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/1977013174d5a288090aee1b018a04683105ad1c))
 
 
 
