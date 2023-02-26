@@ -2,6 +2,7 @@ const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const fs = require("fs");
 const jsonFormat = require("json-format");
+isProfileUpdated = false;
 const {
   addlinks,
   removelinks,
@@ -43,6 +44,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.name) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "input",
@@ -61,6 +63,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.type) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -80,6 +83,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.bio) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "input",
@@ -98,6 +102,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.tag) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -150,6 +155,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.social) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -202,6 +208,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.link) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -254,6 +261,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.testimonial) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -321,6 +329,7 @@ const updateJson = async (githubUsername) => {
     },
   ]).then(async (answers) => {
     if (answers.milestone) {
+      isProfileUpdated = true;
       await prompt([
         {
           type: "select",
@@ -378,11 +387,19 @@ const updateJson = async (githubUsername) => {
       console.log(chalk.black.bgYellow(` Couldn't update file. Try again! `));
       process.exit(0);
     } else {
-      console.log(
-        chalk.black.bgYellow(
-          ` File ${githubUsername}.json updated successfully! `
-        )
-      );
+      if (isProfileUpdated) {
+        console.log(
+          chalk.black.bgYellow(
+            ` File ${githubUsername}.json updated successfully! `
+          )
+        );
+      } else {
+        console.log(
+          chalk.black.bgYellow(
+            `No updates were made in ${githubUsername}.json `
+          )
+        );
+      }
     }
   });
 };
