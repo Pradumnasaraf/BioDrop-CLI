@@ -20,7 +20,7 @@ async function addmilestones(bool) {
         message: "In which year you achieved it?",
       },
       {
-        type: "select",
+        type: "autocomplete",
         name: "icon",
         choices: icons,
         message: "Choose an icon (Press down arrow to see more options)",
@@ -133,7 +133,7 @@ async function updatemilestones(milestones) {
           message: "What is the new date of the milestone?",
         },
         {
-          type: "select",
+          type: "autocomplete",
           name: "icon",
           choices: icons,
           message: "Choose a new icon (Press down arrow to see more options)",

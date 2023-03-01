@@ -15,7 +15,7 @@ async function addsocials(bool) {
         message: "Add the url of your social media",
       },
       {
-        type: "select",
+        type: "autocomplete",
         name: "icon",
         choices: icons,
         message: "Choose an icon (Press down arrow to see more options)",
@@ -99,7 +99,7 @@ async function updatesocials(socials) {
         message: "What is the new URL of the social media?",
       },
       {
-        type: "select",
+        type: "autocomplete",
         name: "icon",
         choices: icons,
         message: "Choose a new icon (Press down arrow to see more options)",

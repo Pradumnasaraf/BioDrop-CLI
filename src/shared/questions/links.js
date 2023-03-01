@@ -19,7 +19,7 @@ async function addlinks(bool) {
         message: "What is the URL of the link?",
       },
       {
-        type: "select",
+        type: "autocomplete",
         name: "icon",
         choices: icons,
         message: "Choose an icon (Press down arrow to see more options)",
@@ -101,7 +101,7 @@ async function updatelinks(links) {
         message: "What is the new URL of the link?",
       },
       {
-        type: "select",
+        type: "autocomplete",
         name: "icon",
         choices: icons,
         message: "Choose a new icon (Press down arrow to see more options)",
