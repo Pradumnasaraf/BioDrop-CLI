@@ -132,5 +132,3 @@ module.exports = {
   removesocials,
   updatesocials,
 };
-
-
