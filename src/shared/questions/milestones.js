@@ -4,6 +4,14 @@ const { geticons } = require("../assets/icons");
 let milestones = [];
 let icons = [];
 
+const autocomplete = new AutoComplete({
+  name: 'icon',
+  message: 'Choose an icon (Search to see more options)',
+  limit: 10,
+  choices: icons
+})
+
+
 async function addmilestones(bool) {
   icons = await geticons();
 
@@ -19,12 +27,7 @@ async function addmilestones(bool) {
         name: "date",
         message: "In which year you achieved it?",
       },
-      {
-        type: "autocomplete",
-        name: "icon",
-        choices: icons,
-        message: "Choose an icon (Press down arrow to see more options)",
-      },
+        autocomplete.run(),
       {
         type: "input",
         name: "description",
@@ -132,12 +135,7 @@ async function updatemilestones(milestones) {
           name: "date",
           message: "What is the new date of the milestone?",
         },
-        {
-          type: "autocomplete",
-          name: "icon",
-          choices: icons,
-          message: "Choose a new icon (Press down arrow to see more options)",
-        },
+          autocomplete.run(),
         {
           type: "input",
           name: "description",

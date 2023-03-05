@@ -3,6 +3,13 @@ const { geticons } = require("../assets/icons");
 let links = [];
 let icons = [];
 
+const autocomplete = new AutoComplete({
+  name: 'icon',
+  message: 'Choose an icon (Search to see more options)',
+  limit: 10,
+  choices: icons
+})
+
 async function addlinks(bool) {
   icons = await geticons();
 
@@ -18,12 +25,7 @@ async function addlinks(bool) {
         name: "url",
         message: "What is the URL of the link?",
       },
-      {
-        type: "autocomplete",
-        name: "icon",
-        choices: icons,
-        message: "Choose an icon (Press down arrow to see more options)",
-      },
+        autocomplete.run(),
       {
         type: "confirm",
         name: "addLink",
@@ -100,12 +102,7 @@ async function updatelinks(links) {
         name: "url",
         message: "What is the new URL of the link?",
       },
-      {
-        type: "autocomplete",
-        name: "icon",
-        choices: icons,
-        message: "Choose a new icon (Press down arrow to see more options)",
-      },
+        autocomplete.run(),
       {
         type: "confirm",
         name: "updateLink",
