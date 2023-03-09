@@ -1,18 +1,16 @@
-const { prompt } = require("enquirer");
+const { prompt, AutoComplete } = require("enquirer");
 const { geticons } = require("../assets/icons");
 let links = [];
 let icons = [];
 
-const autocomplete = new AutoComplete({
-  name: 'icon',
-  message: 'Choose an icon (Search to see more options)',
-  limit: 10,
-  choices: icons
-})
-
 async function addlinks(bool) {
   icons = await geticons();
-
+  const autocomplete = new AutoComplete({
+    name: 'icon',
+    message: 'Choose an icon (Search to see more options)',
+    limit: 10,
+    choices: icons
+  })
   while (bool) {
     let answers = await prompt([
       {
@@ -24,24 +22,68 @@ async function addlinks(bool) {
         type: "input",
         name: "url",
         message: "What is the URL of the link?",
-      },
-        autocomplete.run(),
+      }
+    ]);
+    await autocomplete.run()
+    const confirm = await prompt([
       {
         type: "confirm",
         name: "addLink",
         message: "Do you want to add another link?",
-      },
-    ]);
+      }
+    ])
     links.push({
       name: answers.name,
       url: answers.url,
-      icon: answers.icon,
+      icon: autocomplete.state.input,
     });
-    if (!answers.addLink) {
+    if (!confirm.addLink) {
       return links;
     }
   }
 }
+
+
+
+// async function addlinks(bool) {
+//   icons = await geticons();
+//   const autocomplete = new AutoComplete({
+//     name: 'icon',
+//     message: 'Choose an icon (Search to see more options)',
+//     limit: 10,
+//     choices: icons
+//   })
+//   while (bool) {
+//     let answers = await prompt([
+//       {
+//         type: "input",
+//         name: "name",
+//         message: "What is the name of the link?",
+//       },
+//       {
+//         type: "input",
+//         name: "url",
+//         message: "What is the URL of the link?",
+//       }]);
+//     await autocomplete.run()
+//     const confirm = await prompt(
+//       {
+//         type: "confirm",
+//         name: "addLink",
+//         message: "Do you want to add another link?",
+//       }
+//     );
+//     // await autocomplete.run()
+//     links.push({
+//       name: answers.name,
+//       url: answers.url,
+//       icon: autocomplete.state.input,
+//     });
+//     if (!confirm.addLink) {
+//       return links;
+//     }
+//   }
+// }
 
 async function removelinks(links) {
   let choiceLinks = links;
@@ -82,6 +124,12 @@ async function updatelinks(links) {
   icons = await geticons();
   let choiceLinks = links;
   let stop = false;
+  const autocomplete = new AutoComplete({
+    name: 'icon',
+    message: 'Choose an icon (Search to see more options)',
+    limit: 10,
+    choices: icons
+  })
   while (!stop) {
     const answers = await prompt([
       {
