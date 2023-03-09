@@ -44,47 +44,6 @@ async function addlinks(bool) {
 }
 
 
-
-// async function addlinks(bool) {
-//   icons = await geticons();
-//   const autocomplete = new AutoComplete({
-//     name: 'icon',
-//     message: 'Choose an icon (Search to see more options)',
-//     limit: 10,
-//     choices: icons
-//   })
-//   while (bool) {
-//     let answers = await prompt([
-//       {
-//         type: "input",
-//         name: "name",
-//         message: "What is the name of the link?",
-//       },
-//       {
-//         type: "input",
-//         name: "url",
-//         message: "What is the URL of the link?",
-//       }]);
-//     await autocomplete.run()
-//     const confirm = await prompt(
-//       {
-//         type: "confirm",
-//         name: "addLink",
-//         message: "Do you want to add another link?",
-//       }
-//     );
-//     // await autocomplete.run()
-//     links.push({
-//       name: answers.name,
-//       url: answers.url,
-//       icon: autocomplete.state.input,
-//     });
-//     if (!confirm.addLink) {
-//       return links;
-//     }
-//   }
-// }
-
 async function removelinks(links) {
   let choiceLinks = links;
   let stop = false;
