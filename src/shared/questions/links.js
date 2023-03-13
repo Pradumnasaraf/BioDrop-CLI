@@ -5,12 +5,6 @@ let icons = [];
 
 async function addlinks(bool) {
   icons = await geticons();
-  const autocomplete = new AutoComplete({
-    name: 'icon',
-    message: 'Choose an icon (Search to see more options)',
-    limit: 10,
-    choices: icons
-  })
   while (bool) {
     let answers = await prompt([
       {
@@ -24,6 +18,12 @@ async function addlinks(bool) {
         message: "What is the URL of the link?",
       }
     ]);
+    const autocomplete = new AutoComplete({
+      name: 'icon',
+      message: 'Choose an icon (Search to see more options)',
+      limit: 10,
+      choices: icons
+    })
     await autocomplete.run()
     const confirm = await prompt([
       {
@@ -83,12 +83,6 @@ async function updatelinks(links) {
   icons = await geticons();
   let choiceLinks = links;
   let stop = false;
-  const autocomplete = new AutoComplete({
-    name: 'icon',
-    message: 'Choose an icon (Search to see more options)',
-    limit: 10,
-    choices: icons
-  })
   while (!stop) {
     const answers = await prompt([
       {
@@ -98,7 +92,7 @@ async function updatelinks(links) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, url, icon, updateLink } = await prompt([
+    const { name, url } = await prompt([
       {
         type: "input",
         name: "name",
@@ -108,14 +102,20 @@ async function updatelinks(links) {
         type: "input",
         name: "url",
         message: "What is the new URL of the link?",
-      },
-        autocomplete.run(),
-      {
-        type: "confirm",
-        name: "updateLink",
-        message: "Do you want to update another link?",
-      },
-    ]);
+      }
+    ])
+    const autocomplete = new AutoComplete({
+      name: 'icon',
+      message: 'Choose an icon (Search to see more options)',
+      limit: 10,
+      choices: icons
+    })
+    await autocomplete.run();
+    const { icon, updateLink } = await prompt([{
+      type: "confirm",
+      name: "updateLink",
+      message: "Do you want to update another link?",
+    }])
     choiceLinks.map((link) => {
       if (link.name === answers.link) {
         link.name = name;
