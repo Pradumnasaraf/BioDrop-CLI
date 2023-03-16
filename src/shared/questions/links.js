@@ -111,7 +111,7 @@ async function updatelinks(links) {
       choices: icons
     })
     await autocomplete.run();
-    const { icon, updateLink } = await prompt([{
+    const { updateLink } = await prompt([{
       type: "confirm",
       name: "updateLink",
       message: "Do you want to update another link?",
@@ -120,7 +120,7 @@ async function updatelinks(links) {
       if (link.name === answers.link) {
         link.name = name;
         link.url = url;
-        link.icon = icon;
+        link.icon = autocomplete.state.input;
       }
     });
     if (!updateLink) {

@@ -145,7 +145,7 @@ async function updatemilestones(milestones) {
         }
       ])
       await autocomplete.run()
-      const { icon, description, url, color, updateMilestone } = await prompt([
+      const { description, url, color, updateMilestone } = await prompt([
         {
           type: "input",
           name: "description",
