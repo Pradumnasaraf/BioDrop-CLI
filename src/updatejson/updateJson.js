@@ -166,18 +166,18 @@ const updateJson = async (githubUsername) => {
       ]).then(async (answers) => {
         switch (answers.operation) {
           case "add a social?": {
-            if (json.social) {
-              json.social = [...json.social, ...(await addsocials(true))];
+            if (json.socials) {
+              json.socials = [...json.socials, ...(await addsocials(true))];
             } else {
-              json.social = [...(await addsocials(true))];
+              json.socials = [...(await addsocials(true))];
             }
             break;
           }
           case "remove a social?": {
-            if (json.social) {
-              json.social = [...(await removesocials(json.social))];
-              if (json.social.length === 0) {
-                delete json.social;
+            if (json.socials) {
+              json.socials = [...(await removesocials(json.socials))];
+              if (json.socials.length === 0) {
+                delete json.socials;
               }
             } else {
               console.log(
@@ -187,8 +187,8 @@ const updateJson = async (githubUsername) => {
             break;
           }
           default: {
-            if (json.social) {
-              json.social = [...(await updatesocials(json.social))];
+            if (json.socials) {
+              json.socials = [...(await updatesocials(json.socials))];
             } else {
               console.log(
                 chalk.black.bgYellow("You don't have any socials to update!")
