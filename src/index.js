@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 const fs = require("fs");
 const chalk = require("chalk");
 const { prompt } = require("enquirer");
@@ -12,10 +13,10 @@ console.log(
 );
 
 const choices = [
-  "Create a LinkFree JSON file",
-  "Update an existing JSON file",
-  "Provide a testimonial to a LinkFree user",
-  "Add an event",
+  "🔗 Create a LinkFree JSON file",
+  "🔧 Update an existing JSON file",
+  "🤝 Provide a testimonial to a LinkFree user",
+  "📅 Add an event",
   "🐛 Report a bug",
 ];
 
@@ -30,19 +31,19 @@ prompt([
   .then(async (answers) => {
     const { selectedtask } = answers;
     switch (selectedtask) {
-      case "Create a LinkFree JSON file": {
+      case "🔗 Create a LinkFree JSON file": {
         createJson();
         break;
       }
-      case "Update an existing JSON file": {
+      case "🔧 Update an existing JSON file": {
         checkUpdate();
         break;
       }
-      case "Provide a testimonial to a LinkFree user": {
+      case "🤝 Provide a testimonial to a LinkFree user": {
         giveTestimonial();
         break;
       }
-      case "Add an event": {
+      case "📅 Add an event": {
         addEvent();
         break;
       }
