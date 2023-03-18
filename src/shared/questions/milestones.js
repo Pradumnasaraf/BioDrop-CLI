@@ -1,11 +1,9 @@
 const { prompt } = require("enquirer");
-const { geticons, selecticon } = require("../assets/icons");
+const { selecticon } = require("../assets/icons");
 
 let milestones = [];
 
 async function addmilestones(bool) {
-  icons = await geticons();
-
   while (bool) {
     let answers = await prompt([
       {
@@ -105,7 +103,6 @@ async function removemilestones(milestones) {
 }
 
 async function updatemilestones(milestones) {
-  icons = await geticons();
   let choiceMilestones = milestones;
   let stop = false;
   while (!stop) {

@@ -1,9 +1,8 @@
 const { prompt } = require("enquirer");
-const { geticons, selecticon } = require("../assets/icons");
+const { selecticon } = require("../assets/icons");
 let links = [];
 
 async function addlinks(bool) {
-  icons = await geticons();
   while (bool) {
     let answers = await prompt([
       {
@@ -72,7 +71,6 @@ async function removelinks(links) {
 }
 
 async function updatelinks(links) {
-  icons = await geticons();
   let choiceLinks = links;
   let stop = false;
   while (!stop) {

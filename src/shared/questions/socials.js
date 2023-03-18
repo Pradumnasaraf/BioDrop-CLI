@@ -1,11 +1,9 @@
 const { prompt } = require("enquirer");
-const { geticons, selecticon } = require("../assets/icons");
+const { selecticon } = require("../assets/icons");
 
 let socials = [];
 
 async function addsocials(bool) {
-  icons = await geticons();
-
   while (bool) {
     let answers = await prompt([
       {
@@ -73,7 +71,6 @@ async function removesocials(socials) {
 }
 
 async function updatesocials(socials) {
-  icons = await geticons();
   let choiceSocials = socials;
   let stop = false;
   choiceSocials.map((social) => {

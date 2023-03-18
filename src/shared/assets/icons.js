@@ -21,7 +21,7 @@ async function selecticon() {
     name: "icon",
     message: "Select an icon",
     limit: 10,
-    choices: icons,
+    choices: geticons(),
     highlight: function (value, choice) {
       return chalk.green(value);
     },
