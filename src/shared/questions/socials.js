@@ -1,19 +1,12 @@
-const { prompt, AutoComplete } = require("enquirer");
-const { geticons } = require("../assets/icons");
+const { prompt } = require("enquirer");
+const { geticons, selecticon } = require("../assets/icons");
 
 let socials = [];
-let icons = [];
 
 async function addsocials(bool) {
   icons = await geticons();
 
   while (bool) {
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
     let answers = await prompt([
       {
         type: "input",
@@ -21,7 +14,7 @@ async function addsocials(bool) {
         message: "Add the url of your social media",
       },
     ]);
-    await autocomplete.run();
+    let selectedIcon = await selecticon();
     const confirm = await prompt([
       {
         type: "confirm",
@@ -30,7 +23,7 @@ async function addsocials(bool) {
       },
     ]);
     socials.push({
-      icon: autocomplete.state.input,
+      icon: selectedIcon,
       url: answers.url,
     });
     if (!confirm.addsocials) {
@@ -87,12 +80,6 @@ async function updatesocials(socials) {
     social.name = social.url;
   });
   while (!stop) {
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
     const answers = await prompt([
       {
         type: "select",
@@ -108,7 +95,7 @@ async function updatesocials(socials) {
         message: "What is the new URL of the social media?",
       },
     ]);
-    await autocomplete.run();
+    let selectedIcon = await selecticon();
     const { updateSocial } = await prompt([
       {
         type: "confirm",
@@ -120,7 +107,7 @@ async function updatesocials(socials) {
       if (social.name === answers.social) {
         social.name = url;
         social.url = url;
-        social.icon = autocomplete.state.input;
+        social.icon = selectedIcon;
       }
     });
     if (!updateSocial) {
