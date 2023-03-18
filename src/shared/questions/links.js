@@ -1,10 +1,8 @@
-const { prompt, AutoComplete } = require("enquirer");
-const { geticons } = require("../assets/icons");
+const { prompt } = require("enquirer");
+const { selecticon } = require("../assets/icons");
 let links = [];
-let icons = [];
 
 async function addlinks(bool) {
-  icons = await geticons();
   while (bool) {
     let answers = await prompt([
       {
@@ -18,13 +16,7 @@ async function addlinks(bool) {
         message: "What is the URL of the link?",
       },
     ]);
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
-    await autocomplete.run();
+    let selectedIcon = await selecticon();
     const confirm = await prompt([
       {
         type: "confirm",
@@ -35,7 +27,7 @@ async function addlinks(bool) {
     links.push({
       name: answers.name,
       url: answers.url,
-      icon: autocomplete.state.input,
+      icon: selectedIcon,
     });
     if (!confirm.addLink) {
       return links;
@@ -79,7 +71,6 @@ async function removelinks(links) {
 }
 
 async function updatelinks(links) {
-  icons = await geticons();
   let choiceLinks = links;
   let stop = false;
   while (!stop) {
@@ -103,13 +94,7 @@ async function updatelinks(links) {
         message: "What is the new URL of the link?",
       },
     ]);
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
-    await autocomplete.run();
+    const selectedIcon = await selecticon();
     const { updateLink } = await prompt([
       {
         type: "confirm",
@@ -121,7 +106,7 @@ async function updatelinks(links) {
       if (link.name === answers.link) {
         link.name = name;
         link.url = url;
-        link.icon = autocomplete.state.input;
+        link.icon = selectedIcon;
       }
     });
     if (!updateLink) {

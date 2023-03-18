@@ -1,19 +1,10 @@
-const { prompt, AutoComplete } = require("enquirer");
-const { geticons } = require("../assets/icons");
+const { prompt } = require("enquirer");
+const { selecticon } = require("../assets/icons");
 
 let milestones = [];
-let icons = [];
 
 async function addmilestones(bool) {
-  icons = await geticons();
-
   while (bool) {
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
     let answers = await prompt([
       {
         type: "input",
@@ -23,10 +14,11 @@ async function addmilestones(bool) {
       {
         type: "input",
         name: "date",
-        message: "In which year you achieved it?",
+        message:
+          "In which month and year did you achieve this milestone (eg. May 2020)",
       },
     ]);
-    await autocomplete.run();
+    let selectedIcon = await selecticon();
     const confirm = await prompt([
       {
         type: "input",
@@ -58,7 +50,7 @@ async function addmilestones(bool) {
     milestones.push({
       title: answers.title,
       url: answers.url,
-      icon: autocomplete.state.input,
+      icon: selectedIcon,
       date: answers.date,
       description: answers.description,
       color: answers.color,
@@ -111,16 +103,9 @@ async function removemilestones(milestones) {
 }
 
 async function updatemilestones(milestones) {
-  icons = await geticons();
   let choiceMilestones = milestones;
   let stop = false;
   while (!stop) {
-    const autocomplete = new AutoComplete({
-      name: "icon",
-      message: "Choose an icon (Search to see more options)",
-      limit: 10,
-      choices: icons,
-    });
     const answers = await prompt([
       {
         type: "select",
@@ -141,7 +126,7 @@ async function updatemilestones(milestones) {
         message: "What is the new date of the milestone?",
       },
     ]);
-    await autocomplete.run();
+    let selectedIcon = await selecticon();
     const { description, url, color, updateMilestone } = await prompt([
       {
         type: "input",
@@ -170,7 +155,7 @@ async function updatemilestones(milestones) {
         milestone.title = title;
         milestone.date = date;
         milestone.url = url;
-        milestone.icon = autocomplete.state.input;
+        milestone.icon = selectedIcon;
         milestone.description = description;
         milestone.color = color;
       }
