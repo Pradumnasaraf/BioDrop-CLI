@@ -24,7 +24,7 @@ async function selecticon() {
     choices: icons,
     highlight: function (value, choice) {
       return chalk.green(value);
-    }
+    },
   });
   await autocomplete.run();
   return autocomplete.state.input;

@@ -16,7 +16,8 @@ async function addmilestones(bool) {
       {
         type: "input",
         name: "date",
-        message: "In which month and year did you achieve this milestone (eg. May 2020)",
+        message:
+          "In which month and year did you achieve this milestone (eg. May 2020)",
       },
     ]);
     let selectedIcon = await selecticon();
