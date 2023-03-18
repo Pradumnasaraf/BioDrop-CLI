@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.0...v2.2.1) (2023-03-18)
+
+
+### Bug Fixes
+
+* auto icon structuring and accessibility ([#56](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/56)) ([b7916f1](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/b7916f1367bd5100379925da4a98ef6934078c76))
+
+
+
 # [2.2.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.1.0...v2.2.0) (2023-03-18)
 
 
@@ -45,15 +54,6 @@
 * add update, create and testimonial feature ([#24](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/24)) ([22f2e28](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/22f2e28a103f64e8fd6e8ccb47850e9e7d5c818e))
 * break cli working into dir ([c35e1b6](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/c35e1b6c8483ae3b0782310d7ba694976d6bdfa6))
 * created remove and update functions for all keys ([#27](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/27)) ([f5a7b4d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/f5a7b4d3562f372ddcd7ecc3a26d47c0e3d1868d))
-
-
-
-## [1.4.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.1...v1.4.2) (2023-02-15)
-
-
-### Bug Fixes
-
-* remove the displaystats function ([#17](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/17)) ([d80c327](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/d80c327ebc654b7267ffa587b88e54d7d4b049ed))
 
 
 
