@@ -31,6 +31,5 @@ async function selecticon() {
 }
 
 module.exports = {
-  geticons,
   selecticon,
 };
