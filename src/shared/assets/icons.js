@@ -19,7 +19,7 @@ async function geticons() {
 async function selecticon() {
   const autocomplete = new AutoComplete({
     name: "icon",
-    message: "Select an icon",
+    message: "Select an icon (Start typing to find matching icons)",
     limit: 10,
     choices: geticons(),
     highlight: function (value, choice) {
