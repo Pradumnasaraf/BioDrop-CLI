@@ -4,18 +4,15 @@ const { geticons } = require("../assets/icons");
 let milestones = [];
 let icons = [];
 
-
-
-
 async function addmilestones(bool) {
   icons = await geticons();
 
   while (bool) {
     const autocomplete = new AutoComplete({
-      name: 'icon',
-      message: 'Choose an icon (Search to see more options)',
+      name: "icon",
+      message: "Choose an icon (Search to see more options)",
       limit: 10,
-      choices: icons
+      choices: icons,
     });
     let answers = await prompt([
       {
@@ -27,10 +24,11 @@ async function addmilestones(bool) {
         type: "input",
         name: "date",
         message: "In which year you achieved it?",
-      }
-    ])
+      },
+    ]);
     await autocomplete.run();
-    const confirm = await prompt([{
+    const confirm = await prompt([
+      {
         type: "input",
         name: "description",
         message: "Give a short description for your milestone",
@@ -118,10 +116,10 @@ async function updatemilestones(milestones) {
   let stop = false;
   while (!stop) {
     const autocomplete = new AutoComplete({
-      name: 'icon',
-      message: 'Choose an icon (Search to see more options)',
+      name: "icon",
+      message: "Choose an icon (Search to see more options)",
       limit: 10,
-      choices: icons
+      choices: icons,
     });
     const answers = await prompt([
       {
@@ -131,42 +129,41 @@ async function updatemilestones(milestones) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { title, date } =
-      await prompt([
-        {
-          type: "input",
-          name: "title",
-          message: "What is the new title of the milestone?",
-        },
-        {
-          type: "input",
-          name: "date",
-          message: "What is the new date of the milestone?",
-        }
-      ])
-      await autocomplete.run()
-      const { description, url, color, updateMilestone } = await prompt([
-        {
-          type: "input",
-          name: "description",
-          message: "What is the new description of the milestone?",
-        },
-        {
-          type: "input",
-          name: "url",
-          message: "What is the new URL of the milestone?",
-        },
-        {
-          type: "input",
-          name: "color",
-          message: "What is the new color theme of the milestone?",
-        },
-        {
-          type: "confirm",
-          name: "updateMilestone",
-          message: "Do you want to update another milestone?",
-        },
-      ]);
+    const { title, date } = await prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What is the new title of the milestone?",
+      },
+      {
+        type: "input",
+        name: "date",
+        message: "What is the new date of the milestone?",
+      },
+    ]);
+    await autocomplete.run();
+    const { description, url, color, updateMilestone } = await prompt([
+      {
+        type: "input",
+        name: "description",
+        message: "What is the new description of the milestone?",
+      },
+      {
+        type: "input",
+        name: "url",
+        message: "What is the new URL of the milestone?",
+      },
+      {
+        type: "input",
+        name: "color",
+        message: "What is the new color theme of the milestone?",
+      },
+      {
+        type: "confirm",
+        name: "updateMilestone",
+        message: "Do you want to update another milestone?",
+      },
+    ]);
     choiceMilestones.map((milestone) => {
       if (milestone.title === answers.milestone) {
         milestone.name = title;

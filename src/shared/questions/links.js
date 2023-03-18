@@ -16,22 +16,22 @@ async function addlinks(bool) {
         type: "input",
         name: "url",
         message: "What is the URL of the link?",
-      }
+      },
     ]);
     const autocomplete = new AutoComplete({
-      name: 'icon',
-      message: 'Choose an icon (Search to see more options)',
+      name: "icon",
+      message: "Choose an icon (Search to see more options)",
       limit: 10,
-      choices: icons
-    })
-    await autocomplete.run()
+      choices: icons,
+    });
+    await autocomplete.run();
     const confirm = await prompt([
       {
         type: "confirm",
         name: "addLink",
         message: "Do you want to add another link?",
-      }
-    ])
+      },
+    ]);
     links.push({
       name: answers.name,
       url: answers.url,
@@ -42,7 +42,6 @@ async function addlinks(bool) {
     }
   }
 }
-
 
 async function removelinks(links) {
   let choiceLinks = links;
@@ -102,20 +101,22 @@ async function updatelinks(links) {
         type: "input",
         name: "url",
         message: "What is the new URL of the link?",
-      }
-    ])
+      },
+    ]);
     const autocomplete = new AutoComplete({
-      name: 'icon',
-      message: 'Choose an icon (Search to see more options)',
+      name: "icon",
+      message: "Choose an icon (Search to see more options)",
       limit: 10,
-      choices: icons
-    })
+      choices: icons,
+    });
     await autocomplete.run();
-    const { updateLink } = await prompt([{
-      type: "confirm",
-      name: "updateLink",
-      message: "Do you want to update another link?",
-    }])
+    const { updateLink } = await prompt([
+      {
+        type: "confirm",
+        name: "updateLink",
+        message: "Do you want to update another link?",
+      },
+    ]);
     choiceLinks.map((link) => {
       if (link.name === answers.link) {
         link.name = name;
