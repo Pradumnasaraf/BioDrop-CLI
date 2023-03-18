@@ -1,11 +1,10 @@
-const { prompt } = require("enquirer");
+const { prompt, AutoComplete } = require("enquirer");
 const { geticons } = require("../assets/icons");
 let links = [];
 let icons = [];
 
 async function addlinks(bool) {
   icons = await geticons();
-
   while (bool) {
     let answers = await prompt([
       {
@@ -17,29 +16,33 @@ async function addlinks(bool) {
         type: "input",
         name: "url",
         message: "What is the URL of the link?",
-      },
-      {
-        type: "select",
-        name: "icon",
-        choices: icons,
-        message: "Choose an icon (Press down arrow to see more options)",
-      },
+      }
+    ]);
+    const autocomplete = new AutoComplete({
+      name: 'icon',
+      message: 'Choose an icon (Search to see more options)',
+      limit: 10,
+      choices: icons
+    })
+    await autocomplete.run()
+    const confirm = await prompt([
       {
         type: "confirm",
         name: "addLink",
         message: "Do you want to add another link?",
-      },
-    ]);
+      }
+    ])
     links.push({
       name: answers.name,
       url: answers.url,
-      icon: answers.icon,
+      icon: autocomplete.state.input,
     });
-    if (!answers.addLink) {
+    if (!confirm.addLink) {
       return links;
     }
   }
 }
+
 
 async function removelinks(links) {
   let choiceLinks = links;
@@ -89,7 +92,7 @@ async function updatelinks(links) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, url, icon, updateLink } = await prompt([
+    const { name, url } = await prompt([
       {
         type: "input",
         name: "name",
@@ -99,24 +102,25 @@ async function updatelinks(links) {
         type: "input",
         name: "url",
         message: "What is the new URL of the link?",
-      },
-      {
-        type: "select",
-        name: "icon",
-        choices: icons,
-        message: "Choose a new icon (Press down arrow to see more options)",
-      },
-      {
-        type: "confirm",
-        name: "updateLink",
-        message: "Do you want to update another link?",
-      },
-    ]);
+      }
+    ])
+    const autocomplete = new AutoComplete({
+      name: 'icon',
+      message: 'Choose an icon (Search to see more options)',
+      limit: 10,
+      choices: icons
+    })
+    await autocomplete.run();
+    const { updateLink } = await prompt([{
+      type: "confirm",
+      name: "updateLink",
+      message: "Do you want to update another link?",
+    }])
     choiceLinks.map((link) => {
       if (link.name === answers.link) {
         link.name = name;
         link.url = url;
-        link.icon = icon;
+        link.icon = autocomplete.state.input;
       }
     });
     if (!updateLink) {
