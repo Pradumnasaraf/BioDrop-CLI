@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.1.0...v2.2.0) (2023-03-18)
+
+
+### Features
+
+* Add search functionality while selecting icons ([#53](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/53)) ([2ed97d4](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/2ed97d4c37c00cbf5af8148978e95f5b007d5830))
+
+
+
 # [2.1.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.0.1...v2.1.0) (2023-02-26)
 
 
@@ -45,15 +54,6 @@
 ### Bug Fixes
 
 * remove the displaystats function ([#17](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/17)) ([d80c327](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/d80c327ebc654b7267ffa587b88e54d7d4b049ed))
-
-
-
-## [1.4.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v1.4.0...v1.4.1) (2022-11-06)
-
-
-### Bug Fixes
-
-* link addition option (Err: Link and key) ([#11](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/11)) ([050ee91](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/050ee911bcd42208debbc54f354a47d0e6cb3e14))
 
 
 
