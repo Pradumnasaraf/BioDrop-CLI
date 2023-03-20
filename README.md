@@ -14,7 +14,6 @@
 
 ![LinkFree CLI demo GIF](https://user-images.githubusercontent.com/51878265/226284599-5702dfd2-0825-471f-a693-8a216c2d7cfe.gif)
 
-
 ### ⭐️ Features
 
 - Creating a LinkFree profile.
