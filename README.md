@@ -12,7 +12,7 @@
 
 </div>
 
-![LinkFree CLI demo GIF](https://user-images.githubusercontent.com/51878265/220831787-93c6b920-2961-4729-8a2c-0ac576658d83.gif)
+![LinkFree CLI demo GIF](https://user-images.githubusercontent.com/51878265/226284599-5702dfd2-0825-471f-a693-8a216c2d7cfe.gif)
 
 ### ⭐️ Features
 
