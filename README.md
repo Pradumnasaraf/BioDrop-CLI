@@ -23,7 +23,7 @@
 
 ### 👨‍💻 Using the CLI tool
 
-Check out this detailed documentation - [linkfree.eddiehub.io/docs/environments/linkfree-cli](https://linkfree.eddiehub.io/docs/environments/linkfree-cli)
+To create, update, give a testimonial, etc. Check out this detailed documentation - [linkfree.io/docs/environments/linkfree-cli](https://linkfree.io/docs/environments/linkfree-cli)
 
 ### 📦 Development and Contribution
 
