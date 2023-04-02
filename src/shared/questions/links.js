@@ -15,6 +15,16 @@ async function addlinks(bool) {
         name: "url",
         message: "What is the URL of the link?",
       },
+      {
+        type: "input",
+        name: "color",
+        message: "Give a color theme",
+      },
+      {
+        type: "input",
+        name: "group",
+        message: "Give a group name",
+      },
     ]);
     let selectedIcon = await selecticon();
     const confirm = await prompt([
@@ -28,6 +38,8 @@ async function addlinks(bool) {
       name: answers.name,
       url: answers.url,
       icon: selectedIcon,
+      color: answers.color,
+      group: answers.group
     });
     if (!confirm.addLink) {
       return links;
@@ -82,7 +94,7 @@ async function updatelinks(links) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, url } = await prompt([
+    const { name, url, color, group } = await prompt([
       {
         type: "input",
         name: "name",
@@ -92,6 +104,16 @@ async function updatelinks(links) {
         type: "input",
         name: "url",
         message: "What is the new URL of the link?",
+      },
+      {
+        type: "input",
+        name: "color",
+        message: "What is the new color theme?",
+      },
+      {
+        type: "input",
+        name: "group",
+        message: "What is the new group name?",
       },
     ]);
     const selectedIcon = await selecticon();
@@ -107,13 +129,15 @@ async function updatelinks(links) {
         link.name = name;
         link.url = url;
         link.icon = selectedIcon;
+        link.color = color;
+        link.group = group;
       }
     });
     if (!updateLink) {
       let result = [];
       choiceLinks.map((link) => {
-        const { name, url, icon } = link;
-        result.push({ name, url, icon });
+        const { name, url, icon, color, group } = link;
+        result.push({ name, url, icon, color, group });
       });
       return result;
     }
