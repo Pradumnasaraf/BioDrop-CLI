@@ -17,12 +17,12 @@ async function addlinks(bool) {
       },
       {
         type: "input",
-        name: "color",
+        name: "addColor",
         message: "Give a color theme",
       },
       {
         type: "input",
-        name: "group",
+        name: "addGroup",
         message: "Give a group name",
       },
     ]);
@@ -34,13 +34,19 @@ async function addlinks(bool) {
         message: "Do you want to add another link?",
       },
     ]);
+    if(answers.addColor !== "") {
+      links.forEach(link => link.color = answers.addColor)
+    }
+    if(answers.addGroup !== "") {
+      links.forEach(link => link.group = answers.addGroup)
+    }
     links.push({
       name: answers.name,
       url: answers.url,
       icon: selectedIcon,
-      color: answers.color,
-      group: answers.group
+      color: answers.addColor
     });
+    
     if (!confirm.addLink) {
       return links;
     }
