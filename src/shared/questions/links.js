@@ -17,12 +17,12 @@ async function addlinks(bool) {
       },
       {
         type: "input",
-        name: "addColor",
+        name: "color", // use color instead of addColor so that we don't get confused in keys. Sam for group
         message: "Give a color theme",
       },
       {
         type: "input",
-        name: "addGroup",
+        name: "group",
         message: "Give a group name",
       },
     ]);
@@ -34,18 +34,18 @@ async function addlinks(bool) {
         message: "Do you want to add another link?",
       },
     ]);
-    if(answers.addColor !== "") {
-      links.forEach(link => link.color = answers.addColor)
-    }
-    if(answers.addGroup !== "") {
-      links.forEach(link => link.group = answers.addGroup)
-    }
     links.push({
       name: answers.name,
       url: answers.url,
       icon: selectedIcon,
-      color: answers.addColor
     });
+
+    if(answers.color !== "") {
+      links[links.length -1].color = answers.color
+    }
+    if(answers.group !== "") {
+      links[links.length -1].group = answers.group
+    }
     
     if (!confirm.addLink) {
       return links;
@@ -130,6 +130,15 @@ async function updatelinks(links) {
         message: "Do you want to update another link?",
       },
     ]);
+    
+    if(answers.color !== "") {
+      links[links.length - 1].color = answers.color;
+    }
+
+    if(answers.group !== "") {
+      links[links.length - 1].group = answers.group;
+    }
+
     choiceLinks.map((link) => {
       if (link.name === answers.link) {
         link.name = name;
@@ -139,6 +148,7 @@ async function updatelinks(links) {
         link.group = group;
       }
     });
+
     if (!updateLink) {
       let result = [];
       choiceLinks.map((link) => {
