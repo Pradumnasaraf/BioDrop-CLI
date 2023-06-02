@@ -5,7 +5,6 @@ const fs = require("fs");
 async function createUser(githubUsername, answers) {
   jsonSchema = {
     name: `${answers.name}`,
-    type: `${answers.type}`,
     bio: `${answers.bio}`,
   };
   if (answers.links) {
