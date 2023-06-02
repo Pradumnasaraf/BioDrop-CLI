@@ -1,7 +1,7 @@
 {
   "name": "linkfree-cli",
   "version": "2.3.1",
-  "description": "Create LinkFree profile.json file though CLI",
+  "description": "Generate LinkFree profile.json file via CLI",
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
