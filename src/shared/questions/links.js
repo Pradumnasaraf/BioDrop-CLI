@@ -15,6 +15,16 @@ async function addlinks(bool) {
         name: "url",
         message: "What is the URL of the link?",
       },
+      {
+        type: "input",
+        name: "color", // use color instead of addColor so that we don't get confused in keys. Sam for group
+        message: "Give a color theme",
+      },
+      {
+        type: "input",
+        name: "group",
+        message: "Give a group name",
+      },
     ]);
     let selectedIcon = await selecticon();
     const confirm = await prompt([
@@ -29,6 +39,14 @@ async function addlinks(bool) {
       url: answers.url,
       icon: selectedIcon,
     });
+
+    if(answers.color !== "") {
+      links[links.length -1].color = answers.color
+    }
+    if(answers.group !== "") {
+      links[links.length -1].group = answers.group
+    }
+    
     if (!confirm.addLink) {
       return links;
     }
@@ -82,7 +100,7 @@ async function updatelinks(links) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, url } = await prompt([
+    const { name, url, color, group } = await prompt([
       {
         type: "input",
         name: "name",
@@ -93,6 +111,16 @@ async function updatelinks(links) {
         name: "url",
         message: "What is the new URL of the link?",
       },
+      {
+        type: "input",
+        name: "color",
+        message: "What is the new color theme?",
+      },
+      {
+        type: "input",
+        name: "group",
+        message: "What is the new group name?",
+      },
     ]);
     const selectedIcon = await selecticon();
     const { updateLink } = await prompt([
@@ -102,18 +130,30 @@ async function updatelinks(links) {
         message: "Do you want to update another link?",
       },
     ]);
+    
+    if(answers.color !== "") {
+      links[links.length - 1].color = answers.color;
+    }
+
+    if(answers.group !== "") {
+      links[links.length - 1].group = answers.group;
+    }
+
     choiceLinks.map((link) => {
       if (link.name === answers.link) {
         link.name = name;
         link.url = url;
         link.icon = selectedIcon;
+        link.color = color;
+        link.group = group;
       }
     });
+
     if (!updateLink) {
       let result = [];
       choiceLinks.map((link) => {
-        const { name, url, icon } = link;
-        result.push({ name, url, icon });
+        const { name, url, icon, color, group } = link;
+        result.push({ name, url, icon, color, group });
       });
       return result;
     }
