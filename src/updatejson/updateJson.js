@@ -88,11 +88,11 @@ const updateJson = async (githubUsername) => {
           type: "select",
           name: "operation",
           message: "What you want to do?",
-          choices: ["add a tag?", "remove a tag?", "update a tag?"],
+          choices: ["Add a tag?", "Remove a tag?", "Update a tag?"],
         },
       ]).then(async (answers) => {
         switch (answers.operation) {
-          case "add a tag?": {
+          case "Add a tag?": {
             if (json.tags) {
               json.tags = [...json.tags, ...(await addtags(true))];
             } else {
@@ -100,7 +100,7 @@ const updateJson = async (githubUsername) => {
             }
             break;
           }
-          case "remove a tag?": {
+          case "Remove a tag?": {
             if (json.tags) {
               json.tags = [...(await removetags(json.tags))];
               if (json.tags.length === 0) {
@@ -141,11 +141,11 @@ const updateJson = async (githubUsername) => {
           type: "select",
           name: "operation",
           message: "What you want to do?",
-          choices: ["add a social?", "remove a social?", "update a social?"],
+          choices: ["Add a social?", "Remove a social?", "Update a social?"],
         },
       ]).then(async (answers) => {
         switch (answers.operation) {
-          case "add a social?": {
+          case "Add a social?": {
             if (json.socials) {
               json.socials = [...json.socials, ...(await addsocials(true))];
             } else {
@@ -153,7 +153,7 @@ const updateJson = async (githubUsername) => {
             }
             break;
           }
-          case "remove a social?": {
+          case "Remove a social?": {
             if (json.socials) {
               json.socials = [...(await removesocials(json.socials))];
               if (json.socials.length === 0) {
@@ -376,7 +376,7 @@ const updateJson = async (githubUsername) => {
       } else {
         console.log(
           chalk.black.bgYellow(
-            `No updates were made in ${githubUsername}.json `
+            ` No updates were made in ${githubUsername}.json `
           )
         );
       }
