@@ -40,13 +40,13 @@ async function addlinks(bool) {
       icon: selectedIcon,
     });
 
-    if(answers.color !== "") {
-      links[links.length -1].color = answers.color
+    if (answers.color !== "") {
+      links[links.length - 1].color = answers.color;
     }
-    if(answers.group !== "") {
-      links[links.length -1].group = answers.group
+    if (answers.group !== "") {
+      links[links.length - 1].group = answers.group;
     }
-    
+
     if (!confirm.addLink) {
       return links;
     }
@@ -130,12 +130,12 @@ async function updatelinks(links) {
         message: "Do you want to update another link?",
       },
     ]);
-    
-    if(answers.color !== "") {
+
+    if (answers.color !== "") {
       links[links.length - 1].color = answers.color;
     }
 
-    if(answers.group !== "") {
+    if (answers.group !== "") {
       links[links.length - 1].group = answers.group;
     }
 
