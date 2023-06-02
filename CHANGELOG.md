@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.2...v2.3.0) (2023-06-02)
+
+
+### Features
+
+* Add color and group property in links ([#61](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/61)) ([c247aae](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/c247aae9016b3fe3d4dcda89b4111284e801e465))
+
+
+
 ## [2.2.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.1...v2.2.2) (2023-03-18)
 
 
@@ -32,15 +41,6 @@
 
 * Add support for react icons ([7fc1802](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/7fc1802c4bd2aa877dc35600b18810758474c1d9))
 * Trigger releases and README improvement ([#51](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/51)) ([ead5150](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/ead51508460e441e7c3f4d33fe31a491dc5fee29))
-
-
-
-## [2.0.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.0.0...v2.0.1) (2023-02-23)
-
-
-### Bug Fixes
-
-* color combination for chalk prompt ([#39](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/39)) ([451c48d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/451c48dba6ea9aa1e85ebe9a674c420323d88d09))
 
 
 
