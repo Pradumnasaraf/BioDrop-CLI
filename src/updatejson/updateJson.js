@@ -58,26 +58,6 @@ const updateJson = async (githubUsername) => {
   await prompt([
     {
       type: "confirm",
-      name: "type",
-      message: "Do you want to change your profile type?",
-    },
-  ]).then(async (answers) => {
-    if (answers.type) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "type",
-          message: "Your new profile type?",
-          choices: ["Personal", "Community"],
-        },
-      ]).then((answers) => (json.type = answers.type));
-    }
-  });
-
-  await prompt([
-    {
-      type: "confirm",
       name: "bio",
       message: "Do you want to change your bio?",
     },

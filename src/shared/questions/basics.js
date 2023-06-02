@@ -8,12 +8,6 @@ async function basics() {
       message: "What is your name (e.g. Jone Doe)?",
     },
     {
-      type: "select",
-      name: "type",
-      message: "Your profile type?",
-      choices: ["Personal", "Community"],
-    },
-    {
       type: "input",
       name: "bio",
       message: "Add a short bio about yourself",
