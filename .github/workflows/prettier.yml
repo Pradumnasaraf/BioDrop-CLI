@@ -4,16 +4,19 @@ on: [push]
 
 jobs:
   format:
-    runs-on: ubuntu-latest
     name: Format Files
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Chekout Repo
+        uses: actions/checkout@v3
+      - name: Node Setup
+        uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - run: npm ci
+      - name: Install Dependencies
+        run: npm ci
       - name: Prettier
-        run: npx prettier --write '**/*.js' '*.{js,md}'
+        run: npx prettier --check '**/*.js' '*.{js,md}' 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanzweifel/git-auto-commit-action@v4

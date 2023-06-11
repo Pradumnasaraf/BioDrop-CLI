@@ -15,10 +15,13 @@ on:
 
 jobs:
   welcome:
+    name: Welcome Action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+      - name: Welcome Action
+        uses: EddieHubCommunity/gh-action-community/src/welcome@main
         with:
           github-token: ${{ secrets.github_token }}
           issue-message: "<h3>Hey! contributor, thank you for opening an Issue 🎉.</h3>"
