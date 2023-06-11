@@ -1,3 +1,12 @@
+## [2.3.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.3.1...v2.3.2) (2023-06-11)
+
+
+### Bug Fixes
+
+* GitHub workflows ([78c7b3d](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/78c7b3de1204b4cccdcf3cf3a34cf72feca95b69))
+
+
+
 ## [2.3.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.3.0...v2.3.1) (2023-06-02)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * auto icon structuring and accessibility ([#56](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/56)) ([b7916f1](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/b7916f1367bd5100379925da4a98ef6934078c76))
-
-
-
-# [2.2.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.1.0...v2.2.0) (2023-03-18)
-
-
-### Features
-
-* Add search functionality while selecting icons ([#53](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/53)) ([2ed97d4](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/2ed97d4c37c00cbf5af8148978e95f5b007d5830))
 
 
 
