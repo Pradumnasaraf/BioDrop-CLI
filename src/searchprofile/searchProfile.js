@@ -2,8 +2,9 @@ const axios = require("axios");
 const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const chalkAnimation = require("chalk-animation");
+const open = require("open");
 
-const choises = []; // ['Twitter', 'LinkedIn', 'Instagram']
+const choices = []; // ['Twitter', 'LinkedIn', 'Instagram']
 const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
 
 const usernameValidation = () => {
@@ -113,22 +114,34 @@ function getLinks(data) {
 }
 
 function getContact() {
+  choices.push("Contact them later");
   prompt([
     {
       type: "select",
-      name: "contactPoint",
+      name: "contactChoice",
       message: "How would you like to contact them?",
-      choices: choises,
+      choices: choices,
     },
   ])
-    .then((answers) => {
-      const { contactPoint } = answers;
-      console.log(
-        chalk.white.bgGreen.bold(
-          ` You can contact them at ${contactPoint}! Have a great day! `
-        )
-      );
-      process.exit(0);
+    .then(async (p1Answers) => {
+      const { contactChoice } = p1Answers;
+      if (contactChoice !== "Contact them later") {
+        prompt([
+          {
+            type: "confirm",
+            name: "openBrowser",
+            message: `You will be redirected to ${contactChoice}. Do you confirm to open the browser?`,
+          },
+        ]).then(async (p2Answers) => {
+          if (p2Answers.openBrowser) {
+            await open(contactPoints[contactChoice]);
+          }
+        });
+      }
+
+      if (contactChoice === "Contact them later") {
+        process.exit(0);
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -137,32 +150,32 @@ function getContact() {
 
 function extractContactData(link) {
   if (link.url.includes("twitter")) {
-    if (choises.includes("Twitter")) {
+    if (choices.includes("Twitter")) {
       return;
     }
-    choises.push("Twitter");
-    contactPoints["Twitter"] = link;
+    choices.push("Twitter");
+    contactPoints["Twitter"] = link.url;
   }
   if (link.url.includes("linkedin")) {
-    if (choises.includes("LinkedIn")) {
+    if (choices.includes("LinkedIn")) {
       return;
     }
-    choises.push("LinkedIn");
-    contactPoints["LinkedIn"] = link;
+    choices.push("LinkedIn");
+    contactPoints["LinkedIn"] = link.url;
   }
   if (link.url.includes("github")) {
-    if (choises.includes("GitHub")) {
+    if (choices.includes("GitHub")) {
       return;
     }
-    choises.push("GitHub");
-    contactPoints["GitHub"] = link;
+    choices.push("GitHub");
+    contactPoints["GitHub"] = link.url;
   }
   if (link.url.includes("mailto")) {
-    if (choises.includes("Email")) {
+    if (choices.includes("Email")) {
       return;
     }
-    choises.push("Email");
-    contactPoints["Email"] = link;
+    choices.push("Email");
+    contactPoints["Email"] = link.url;
   }
 }
 
