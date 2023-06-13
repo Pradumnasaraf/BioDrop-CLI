@@ -8,12 +8,14 @@ const checkUpdate = require("./updatejson/helper/checkUpdate");
 const giveTestimonial = require("./givetestimonial/giveTestimonial");
 const addEvent = require("./addevent/addEvent");
 const reportBug = require("./reportbug/reportBug");
+const searchProfile = require("./searchprofile/searchProfile");
 console.log(
   chalk.black.bgYellow(` Welcome to LinkFree CLI! Let's get started. `)
 );
 
 const choices = [
   "Create a LinkFree JSON file",
+  "Search for a LinkFree user",
   "Update an existing JSON file",
   "Provide a testimonial to a LinkFree user",
   "Add an event",
@@ -33,6 +35,10 @@ prompt([
     switch (selectedtask) {
       case "Create a LinkFree JSON file": {
         createJson();
+        break;
+      }
+      case "Search for a LinkFree user": {
+        searchProfile();
         break;
       }
       case "Update an existing JSON file": {
