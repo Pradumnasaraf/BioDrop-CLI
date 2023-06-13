@@ -3,7 +3,10 @@ const chalk = require("chalk");
 const { prompt } = require("enquirer");
 const chalkAnimation = require("chalk-animation");
 
-const userNameValid = () => {
+const choises = []; // ['Twitter', 'LinkedIn', 'Instagram']
+const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
+
+const usernameValidation = () => {
   prompt([
     {
       type: "input",
@@ -19,16 +22,31 @@ const userNameValid = () => {
         );
         process.exit(0);
       }
-      const queryUrl = `https://api.github.com/users/${githubUsername}`;
       axios
-        .get(queryUrl)
+        .get(`https://api.github.com/users/${githubUsername}`)
         .then(async (res) => {
           if (res.status === 200) {
-            await getUserData(githubUsername);
+            await axios
+              .get(`https://linkfree.io/api/profiles/${githubUsername}`)
+              .then((res) => {
+                if (res.status === 200) {
+                  displayData(res.data);
+                }
+              })
+              .catch(() => {
+                console.log(
+                  chalk.white.bgRed(
+                    ` LinkFree profile not found with ${githubUsername}! `
+                  )
+                );
+                process.exit(0);
+              });
           }
         })
         .catch(() => {
-          console.log(chalk.white.bgRed.bold(` GitHub username not found! `));
+          console.log(
+            chalk.white.bgRed.bold(` User with ${githubUsername} not found! `)
+          );
           process.exit(0);
         });
     })
@@ -37,42 +55,37 @@ const userNameValid = () => {
     });
 };
 
-async function getUserData(githubUsername) {
-  const queryUrl = `https://linkfree.io/api/profiles/${githubUsername}`;
-  await axios
-    .get(queryUrl)
-    .then((res) => {
-      if (res.status === 200) {
-        displayUserData(res.data);
-      }
-    })
-    .catch(() => {
-      console.log(
-        chalk.white.bgRed.bold(
-          ` LinkFree profile not found with this GitHub username! `
-        )
-      );
-      process.exit(0);
-    });
-}
-
-function displayUserData(data) {
+function displayData(data) {
+  // Welcome block
   const rainbow = chalkAnimation.karaoke(
     `Hi, welcome to ${data.name}'s (${data.username}) LinkFree profile!\n`
   );
-
   setTimeout(() => {
-    rainbow.start(); // Animation resumes
-  });
+    rainbow.start();
+  }, 0);
 
+  // Description block
   setTimeout(() => {
-    rainbow.stop(); // Animation stops
-
-    getLinks(data);
+    rainbow.stop();
+    getDescription(data);
   }, 3500);
+
+  // Links block
+  if (data.links.length !== 0) {
+    setTimeout(() => {
+      getLinks(data);
+    }, 7000);
+  }
+
+  // Contact block
+  if (data.links.length !== 0) {
+    setTimeout(() => {
+      getContact();
+    }, 10000);
+  }
 }
 
-function getLinks(data) {
+function getDescription(data) {
   if (data.tags.length > 0) {
     let tagLine = "";
     for (let tag of data.tags) {
@@ -82,17 +95,58 @@ function getLinks(data) {
       chalk.magentaBright.bold(`${data.name} talks about ${tagLine}and more!\n`)
     );
   }
-
-  setTimeout(() => {
-    console.log(`\n   ` + chalk.yellowBright.bold(`Check out their links:`));
-    for (let link of data.links) {
-      console.log(
-        `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(
-          link.url
-        )}`
-      );
-    }
-  }, 2500);
 }
 
-module.exports = userNameValid;
+function getLinks(data) {
+  console.log(`\n   ` + chalk.yellowBright.bold(`Check out their links:`));
+  for (let link of data.links) {
+    console.log(
+      `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
+    );
+    // This added data will used in the contact block for prompt
+    extractContactData(link);
+  }
+}
+
+function getContact() {
+  prompt([
+    {
+      type: "select",
+      name: "contactPoint",
+      message: "How would you like to contact them?",
+      choices: choises,
+    },
+  ])
+    .then((answers) => {
+      const { contactPoint } = answers;
+      console.log(
+        chalk.white.bgGreen.bold(
+          ` You can contact them at ${contactPoint}! Have a great day! `
+        )
+      );
+      process.exit(0);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function extractContactData(link) {
+  if (link.url.includes("twitter")) {
+    choises.push("Twitter");
+    contactPoints["Twitter"] = link;
+  }
+  if (link.url.includes("linkedin")) {
+    choises.push("LinkedIn");
+    contactPoints["LinkedIn"] = link;
+  }
+  if (link.url.includes("github")) {
+    choises.push("GitHub");
+    contactPoints["GitHub"] = link;
+  }
+  if (link.url.includes("mailto")) {
+    contactPoints["Email"] = link;
+  }
+}
+
+module.exports = usernameValidation;
