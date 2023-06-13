@@ -58,7 +58,7 @@ async function getUserData(githubUsername) {
 
 function displayUserData(data) {
   const rainbow = chalkAnimation.karaoke(
-    `Hi, ${data.name} (${data.username})!\n`
+    `Hi, welcome to ${data.name}'s (${data.username}) LinkFree profile!\n`
   );
 
   setTimeout(() => {
@@ -69,7 +69,7 @@ function displayUserData(data) {
     rainbow.stop(); // Animation stops
 
     getLinks(data);
-  }, 2500);
+  }, 3500);
 }
 
 function getLinks(data) {
@@ -87,7 +87,9 @@ function getLinks(data) {
     console.log(`\n   ` + chalk.yellowBright.bold(`Check out their links:`));
     for (let link of data.links) {
       console.log(
-        `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
+        `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(
+          link.url
+        )}`
       );
     }
   }, 2500);
