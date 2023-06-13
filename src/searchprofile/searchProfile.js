@@ -59,7 +59,7 @@ const usernameValidation = () => {
 function displayData(data) {
   // Welcome block
   const rainbow = chalkAnimation.karaoke(
-    `Hi, welcome to ${data.name}'s (${data.username}) LinkFree profile!\n`
+    `\nHi, welcome to ${data.name}'s (${data.username}) LinkFree profile!\n`
   );
   setTimeout(() => {
     rainbow.start();
@@ -69,13 +69,13 @@ function displayData(data) {
   setTimeout(() => {
     rainbow.stop();
     getDescription(data);
-  }, 3500);
+  }, 4000);
 
   // Links block
   if (data.links.length !== 0) {
     setTimeout(() => {
       getLinks(data);
-    }, 7000);
+    }, 7500);
   }
 
   // Other elements of profile like milestones,
@@ -84,7 +84,7 @@ function displayData(data) {
   if (data.links.length !== 0) {
     setTimeout(() => {
       getContact();
-    }, 10000);
+    }, 10500);
   }
 }
 
@@ -126,6 +126,8 @@ function getContact() {
     .then(async (p1Answers) => {
       const { contactChoice } = p1Answers;
       if (contactChoice !== "Contact them later") {
+
+        // Confirm before opening browser
         prompt([
           {
             type: "confirm",
@@ -148,6 +150,7 @@ function getContact() {
     });
 }
 
+// Extracts contact data from the links array
 function extractContactData(link) {
   if (link.url.includes("twitter")) {
     if (choices.includes("Twitter")) {
