@@ -77,6 +77,8 @@ function displayData(data) {
     }, 7000);
   }
 
+  // Other elements of profile like milestones,
+
   // Contact block
   if (data.links.length !== 0) {
     setTimeout(() => {
@@ -98,7 +100,7 @@ function getDescription(data) {
 }
 
 function getLinks(data) {
-  console.log(`\n   ` + chalk.yellowBright.bold(`Check out their links:`));
+  console.log(`   ` + chalk.yellowBright.bold(`Check out their links:`));
   for (let link of data.links) {
     console.log(
       `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
@@ -106,6 +108,8 @@ function getLinks(data) {
     // This added data will used in the contact block for prompt
     extractContactData(link);
   }
+
+  console.log(`\n`);
 }
 
 function getContact() {
@@ -133,18 +137,31 @@ function getContact() {
 
 function extractContactData(link) {
   if (link.url.includes("twitter")) {
+    if (choises.includes("Twitter")) {
+      return;
+    }
     choises.push("Twitter");
     contactPoints["Twitter"] = link;
   }
   if (link.url.includes("linkedin")) {
+    if (choises.includes("LinkedIn")) {
+      return;
+    }
     choises.push("LinkedIn");
     contactPoints["LinkedIn"] = link;
   }
   if (link.url.includes("github")) {
+    if (choises.includes("GitHub")) {
+      return;
+    }
     choises.push("GitHub");
     contactPoints["GitHub"] = link;
   }
   if (link.url.includes("mailto")) {
+    if (choises.includes("Email")) {
+      return;
+    }
+    choises.push("Email");
     contactPoints["Email"] = link;
   }
 }
