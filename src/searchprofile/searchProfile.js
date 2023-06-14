@@ -7,6 +7,13 @@ const open = require("open");
 const choices = []; // ['Twitter', 'LinkedIn', 'Instagram']
 const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
 
+// Set timeouts for each block
+timeOuts = {
+  description: 4000,
+  links: 7500,
+  contact: 1100,
+};
+
 const usernameValidation = () => {
   prompt([
     {
@@ -19,7 +26,7 @@ const usernameValidation = () => {
       const { githubUsername } = answers;
       if (githubUsername === "") {
         console.log(
-          chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+          chalk.white.bgRed(` Please enter a valid GitHub username. `)
         );
         process.exit(0);
       }
@@ -36,7 +43,7 @@ const usernameValidation = () => {
               })
               .catch(() => {
                 console.log(
-                  chalk.white.bgRed(
+                  chalk.white.bgRed.bold(
                     ` LinkFree profile not found with ${githubUsername}! `
                   )
                 );
@@ -46,7 +53,7 @@ const usernameValidation = () => {
         })
         .catch(() => {
           console.log(
-            chalk.white.bgRed.bold(` User with ${githubUsername} not found! `)
+            chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
           );
           process.exit(0);
         });
@@ -68,14 +75,24 @@ function displayData(data) {
   // Description block
   setTimeout(() => {
     rainbow.stop();
-    getDescription(data);
   }, 4000);
+
+  if (data.tags.length !== 0) {
+    setTimeout(() => {
+      getDescription(data);
+    }, timeOuts.description);
+  } else {
+    timeOuts.links = 4000;
+    timeOuts.contact = 7500;
+  }
 
   // Links block
   if (data.links.length !== 0) {
     setTimeout(() => {
       getLinks(data);
-    }, 7500);
+    }, timeOuts.links);
+  } else {
+    timeOuts.contact = 4000;
   }
 
   // Other elements of profile like milestones,
@@ -84,7 +101,7 @@ function displayData(data) {
   if (data.links.length !== 0) {
     setTimeout(() => {
       getContact();
-    }, 10500);
+    }, timeOuts.contact);
   }
 }
 
