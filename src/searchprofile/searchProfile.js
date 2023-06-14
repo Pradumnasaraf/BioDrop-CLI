@@ -126,7 +126,6 @@ function getContact() {
     .then(async (p1Answers) => {
       const { contactChoice } = p1Answers;
       if (contactChoice !== "Contact them later") {
-
         // Confirm before opening browser
         prompt([
           {
