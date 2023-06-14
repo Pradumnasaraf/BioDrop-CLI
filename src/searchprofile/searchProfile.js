@@ -6,12 +6,14 @@ const open = require("open");
 
 const choices = []; // ['Twitter', 'LinkedIn', 'Instagram']
 const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
+const otherElementsChoices = []; // ['Milestones', 'Testimonials']
 
 // Set timeouts for each block
 timeOuts = {
   description: 4000,
   links: 7500,
-  contact: 1100,
+  otherElements: 10500,
+  contact: 5000, // Inside a function
 };
 
 const usernameValidation = () => {
@@ -83,7 +85,7 @@ function displayData(data) {
     }, timeOuts.description);
   } else {
     timeOuts.links = 4000;
-    timeOuts.contact = 7500;
+    timeOuts.otherElements = 4000;
   }
 
   // Links block
@@ -92,16 +94,14 @@ function displayData(data) {
       getLinks(data);
     }, timeOuts.links);
   } else {
-    timeOuts.contact = 4000;
+    timeOuts.otherElements = 4000;
   }
 
-  // Other elements of profile like milestones,
-
-  // Contact block
-  if (data.links.length !== 0) {
+  // Other elements of profile like milestonesa and testimonials
+  if (data.milestones.length !== 0 || data.testimonials.length !== 0) {
     setTimeout(() => {
-      getContact();
-    }, timeOuts.contact);
+      getOtherElements(data);
+    }, timeOuts.otherElements);
   }
 }
 
@@ -130,19 +130,102 @@ function getLinks(data) {
   console.log(`\n`);
 }
 
+async function getOtherElements(data) {
+  // TODO - Get other elements of profile like milestones and testimonials they are going to attend
+
+  if (data.milestones.length !== 0) {
+    otherElementsChoices.push("Check out their milestones");
+  }
+  if (data.testimonials.length !== 0) {
+    otherElementsChoices.push("See what others say about them - Testimonials");
+  }
+
+  await prompt([
+    {
+      type: "select",
+      name: "contactChoice",
+      message: "What else would you like know about them?",
+      choices: otherElementsChoices,
+    },
+  ])
+    .then(async (answers) => {
+      const { contactChoice } = answers;
+      switch (contactChoice) {
+        case "Check out their milestones":
+          getMilestones(data.milestones);
+          break;
+        case "See what others say about them - Testimonials":
+          getTestimonials(data.testimonials);
+          break;
+        default:
+          break;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  console.log(`\n`);
+  // Contact block
+  if (data.links.length !== 0) {
+    setTimeout(() => {
+      getContact();
+    }, timeOuts.contact); // TODO - Change this to timeOuts.contact
+  }
+}
+
+function getMilestones(data) {
+  console.log(
+    `\n   ` + chalk.yellowBright.bold(`Checkout their accomplishments:`)
+  );
+
+  for (let milestone of data) {
+    if (milestone.title === "") {
+      continue;
+    }
+
+    if (milestone.isGoal) {
+      console.log(
+        `   > ${chalk.cyanBright(milestone.title)} ${
+          milestone.date
+        } (Future Goal)`
+      );
+    } else {
+      console.log(
+        `   > ${chalk.cyanBright(milestone.title)} ${milestone.date}`
+      );
+    }
+  }
+}
+
+function getTestimonials(data) {
+  console.log(`\n` + chalk.yellowBright.bold(`Things people say about them:`));
+
+  for (let testimonial of data) {
+    if (testimonial.isPinned) {
+      console.log(
+        ` -> ${chalk.cyanBright(
+          // break the line after 10 words
+          testimonial.description.replace(/((?:\S+\s+){20}\S+)/g, "$1\n")
+        )} - ${chalk.whiteBright(testimonial.username)}` + `\n`
+      );
+    }
+  }
+}
+
 function getContact() {
   choices.push("Contact them later");
   prompt([
     {
       type: "select",
       name: "contactChoice",
-      message: "How would you like to contact them?",
+      message: "How would you like to connect with them?",
       choices: choices,
     },
   ])
     .then(async (p1Answers) => {
       const { contactChoice } = p1Answers;
-      if (contactChoice !== "Contact them later") {
+      if (contactChoice !== "Connect with them later") {
         // Confirm before opening browser
         prompt([
           {
@@ -157,7 +240,7 @@ function getContact() {
         });
       }
 
-      if (contactChoice === "Contact them later") {
+      if (contactChoice === "Connect with them later") {
         process.exit(0);
       }
     })
