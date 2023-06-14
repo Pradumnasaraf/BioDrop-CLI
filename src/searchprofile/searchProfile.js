@@ -199,15 +199,16 @@ function getMilestones(data) {
 }
 
 function getTestimonials(data) {
-  console.log(`\n` + chalk.yellowBright.bold(`Things people say about them:`));
+  console.log(`\n ${chalk.yellowBright.bold(`Things people say about them:`)}`);
 
   for (let testimonial of data) {
     if (testimonial.isPinned) {
-      console.log(
-        ` -> ${chalk.cyanBright(
+      console.log( 
+        ` -> ${
+          chalk.cyanBright.italic(
           // break the line after 10 words
           testimonial.description.replace(/((?:\S+\s+){20}\S+)/g, "$1\n")
-        )} - ${chalk.whiteBright(testimonial.username)}` + `\n`
+        )}" - ${chalk.whiteBright(testimonial.username)}` + `\n`
       );
     }
   }
