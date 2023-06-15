@@ -215,7 +215,7 @@ function getTestimonials(data) {
 }
 
 function getContact() {
-  choices.push("Contact them later");
+  choices.push("Connect with them later");
   prompt([
     {
       type: "select",
