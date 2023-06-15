@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.3.2...v2.4.0) (2023-06-15)
+
+
+### Features
+
+* Add profile search functionality ([#66](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/66)) ([5716860](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/57168606a0f77bfb9303c9b9e6cd9ef489026cfd))
+
+
+
 ## [2.3.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.3.1...v2.3.2) (2023-06-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * icon search prompt message ([#57](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/57)) ([93b23a0](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/93b23a06d588fec69b00377b7ed147f51a16cd8f))
-
-
-
-## [2.2.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.0...v2.2.1) (2023-03-18)
-
-
-### Bug Fixes
-
-* auto icon structuring and accessibility ([#56](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/56)) ([b7916f1](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/b7916f1367bd5100379925da4a98ef6934078c76))
 
 
 
