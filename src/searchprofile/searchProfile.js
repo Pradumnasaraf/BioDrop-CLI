@@ -203,9 +203,8 @@ function getTestimonials(data) {
 
   for (let testimonial of data) {
     if (testimonial.isPinned) {
-      console.log( 
-        ` -> ${
-          chalk.cyanBright.italic(
+      console.log(
+        ` -> ${chalk.cyanBright.italic(
           // break the line after 10 words
           testimonial.description.replace(/((?:\S+\s+){20}\S+)/g, "$1\n")
         )}" - ${chalk.whiteBright(testimonial.username)}` + `\n`
