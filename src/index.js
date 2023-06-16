@@ -1,14 +1,14 @@
 #! /usr/bin/env node
 
-const fs = require("fs");
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const createJson = require("./createjson/createJson");
-const checkUpdate = require("./updatejson/helper/checkUpdate");
-const giveTestimonial = require("./givetestimonial/giveTestimonial");
-const addEvent = require("./addevent/addEvent");
-const reportBug = require("./reportbug/reportBug");
-const searchProfile = require("./searchprofile/searchProfile");
+import chalk from "chalk";
+import enquirer from "enquirer";
+import createJson from "./createjson/createJson.js";
+import checkUpdate from "./updatejson/helper/checkUpdate.js";
+import giveTestimonial from "./givetestimonial/giveTestimonial.js";
+import addEvent from "./addevent/addEvent.js";
+import reportBug from "./reportbug/reportBug.js";
+import searchProfile from "./searchprofile/searchProfile.js";
+
 console.log(
   chalk.black.bgYellow(` Welcome to LinkFree CLI! Let's get started. `)
 );
@@ -22,7 +22,7 @@ const choices = [
   "Report a bug",
 ];
 
-prompt([
+enquirer.prompt([
   {
     type: "select",
     name: "selectedtask",

@@ -1,8 +1,8 @@
-const enquirer = require("enquirer");
-const fs = require("fs");
-const chalk = require("chalk");
-const createtestimonialfile = require("./helper/createTestimonialFile");
-const checktestimonial = require("./helper/checkTestimonial");
+import enquirer from "enquirer";
+import fs from "fs";
+import chalk from "chalk";
+import createtestimonialfile from "./helper/createTestimonialFile.js";
+import checktestimonial from "./helper/checkTestimonial.js";
 
 let testimonialWriter;
 let testimonialReceiver;
@@ -117,4 +117,4 @@ async function testimonialdescription() {
   }
 }
 
-module.exports = givetestimonial;
+export default givetestimonial;

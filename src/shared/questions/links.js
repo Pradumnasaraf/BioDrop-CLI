@@ -1,10 +1,10 @@
-const { prompt } = require("enquirer");
-const { selecticon } = require("../assets/icons");
+import enquirer from "enquirer";
+import { selecticon } from "../assets/icons.js";
 let links = [];
 
 async function addlinks(bool) {
   while (bool) {
-    let answers = await prompt([
+    let answers = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -27,7 +27,7 @@ async function addlinks(bool) {
       },
     ]);
     let selectedIcon = await selecticon();
-    const confirm = await prompt([
+    const confirm = await enquirer.prompt([
       {
         type: "confirm",
         name: "addLink",
@@ -58,7 +58,7 @@ async function removelinks(links) {
   let choiceLinks = links;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "link",
@@ -68,7 +68,7 @@ async function removelinks(links) {
     ]);
     choiceLinks = choiceLinks.filter((link) => link.name !== answers.link);
     if (choiceLinks.length !== 0) {
-      const res = await prompt([
+      const res = await enquirer.prompt([
         {
           type: "confirm",
           name: "removeLink",
@@ -93,7 +93,7 @@ async function updatelinks(links) {
   let choiceLinks = links;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "link",
@@ -101,7 +101,7 @@ async function updatelinks(links) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, url, color, group } = await prompt([
+    const { name, url, color, group } = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -125,7 +125,7 @@ async function updatelinks(links) {
       },
     ]);
     const selectedIcon = await selecticon();
-    const { updateLink } = await prompt([
+    const { updateLink } = await enquirer.prompt([
       {
         type: "confirm",
         name: "updateLink",
@@ -160,8 +160,4 @@ async function updatelinks(links) {
   }
 }
 
-module.exports = {
-  addlinks,
-  removelinks,
-  updatelinks,
-};
+export { addlinks, removelinks, updatelinks };

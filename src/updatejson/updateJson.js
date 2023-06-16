@@ -1,29 +1,24 @@
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const fs = require("fs");
-const jsonFormat = require("json-format");
-isProfileUpdated = false;
-const {
-  addlinks,
-  removelinks,
-  updatelinks,
-} = require("../shared/questions/links");
-const {
+import chalk from "chalk";
+import enquirer from "enquirer";
+import fs from "fs";
+import jsonFormat from "json-format";
+import { addlinks, removelinks, updatelinks } from "../shared/questions/links.js";
+import {
   addmilestones,
   removemilestones,
   updatemilestones,
-} = require("../shared/questions/milestones");
-const { addtags, removetags, updatetags } = require("../shared/questions/tags");
-const {
+} from "../shared/questions/milestones.js";
+import { addtags, removetags, updatetags } from "../shared/questions/tags.js";
+import {
   addsocials,
   removesocials,
   updatesocials,
-} = require("../shared/questions/socials");
-const {
+} from "../shared/questions/socials.js";
+import {
   addtestimonials,
   removetestimonials,
   updatetestimonials,
-} = require("../shared/questions/testimonials");
+} from "../shared/questions/testimonials.js";
 
 let json;
 const updateJson = async (githubUsername) => {
@@ -36,7 +31,7 @@ const updateJson = async (githubUsername) => {
     json = JSON.parse(content);
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "name",
@@ -45,7 +40,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.name) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "input",
           name: "name",
@@ -55,7 +50,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "bio",
@@ -64,7 +59,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.bio) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "input",
           name: "bio",
@@ -74,7 +69,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "tag",
@@ -83,7 +78,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.tag) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "select",
           name: "operation",
@@ -127,7 +122,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "social",
@@ -136,7 +131,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.social) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "select",
           name: "operation",
@@ -180,7 +175,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "link",
@@ -189,7 +184,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.link) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "select",
           name: "operation",
@@ -233,7 +228,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "testimonial",
@@ -242,7 +237,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.testimonial) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "select",
           name: "operation",
@@ -301,7 +296,7 @@ const updateJson = async (githubUsername) => {
     }
   });
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "confirm",
       name: "milestone",
@@ -310,7 +305,7 @@ const updateJson = async (githubUsername) => {
   ]).then(async (answers) => {
     if (answers.milestone) {
       isProfileUpdated = true;
-      await prompt([
+      await enquirer.prompt([
         {
           type: "select",
           name: "operation",
@@ -384,4 +379,4 @@ const updateJson = async (githubUsername) => {
   });
 };
 
-module.exports = updateJson;
+export default updateJson;

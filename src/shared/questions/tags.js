@@ -1,10 +1,10 @@
-const { prompt } = require("enquirer");
+import enquirer from "enquirer";
 
 let tags = [];
 
 async function addtags(bool) {
   while (bool) {
-    let answers = await prompt([
+    let answers = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -27,7 +27,7 @@ async function removetags(tags) {
   let choiceTags = tags;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "tag",
@@ -37,7 +37,7 @@ async function removetags(tags) {
     ]);
     choiceTags = choiceTags.filter((tag) => tag.name !== answers.tag);
     if (choiceTags.length !== 0) {
-      const res = await prompt([
+      const res = await enquirer.prompt([
         {
           type: "confirm",
           name: "removeTag",
@@ -62,7 +62,7 @@ async function updatetags(tags) {
   let choiceTags = tags;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "tag",
@@ -70,7 +70,7 @@ async function updatetags(tags) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, updateTag } = await prompt([
+    const { name, updateTag } = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -98,8 +98,4 @@ async function updatetags(tags) {
   }
 }
 
-module.exports = {
-  addtags,
-  removetags,
-  updatetags,
-};
+export { addtags, removetags, updatetags };

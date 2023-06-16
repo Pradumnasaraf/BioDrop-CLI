@@ -1,15 +1,15 @@
-const axios = require("axios");
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const chalkAnimation = require("chalk-animation");
-const open = require("open");
+import axios from "axios";
+import chalk from "chalk";
+import enquirer from "enquirer";
+import chalkAnimation from "chalk-animation";
+import open from "open";
 
 const choices = []; // ['Twitter', 'LinkedIn', 'Instagram']
 const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
 const otherElementsChoices = []; // ['Milestones', 'Testimonials']
 
 // Set timeouts for each block
-timeOuts = {
+let timeOuts = {
   description: 4000,
   links: 7500,
   otherElements: 10500,
@@ -17,7 +17,7 @@ timeOuts = {
 };
 
 const usernameValidation = () => {
-  prompt([
+  enquirer.prompt([
     {
       type: "input",
       name: "githubUsername",
@@ -123,7 +123,7 @@ function getLinks(data) {
     console.log(
       `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
     );
-    // This added data will used in the contact block for prompt
+    // This added data will used in the contact block for enquirer.prompt
     extractContactData(link);
   }
 
@@ -140,7 +140,7 @@ async function getOtherElements(data) {
     otherElementsChoices.push("See what others say about them - Testimonials");
   }
 
-  await prompt([
+  await enquirer.prompt([
     {
       type: "select",
       name: "contactChoice",
@@ -215,7 +215,7 @@ function getTestimonials(data) {
 
 function getContact() {
   choices.push("Connect with them later");
-  prompt([
+  enquirer.prompt([
     {
       type: "select",
       name: "contactChoice",
@@ -227,7 +227,7 @@ function getContact() {
       const { contactChoice } = p1Answers;
       if (contactChoice !== "Connect with them later") {
         // Confirm before opening browser
-        prompt([
+        enquirer.prompt([
           {
             type: "confirm",
             name: "openBrowser",
@@ -281,4 +281,4 @@ function extractContactData(link) {
   }
 }
 
-module.exports = usernameValidation;
+export default usernameValidation;

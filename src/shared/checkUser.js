@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 // checks if user exists on github
 async function checkUser(username) {
@@ -16,4 +16,4 @@ async function checkUser(username) {
   }
 }
 
-module.exports = checkUser;
+export default checkUser;

@@ -1,7 +1,7 @@
-const { prompt } = require("enquirer");
+import enquirer from "enquirer";
 
 async function basics() {
-  const answers = await prompt([
+  const answers = await enquirer.prompt([
     {
       type: "input",
       name: "name",
@@ -16,6 +16,4 @@ async function basics() {
   return answers;
 }
 
-module.exports = {
-  basics,
-};
+export default basics;

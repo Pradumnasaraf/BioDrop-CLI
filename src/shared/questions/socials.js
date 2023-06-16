@@ -1,11 +1,11 @@
-const { prompt } = require("enquirer");
-const { selecticon } = require("../assets/icons");
+import enquirer from "enquirer";
+import { selecticon } from "../assets/icons.js";
 
 let socials = [];
 
 async function addsocials(bool) {
   while (bool) {
-    let answers = await prompt([
+    let answers = await enquirer.prompt([
       {
         type: "input",
         name: "url",
@@ -13,7 +13,7 @@ async function addsocials(bool) {
       },
     ]);
     let selectedIcon = await selecticon();
-    const confirm = await prompt([
+    const confirm = await enquirer.prompt([
       {
         type: "confirm",
         name: "addsocials",
@@ -37,7 +37,7 @@ async function removesocials(socials) {
     social.name = social.url;
   });
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "social",
@@ -49,7 +49,7 @@ async function removesocials(socials) {
       (social) => social.name !== answers.social
     );
     if (choiceSocials.length !== 0) {
-      const res = await prompt([
+      const res = await enquirer.prompt([
         {
           type: "confirm",
           name: "removeSocial",
@@ -77,7 +77,7 @@ async function updatesocials(socials) {
     social.name = social.url;
   });
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "social",
@@ -85,7 +85,7 @@ async function updatesocials(socials) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { url } = await prompt([
+    const { url } = await enquirer.prompt([
       {
         type: "input",
         name: "url",
@@ -93,7 +93,7 @@ async function updatesocials(socials) {
       },
     ]);
     let selectedIcon = await selecticon();
-    const { updateSocial } = await prompt([
+    const { updateSocial } = await enquirer.prompt([
       {
         type: "confirm",
         name: "updateSocial",
@@ -118,8 +118,4 @@ async function updatesocials(socials) {
   }
 }
 
-module.exports = {
-  addsocials,
-  removesocials,
-  updatesocials,
-};
+export { addsocials, removesocials, updatesocials };

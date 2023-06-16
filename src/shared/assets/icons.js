@@ -1,7 +1,7 @@
-const FaIcons = require("react-icons/fa");
-const SaIcons = require("react-icons/si");
-const { AutoComplete } = require("enquirer");
-const chalk = require("chalk");
+import FaIcons from "react-icons/fa/index.js";
+import SiIcons from "react-icons/si/index.js";
+import enquirer from "enquirer";
+import chalk from "chalk";
 let icons = [];
 
 async function geticons() {
@@ -9,7 +9,7 @@ async function geticons() {
     icons.push(key);
   });
 
-  Object.keys(SaIcons).forEach((key) => {
+  Object.keys(SiIcons).forEach((key) => {
     icons.push(key);
   });
 
@@ -17,7 +17,7 @@ async function geticons() {
 }
 
 async function selecticon() {
-  const autocomplete = new AutoComplete({
+  const autocomplete = new enquirer.AutoComplete({
     name: "icon",
     message: "Select an icon (Start typing to find matching icons)",
     limit: 10,
@@ -30,6 +30,4 @@ async function selecticon() {
   return autocomplete.state.input;
 }
 
-module.exports = {
-  selecticon,
-};
+export { selecticon };

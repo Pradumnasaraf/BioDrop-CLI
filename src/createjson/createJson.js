@@ -1,21 +1,21 @@
 #! /usr/bin/env node
 
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const fs = require("fs");
-const createUser = require("./helper/createUser");
-const checkUser = require("../shared/checkUser");
-const { basics } = require("../shared/questions/basics");
-const { addlinks } = require("../shared/questions/links");
-const { addtags } = require("../shared/questions/tags");
-const { addmilestones } = require("../shared/questions/milestones");
-const { addsocials } = require("../shared/questions/socials");
-const updateJson = require("../updatejson/updateJson");
+import chalk from "chalk";
+import enquirer from "enquirer";
+import fs from "fs";
+import createUser from "./helper/createUser.js";
+import checkUser from "../shared/checkUser.js";
+import  basics  from "../shared/questions/basics.js";
+import { addlinks } from "../shared/questions/links.js";
+import { addtags } from "../shared/questions/tags.js";
+import { addmilestones } from "../shared/questions/milestones.js";
+import { addsocials } from "../shared/questions/socials.js";
+import updateJson from "../updatejson/updateJson.js";
 
 let json;
 
 const createJson = () => {
-  prompt([
+  enquirer.prompt([
     {
       type: "input",
       name: "githubUsername",
@@ -33,7 +33,7 @@ const createJson = () => {
         console.log(
           chalk.black.bgYellow(` File ${githubUsername}.json already exists!`)
         );
-        prompt([
+        enquirer.prompt([
           {
             type: "confirm",
             name: "overwrite",
@@ -64,7 +64,7 @@ async function start(githubUsername) {
     if (result === true) {
       basics().then(async (answers) => {
         json = answers;
-        await prompt([
+        await enquirer.prompt([
           {
             type: "confirm",
             name: "addLink",
@@ -76,7 +76,7 @@ async function start(githubUsername) {
           }
         });
 
-        await prompt([
+        await enquirer.prompt([
           {
             type: "confirm",
             name: "addTag",
@@ -88,7 +88,7 @@ async function start(githubUsername) {
           }
         });
 
-        await prompt([
+        await enquirer.prompt([
           {
             type: "confirm",
             name: "addSocial",
@@ -100,7 +100,7 @@ async function start(githubUsername) {
           }
         });
 
-        await prompt([
+        await enquirer.prompt([
           {
             type: "confirm",
             name: "addMilestone",
@@ -125,4 +125,4 @@ async function start(githubUsername) {
   });
 }
 
-module.exports = createJson;
+export default createJson;
