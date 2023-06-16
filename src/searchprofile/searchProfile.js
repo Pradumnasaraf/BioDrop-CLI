@@ -17,13 +17,14 @@ let timeOuts = {
 };
 
 const usernameValidation = () => {
-  enquirer.prompt([
-    {
-      type: "input",
-      name: "githubUsername",
-      message: "What is your GitHub username (case sensitive)?",
-    },
-  ])
+  enquirer
+    .prompt([
+      {
+        type: "input",
+        name: "githubUsername",
+        message: "What is your GitHub username (case sensitive)?",
+      },
+    ])
     .then((answers) => {
       const { githubUsername } = answers;
       if (githubUsername === "") {
@@ -140,14 +141,15 @@ async function getOtherElements(data) {
     otherElementsChoices.push("See what others say about them - Testimonials");
   }
 
-  await enquirer.prompt([
-    {
-      type: "select",
-      name: "contactChoice",
-      message: "What else would you like know about them?",
-      choices: otherElementsChoices,
-    },
-  ])
+  await enquirer
+    .prompt([
+      {
+        type: "select",
+        name: "contactChoice",
+        message: "What else would you like know about them?",
+        choices: otherElementsChoices,
+      },
+    ])
     .then(async (answers) => {
       const { contactChoice } = answers;
       switch (contactChoice) {
@@ -215,29 +217,32 @@ function getTestimonials(data) {
 
 function getContact() {
   choices.push("Connect with them later");
-  enquirer.prompt([
-    {
-      type: "select",
-      name: "contactChoice",
-      message: "How would you like to connect with them?",
-      choices: choices,
-    },
-  ])
+  enquirer
+    .prompt([
+      {
+        type: "select",
+        name: "contactChoice",
+        message: "How would you like to connect with them?",
+        choices: choices,
+      },
+    ])
     .then(async (p1Answers) => {
       const { contactChoice } = p1Answers;
       if (contactChoice !== "Connect with them later") {
         // Confirm before opening browser
-        enquirer.prompt([
-          {
-            type: "confirm",
-            name: "openBrowser",
-            message: `You will be redirected to ${contactChoice}. Do you confirm to open the browser?`,
-          },
-        ]).then(async (p2Answers) => {
-          if (p2Answers.openBrowser) {
-            await open(contactPoints[contactChoice]);
-          }
-        });
+        enquirer
+          .prompt([
+            {
+              type: "confirm",
+              name: "openBrowser",
+              message: `You will be redirected to ${contactChoice}. Do you confirm to open the browser?`,
+            },
+          ])
+          .then(async (p2Answers) => {
+            if (p2Answers.openBrowser) {
+              await open(contactPoints[contactChoice]);
+            }
+          });
       }
 
       if (contactChoice === "Connect with them later") {

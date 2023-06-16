@@ -22,14 +22,15 @@ const choices = [
   "Report a bug",
 ];
 
-enquirer.prompt([
-  {
-    type: "select",
-    name: "selectedtask",
-    choices: choices,
-    message: "Choose one option (Press down arrow to traverse the list)",
-  },
-])
+enquirer
+  .prompt([
+    {
+      type: "select",
+      name: "selectedtask",
+      choices: choices,
+      message: "Choose one option (Press down arrow to traverse the list)",
+    },
+  ])
   .then(async (answers) => {
     const { selectedtask } = answers;
     switch (selectedtask) {

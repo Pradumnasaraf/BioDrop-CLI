@@ -1,5 +1,5 @@
 import enquirer from "enquirer";
-import {selecticon} from "../assets/icons.js";
+import { selecticon } from "../assets/icons.js";
 
 let milestones = [];
 
