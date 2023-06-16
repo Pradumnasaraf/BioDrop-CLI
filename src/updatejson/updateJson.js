@@ -25,6 +25,7 @@ import {
 } from "../shared/questions/testimonials.js";
 
 let json;
+let isProfileUpdated;
 const updateJson = async (githubUsername) => {
   await fs.readFile(`./data/${githubUsername}.json`, function (error, content) {
     if (error) {

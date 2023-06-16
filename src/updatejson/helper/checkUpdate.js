@@ -10,7 +10,7 @@ async function checkUpdate() {
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` File ${githubUsername}.json doesn't exist! Please enter valid username`
+        ` File ${githubUsername}.json doesn't exist! Please enter valid username or create a new JSON file. `
       )
     );
     checkUpdate();
