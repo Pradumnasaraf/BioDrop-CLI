@@ -1,3 +1,12 @@
+# [2.5.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.4.0...v2.5.0) (2023-06-17)
+
+
+### Features
+
+* Convert code to ES6 modules ([#71](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/71)) ([641737a](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/641737a104ddacd984c64f7f41414665ab075e63))
+
+
+
 # [2.4.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.3.2...v2.4.0) (2023-06-15)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Add color and group property in links ([#61](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/61)) ([c247aae](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/c247aae9016b3fe3d4dcda89b4111284e801e465))
-
-
-
-## [2.2.2](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.1...v2.2.2) (2023-03-18)
-
-
-### Bug Fixes
-
-* icon search prompt message ([#57](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/57)) ([93b23a0](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/93b23a06d588fec69b00377b7ed147f51a16cd8f))
 
 
 
