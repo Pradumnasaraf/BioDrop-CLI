@@ -1,5 +1,5 @@
-const open = require("open");
-const enquirer = require("enquirer");
+import open from "open";
+import enquirer from "enquirer";
 
 async function reportBug() {
   const questions = await enquirer.prompt([
@@ -43,4 +43,4 @@ function urlBuilder(username, title, description) {
   return URL;
 }
 
-module.exports = reportBug;
+export default reportBug;

@@ -1,7 +1,7 @@
-const chalk = require("chalk");
-const fs = require("fs");
-const { prompt } = require("enquirer");
-const updateJson = require("../updateJson");
+import chalk from "chalk";
+import fs from "fs";
+import enquirer from "enquirer";
+import updateJson from "../updateJson.js";
 
 async function checkUpdate() {
   const githubUsername = await getUsername();
@@ -10,7 +10,7 @@ async function checkUpdate() {
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` File ${githubUsername}.json doesn't exist! Please enter valid username`
+        ` File ${githubUsername}.json doesn't exist! Please enter valid username or create a new JSON file. `
       )
     );
     checkUpdate();
@@ -18,7 +18,7 @@ async function checkUpdate() {
 }
 
 const getUsername = async () => {
-  const answers = await prompt([
+  const answers = await enquirer.prompt([
     {
       type: "input",
       name: "name",
@@ -36,4 +36,4 @@ const getUsername = async () => {
   }
 };
 
-module.exports = checkUpdate;
+export default checkUpdate;

@@ -1,6 +1,6 @@
-const fs = require("fs");
-const chalk = require("chalk");
-const jsonFormat = require("json-format");
+import fs from "fs";
+import chalk from "chalk";
+import jsonFormat from "json-format";
 
 function createEventFile(eventWriter, answers) {
   const {
@@ -125,4 +125,4 @@ function createEventFile(eventWriter, answers) {
   }
 }
 
-module.exports = createEventFile;
+export default createEventFile;

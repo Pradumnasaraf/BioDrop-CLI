@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "linkfree-cli",
   "version": "2.4.0",
   "description": "Generate LinkFree profile.json file via CLI",
@@ -6,7 +7,6 @@
   "bin": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"./**/*.{js,json}\""
   },
   "keywords": [
@@ -22,16 +22,16 @@
   "author": "Pradumna Saraf",
   "license": "GPL-3.0",
   "dependencies": {
-    "axios": "^0.27.2",
-    "chalk": "^4.1.2",
-    "chalk-animation": "^1.6.0",
+    "axios": "^1.4.0",
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
     "enquirer": "^2.3.6",
     "json-format": "^1.0.1",
-    "open": "^8.4.2",
-    "react-icons": "^4.7.1"
+    "open": "^9.1.0",
+    "react-icons": "^4.9.0"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.8"
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,8 @@
   },
   "bugs": {
     "url": "https://github.com/Pradumnasaraf/LinkFRee-CLI.git/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

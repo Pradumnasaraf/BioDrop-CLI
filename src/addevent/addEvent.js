@@ -1,7 +1,7 @@
-const enquirer = require("enquirer");
-const fs = require("fs");
-const chalk = require("chalk");
-const createEventFile = require("./helper/createEventFile");
+import enquirer from "enquirer";
+import fs from "fs";
+import chalk from "chalk";
+import createEventFile from "./helper/createEventFile.js";
 
 const addEvent = async () => {
   let answers = await enquirer.prompt([
@@ -94,4 +94,4 @@ const addEvent = async () => {
   }
 };
 
-module.exports = addEvent;
+export default addEvent;

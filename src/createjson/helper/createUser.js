@@ -1,9 +1,9 @@
-const jsonFormat = require("json-format");
-const chalk = require("chalk");
-const fs = require("fs");
+import jsonFormat from "json-format";
+import chalk from "chalk";
+import fs from "fs";
 
 async function createUser(githubUsername, answers) {
-  jsonSchema = {
+  let jsonSchema = {
     name: `${answers.name}`,
     bio: `${answers.bio}`,
   };
@@ -40,4 +40,4 @@ async function createUser(githubUsername, answers) {
   });
 }
 
-module.exports = createUser;
+export default createUser;

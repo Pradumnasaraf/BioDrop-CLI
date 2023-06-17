@@ -1,11 +1,11 @@
-const { prompt } = require("enquirer");
-const { selecticon } = require("../assets/icons");
+import enquirer from "enquirer";
+import { selecticon } from "../assets/icons.js";
 
 let milestones = [];
 
 async function addmilestones(bool) {
   while (bool) {
-    let answers = await prompt([
+    let answers = await enquirer.prompt([
       {
         type: "input",
         name: "title",
@@ -19,7 +19,7 @@ async function addmilestones(bool) {
       },
     ]);
     let selectedIcon = await selecticon();
-    const confirm = await prompt([
+    const confirm = await enquirer.prompt([
       {
         type: "input",
         name: "description",
@@ -69,7 +69,7 @@ async function removemilestones(milestones) {
   let choiceMilestones = milestones;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "milestone",
@@ -81,7 +81,7 @@ async function removemilestones(milestones) {
       (milestone) => milestone.title !== answers.milestone
     );
     if (choiceMilestones.length !== 0) {
-      const res = await prompt([
+      const res = await enquirer.prompt([
         {
           type: "confirm",
           name: "removeMilestone",
@@ -106,7 +106,7 @@ async function updatemilestones(milestones) {
   let choiceMilestones = milestones;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "milestone",
@@ -114,7 +114,7 @@ async function updatemilestones(milestones) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { title, date } = await prompt([
+    const { title, date } = await enquirer.prompt([
       {
         type: "input",
         name: "title",
@@ -127,7 +127,7 @@ async function updatemilestones(milestones) {
       },
     ]);
     let selectedIcon = await selecticon();
-    const { description, url, color, updateMilestone } = await prompt([
+    const { description, url, color, updateMilestone } = await enquirer.prompt([
       {
         type: "input",
         name: "description",
@@ -171,8 +171,4 @@ async function updatemilestones(milestones) {
   }
 }
 
-module.exports = {
-  addmilestones,
-  removemilestones,
-  updatemilestones,
-};
+export { addmilestones, removemilestones, updatemilestones };

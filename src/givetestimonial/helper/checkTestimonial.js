@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 // Check if the user has already given a testimonial to the person
 async function checktestimonial(testimonialWriter, testimonialReceiver) {
@@ -13,4 +13,4 @@ async function checktestimonial(testimonialWriter, testimonialReceiver) {
   }
 }
 
-module.exports = checktestimonial;
+export default checktestimonial;

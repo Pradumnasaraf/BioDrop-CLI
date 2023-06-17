@@ -1,15 +1,15 @@
-const axios = require("axios");
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const chalkAnimation = require("chalk-animation");
-const open = require("open");
+import axios from "axios";
+import chalk from "chalk";
+import enquirer from "enquirer";
+import chalkAnimation from "chalk-animation";
+import open from "open";
 
 const choices = []; // ['Twitter', 'LinkedIn', 'Instagram']
 const contactPoints = {}; // {Twitter: 'https://twitter.com/username'}
 const otherElementsChoices = []; // ['Milestones', 'Testimonials']
 
 // Set timeouts for each block
-timeOuts = {
+let timeOuts = {
   description: 4000,
   links: 7500,
   otherElements: 10500,
@@ -17,13 +17,14 @@ timeOuts = {
 };
 
 const usernameValidation = () => {
-  prompt([
-    {
-      type: "input",
-      name: "githubUsername",
-      message: "What is your GitHub username (case sensitive)?",
-    },
-  ])
+  enquirer
+    .prompt([
+      {
+        type: "input",
+        name: "githubUsername",
+        message: "What is your GitHub username (case sensitive)?",
+      },
+    ])
     .then((answers) => {
       const { githubUsername } = answers;
       if (githubUsername === "") {
@@ -123,7 +124,7 @@ function getLinks(data) {
     console.log(
       `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
     );
-    // This added data will used in the contact block for prompt
+    // This added data will used in the contact block for enquirer.prompt
     extractContactData(link);
   }
 
@@ -140,14 +141,15 @@ async function getOtherElements(data) {
     otherElementsChoices.push("See what others say about them - Testimonials");
   }
 
-  await prompt([
-    {
-      type: "select",
-      name: "contactChoice",
-      message: "What else would you like know about them?",
-      choices: otherElementsChoices,
-    },
-  ])
+  await enquirer
+    .prompt([
+      {
+        type: "select",
+        name: "contactChoice",
+        message: "What else would you like know about them?",
+        choices: otherElementsChoices,
+      },
+    ])
     .then(async (answers) => {
       const { contactChoice } = answers;
       switch (contactChoice) {
@@ -215,29 +217,32 @@ function getTestimonials(data) {
 
 function getContact() {
   choices.push("Connect with them later");
-  prompt([
-    {
-      type: "select",
-      name: "contactChoice",
-      message: "How would you like to connect with them?",
-      choices: choices,
-    },
-  ])
+  enquirer
+    .prompt([
+      {
+        type: "select",
+        name: "contactChoice",
+        message: "How would you like to connect with them?",
+        choices: choices,
+      },
+    ])
     .then(async (p1Answers) => {
       const { contactChoice } = p1Answers;
       if (contactChoice !== "Connect with them later") {
         // Confirm before opening browser
-        prompt([
-          {
-            type: "confirm",
-            name: "openBrowser",
-            message: `You will be redirected to ${contactChoice}. Do you confirm to open the browser?`,
-          },
-        ]).then(async (p2Answers) => {
-          if (p2Answers.openBrowser) {
-            await open(contactPoints[contactChoice]);
-          }
-        });
+        enquirer
+          .prompt([
+            {
+              type: "confirm",
+              name: "openBrowser",
+              message: `You will be redirected to ${contactChoice}. Do you confirm to open the browser?`,
+            },
+          ])
+          .then(async (p2Answers) => {
+            if (p2Answers.openBrowser) {
+              await open(contactPoints[contactChoice]);
+            }
+          });
       }
 
       if (contactChoice === "Connect with them later") {
@@ -281,4 +286,4 @@ function extractContactData(link) {
   }
 }
 
-module.exports = usernameValidation;
+export default usernameValidation;

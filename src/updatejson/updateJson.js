@@ -1,31 +1,31 @@
-const chalk = require("chalk");
-const { prompt } = require("enquirer");
-const fs = require("fs");
-const jsonFormat = require("json-format");
-isProfileUpdated = false;
-const {
+import chalk from "chalk";
+import enquirer from "enquirer";
+import fs from "fs";
+import jsonFormat from "json-format";
+import {
   addlinks,
   removelinks,
   updatelinks,
-} = require("../shared/questions/links");
-const {
+} from "../shared/questions/links.js";
+import {
   addmilestones,
   removemilestones,
   updatemilestones,
-} = require("../shared/questions/milestones");
-const { addtags, removetags, updatetags } = require("../shared/questions/tags");
-const {
+} from "../shared/questions/milestones.js";
+import { addtags, removetags, updatetags } from "../shared/questions/tags.js";
+import {
   addsocials,
   removesocials,
   updatesocials,
-} = require("../shared/questions/socials");
-const {
+} from "../shared/questions/socials.js";
+import {
   addtestimonials,
   removetestimonials,
   updatetestimonials,
-} = require("../shared/questions/testimonials");
+} from "../shared/questions/testimonials.js";
 
 let json;
+let isProfileUpdated;
 const updateJson = async (githubUsername) => {
   await fs.readFile(`./data/${githubUsername}.json`, function (error, content) {
     if (error) {
@@ -36,330 +36,374 @@ const updateJson = async (githubUsername) => {
     json = JSON.parse(content);
   });
 
-  await prompt([
-    {
-      type: "confirm",
-      name: "name",
-      message: "Do you want to change your name?",
-    },
-  ]).then(async (answers) => {
-    if (answers.name) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "input",
-          name: "name",
-          message: "What is your new name?",
-        },
-      ]).then((answers) => (json.name = answers.name));
-    }
-  });
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "name",
+        message: "Do you want to change your name?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.name) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "input",
+              name: "name",
+              message: "What is your new name?",
+            },
+          ])
+          .then((answers) => (json.name = answers.name));
+      }
+    });
 
-  await prompt([
-    {
-      type: "confirm",
-      name: "bio",
-      message: "Do you want to change your bio?",
-    },
-  ]).then(async (answers) => {
-    if (answers.bio) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "input",
-          name: "bio",
-          message: "Your new bio?",
-        },
-      ]).then((answers) => (json.bio = answers.bio));
-    }
-  });
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "bio",
+        message: "Do you want to change your bio?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.bio) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "input",
+              name: "bio",
+              message: "Your new bio?",
+            },
+          ])
+          .then((answers) => (json.bio = answers.bio));
+      }
+    });
 
-  await prompt([
-    {
-      type: "confirm",
-      name: "tag",
-      message: "Do you want to update your tags?",
-    },
-  ]).then(async (answers) => {
-    if (answers.tag) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "operation",
-          message: "What you want to do?",
-          choices: ["Add a tag?", "Remove a tag?", "Update a tag?"],
-        },
-      ]).then(async (answers) => {
-        switch (answers.operation) {
-          case "Add a tag?": {
-            if (json.tags) {
-              json.tags = [...json.tags, ...(await addtags(true))];
-            } else {
-              json.tags = [...(await addtags(true))];
-            }
-            break;
-          }
-          case "Remove a tag?": {
-            if (json.tags) {
-              json.tags = [...(await removetags(json.tags))];
-              if (json.tags.length === 0) {
-                delete json.tags;
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "tag",
+        message: "Do you want to update your tags?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.tag) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "select",
+              name: "operation",
+              message: "What you want to do?",
+              choices: ["Add a tag?", "Remove a tag?", "Update a tag?"],
+            },
+          ])
+          .then(async (answers) => {
+            switch (answers.operation) {
+              case "Add a tag?": {
+                if (json.tags) {
+                  json.tags = [...json.tags, ...(await addtags(true))];
+                } else {
+                  json.tags = [...(await addtags(true))];
+                }
+                break;
               }
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any tags to remove!")
-              );
-            }
-            break;
-          }
-          default: {
-            if (json.tags) {
-              json.tags = [...(await updatetags(json.tags))];
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any tags to update!")
-              );
-            }
-          }
-        }
-      });
-    }
-  });
-
-  await prompt([
-    {
-      type: "confirm",
-      name: "social",
-      message: "Do you want to update your socials?",
-    },
-  ]).then(async (answers) => {
-    if (answers.social) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "operation",
-          message: "What you want to do?",
-          choices: ["Add a social?", "Remove a social?", "Update a social?"],
-        },
-      ]).then(async (answers) => {
-        switch (answers.operation) {
-          case "Add a social?": {
-            if (json.socials) {
-              json.socials = [...json.socials, ...(await addsocials(true))];
-            } else {
-              json.socials = [...(await addsocials(true))];
-            }
-            break;
-          }
-          case "Remove a social?": {
-            if (json.socials) {
-              json.socials = [...(await removesocials(json.socials))];
-              if (json.socials.length === 0) {
-                delete json.socials;
+              case "Remove a tag?": {
+                if (json.tags) {
+                  json.tags = [...(await removetags(json.tags))];
+                  if (json.tags.length === 0) {
+                    delete json.tags;
+                  }
+                } else {
+                  console.log(
+                    chalk.black.bgYellow("You don't have any tags to remove!")
+                  );
+                }
+                break;
               }
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any socials to remove!")
-              );
-            }
-            break;
-          }
-          default: {
-            if (json.socials) {
-              json.socials = [...(await updatesocials(json.socials))];
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any socials to update!")
-              );
-            }
-          }
-        }
-      });
-    }
-  });
-
-  await prompt([
-    {
-      type: "confirm",
-      name: "link",
-      message: "Do you want to update your links?",
-    },
-  ]).then(async (answers) => {
-    if (answers.link) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "operation",
-          message: "What you want to do?",
-          choices: ["add a link?", "remove a link?", "update a link?"],
-        },
-      ]).then(async (answers) => {
-        switch (answers.operation) {
-          case "add a link?": {
-            if (json.links) {
-              json.links = [...json.links, ...(await addlinks(true))];
-            } else {
-              json.links = [...(await addlinks(true))];
-            }
-            break;
-          }
-          case "remove a link?": {
-            if (json.links) {
-              json.links = [...(await removelinks(json.links))];
-              if (json.links.length === 0) {
-                delete json.links;
+              default: {
+                if (json.tags) {
+                  json.tags = [...(await updatetags(json.tags))];
+                } else {
+                  console.log(
+                    chalk.black.bgYellow("You don't have any tags to update!")
+                  );
+                }
               }
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any links to remove!")
-              );
             }
-            break;
-          }
-          default: {
-            if (json.links) {
-              json.links = [...(await updatelinks(json.links))];
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any links to update!")
-              );
-            }
-          }
-        }
-      });
-    }
-  });
+          });
+      }
+    });
 
-  await prompt([
-    {
-      type: "confirm",
-      name: "testimonial",
-      message: "Do you want to update your testimonials (usernames)?",
-    },
-  ]).then(async (answers) => {
-    if (answers.testimonial) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "operation",
-          message: "What you want to do?",
-          choices: [
-            "add a testimonial?",
-            "remove a testimonial?",
-            "update a testimonial?",
-          ],
-        },
-      ]).then(async (answers) => {
-        switch (answers.operation) {
-          case "add a testimonial?": {
-            if (json.testimonials) {
-              json.testimonials = [
-                ...json.testimonials,
-                ...(await addtestimonials(true)),
-              ];
-            } else {
-              json.testimonials = [...(await addtestimonials(true))];
-            }
-            break;
-          }
-          case "remove a testimonial?": {
-            if (json.testimonials) {
-              json.testimonials = [
-                ...(await removetestimonials(json.testimonials)),
-              ];
-              if (json.testimonials.length === 0) {
-                delete json.testimonials;
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "social",
+        message: "Do you want to update your socials?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.social) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "select",
+              name: "operation",
+              message: "What you want to do?",
+              choices: [
+                "Add a social?",
+                "Remove a social?",
+                "Update a social?",
+              ],
+            },
+          ])
+          .then(async (answers) => {
+            switch (answers.operation) {
+              case "Add a social?": {
+                if (json.socials) {
+                  json.socials = [...json.socials, ...(await addsocials(true))];
+                } else {
+                  json.socials = [...(await addsocials(true))];
+                }
+                break;
               }
-            } else {
-              console.log(
-                chalk.black.bgYellow(
-                  "You don't have any testimonials to remove!"
-                )
-              );
+              case "Remove a social?": {
+                if (json.socials) {
+                  json.socials = [...(await removesocials(json.socials))];
+                  if (json.socials.length === 0) {
+                    delete json.socials;
+                  }
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any socials to remove!"
+                    )
+                  );
+                }
+                break;
+              }
+              default: {
+                if (json.socials) {
+                  json.socials = [...(await updatesocials(json.socials))];
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any socials to update!"
+                    )
+                  );
+                }
+              }
             }
-            break;
-          }
-          default: {
-            if (json.testimonials) {
-              json.testimonials = [
-                ...(await updatetestimonials(json.testimonials)),
-              ];
-            } else {
-              console.log(
-                chalk.black.bgYellow(
-                  "You don't have any testimonials to update!"
-                )
-              );
-            }
-          }
-        }
-      });
-    }
-  });
+          });
+      }
+    });
 
-  await prompt([
-    {
-      type: "confirm",
-      name: "milestone",
-      message: "Do you want to update your milestones?",
-    },
-  ]).then(async (answers) => {
-    if (answers.milestone) {
-      isProfileUpdated = true;
-      await prompt([
-        {
-          type: "select",
-          name: "operation",
-          message: "What you want to do?",
-          choices: [
-            "add a milestone?",
-            "remove a milestone?",
-            "update a milestone?",
-          ],
-        },
-      ]).then(async (answers) => {
-        switch (answers.operation) {
-          case "add a milestone?": {
-            if (json.milestones) {
-              json.milestones = [
-                ...json.milestones,
-                ...(await addmilestones(true)),
-              ];
-            } else {
-              json.milestones = [...(await addmilestones(true))];
-            }
-            break;
-          }
-          case "remove a milestone?": {
-            if (json.milestones) {
-              json.milestones = [...(await removemilestones(json.milestones))];
-              if (json.milestones.length === 0) {
-                delete json.milestones;
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "link",
+        message: "Do you want to update your links?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.link) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "select",
+              name: "operation",
+              message: "What you want to do?",
+              choices: ["add a link?", "remove a link?", "update a link?"],
+            },
+          ])
+          .then(async (answers) => {
+            switch (answers.operation) {
+              case "add a link?": {
+                if (json.links) {
+                  json.links = [...json.links, ...(await addlinks(true))];
+                } else {
+                  json.links = [...(await addlinks(true))];
+                }
+                break;
               }
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any milestones to remove!")
-              );
+              case "remove a link?": {
+                if (json.links) {
+                  json.links = [...(await removelinks(json.links))];
+                  if (json.links.length === 0) {
+                    delete json.links;
+                  }
+                } else {
+                  console.log(
+                    chalk.black.bgYellow("You don't have any links to remove!")
+                  );
+                }
+                break;
+              }
+              default: {
+                if (json.links) {
+                  json.links = [...(await updatelinks(json.links))];
+                } else {
+                  console.log(
+                    chalk.black.bgYellow("You don't have any links to update!")
+                  );
+                }
+              }
             }
-            break;
-          }
-          default: {
-            if (json.milestones) {
-              json.milestones = [...(await updatemilestones(json.milestones))];
-            } else {
-              console.log(
-                chalk.black.bgYellow("You don't have any milestones to update!")
-              );
+          });
+      }
+    });
+
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "testimonial",
+        message: "Do you want to update your testimonials (usernames)?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.testimonial) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "select",
+              name: "operation",
+              message: "What you want to do?",
+              choices: [
+                "add a testimonial?",
+                "remove a testimonial?",
+                "update a testimonial?",
+              ],
+            },
+          ])
+          .then(async (answers) => {
+            switch (answers.operation) {
+              case "add a testimonial?": {
+                if (json.testimonials) {
+                  json.testimonials = [
+                    ...json.testimonials,
+                    ...(await addtestimonials(true)),
+                  ];
+                } else {
+                  json.testimonials = [...(await addtestimonials(true))];
+                }
+                break;
+              }
+              case "remove a testimonial?": {
+                if (json.testimonials) {
+                  json.testimonials = [
+                    ...(await removetestimonials(json.testimonials)),
+                  ];
+                  if (json.testimonials.length === 0) {
+                    delete json.testimonials;
+                  }
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any testimonials to remove!"
+                    )
+                  );
+                }
+                break;
+              }
+              default: {
+                if (json.testimonials) {
+                  json.testimonials = [
+                    ...(await updatetestimonials(json.testimonials)),
+                  ];
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any testimonials to update!"
+                    )
+                  );
+                }
+              }
             }
-          }
-        }
-      });
-    }
-  });
+          });
+      }
+    });
+
+  await enquirer
+    .prompt([
+      {
+        type: "confirm",
+        name: "milestone",
+        message: "Do you want to update your milestones?",
+      },
+    ])
+    .then(async (answers) => {
+      if (answers.milestone) {
+        isProfileUpdated = true;
+        await enquirer
+          .prompt([
+            {
+              type: "select",
+              name: "operation",
+              message: "What you want to do?",
+              choices: [
+                "add a milestone?",
+                "remove a milestone?",
+                "update a milestone?",
+              ],
+            },
+          ])
+          .then(async (answers) => {
+            switch (answers.operation) {
+              case "add a milestone?": {
+                if (json.milestones) {
+                  json.milestones = [
+                    ...json.milestones,
+                    ...(await addmilestones(true)),
+                  ];
+                } else {
+                  json.milestones = [...(await addmilestones(true))];
+                }
+                break;
+              }
+              case "remove a milestone?": {
+                if (json.milestones) {
+                  json.milestones = [
+                    ...(await removemilestones(json.milestones)),
+                  ];
+                  if (json.milestones.length === 0) {
+                    delete json.milestones;
+                  }
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any milestones to remove!"
+                    )
+                  );
+                }
+                break;
+              }
+              default: {
+                if (json.milestones) {
+                  json.milestones = [
+                    ...(await updatemilestones(json.milestones)),
+                  ];
+                } else {
+                  console.log(
+                    chalk.black.bgYellow(
+                      "You don't have any milestones to update!"
+                    )
+                  );
+                }
+              }
+            }
+          });
+      }
+    });
 
   json = jsonFormat(json, { type: "space", size: 2 });
   fs.writeFile(`./data/${githubUsername}.json`, json, (err) => {
@@ -384,4 +428,4 @@ const updateJson = async (githubUsername) => {
   });
 };
 
-module.exports = updateJson;
+export default updateJson;

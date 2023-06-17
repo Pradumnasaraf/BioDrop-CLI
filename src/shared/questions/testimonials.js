@@ -1,9 +1,9 @@
-const { prompt } = require("enquirer");
+import enquirer from "enquirer";
 let testimonials = [];
 
 async function addtestimonials(bool) {
   while (bool) {
-    let answers = await prompt([
+    let answers = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -26,7 +26,7 @@ async function removetestimonials(testimonials) {
   let choiceTestimonials = testimonials;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "testimonial",
@@ -38,7 +38,7 @@ async function removetestimonials(testimonials) {
       (testimonial) => testimonial.name !== answers.testimonial
     );
     if (choiceTestimonials.length !== 0) {
-      const res = await prompt([
+      const res = await enquirer.prompt([
         {
           type: "confirm",
           name: "removeTestimonial",
@@ -63,7 +63,7 @@ async function updatetestimonials(testimonials) {
   let choiceTestimonials = testimonials;
   let stop = false;
   while (!stop) {
-    const answers = await prompt([
+    const answers = await enquirer.prompt([
       {
         type: "select",
         name: "testimonial",
@@ -71,7 +71,7 @@ async function updatetestimonials(testimonials) {
         message: "Choose which one you want to update",
       },
     ]);
-    const { name, updateTestimonial } = await prompt([
+    const { name, updateTestimonial } = await enquirer.prompt([
       {
         type: "input",
         name: "name",
@@ -99,8 +99,4 @@ async function updatetestimonials(testimonials) {
   }
 }
 
-module.exports = {
-  addtestimonials,
-  removetestimonials,
-  updatetestimonials,
-};
+export { addtestimonials, removetestimonials, updatetestimonials };

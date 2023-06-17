@@ -1,6 +1,6 @@
-const fs = require("fs");
-const chalk = require("chalk");
-const jsonFormat = require("json-format");
+import fs from "fs";
+import chalk from "chalk";
+import jsonFormat from "json-format";
 
 async function createtestimonialfile(
   testimonialWriter,
@@ -102,4 +102,4 @@ function getdate() {
   return year + "-" + month + "-" + day;
 }
 
-module.exports = createtestimonialfile;
+export default createtestimonialfile;
