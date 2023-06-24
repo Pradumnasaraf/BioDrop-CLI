@@ -2,6 +2,7 @@ import enquirer from "enquirer";
 import fs from "fs";
 import chalk from "chalk";
 import createEventFile from "./helper/createEventFile.js";
+import process from "process";
 
 const addEvent = async () => {
   let answers = await enquirer.prompt([
