@@ -1,6 +1,7 @@
 import fs from "fs";
 import chalk from "chalk";
 import jsonFormat from "json-format";
+import process from "process";
 
 function createEventFile(eventWriter, answers) {
   const {

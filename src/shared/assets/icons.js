@@ -22,7 +22,7 @@ async function selecticon() {
     message: "Select an icon (Start typing to find matching icons)",
     limit: 10,
     choices: geticons(),
-    highlight: function (value, choice) {
+    highlight: function (value) {
       return chalk.green(value);
     },
   });

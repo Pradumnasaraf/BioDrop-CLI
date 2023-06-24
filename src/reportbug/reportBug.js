@@ -39,8 +39,8 @@ function urlBuilder(username, title, description) {
   title = title.replace(/\s/g, "+");
   description = description.replace(/\s/g, "+");
 
-  URL = `https://github.com/Pradumnasaraf/LinkFree-CLI/issues/new?assignees=&labels=bug&template=bug.yaml&title=${title}+Report+by+@${username}&description=${description}`;
-  return URL;
+  let customUrl = `https://github.com/Pradumnasaraf/LinkFree-CLI/issues/new?assignees=&labels=bug&template=bug.yaml&title=${title}+Report+by+@${username}&description=${description}`;
+  return customUrl;
 }
 
 export default reportBug;

@@ -7,7 +7,9 @@
   "bin": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "format": "prettier --write \"./**/*.{js,json}\""
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [
     "LinkFree-cli",
@@ -31,6 +33,7 @@
     "react-icons": "^4.9.0"
   },
   "devDependencies": {
+    "eslint": "^8.43.0",
     "prettier": "^2.8.8"
   },
   "repository": {

@@ -1,6 +1,7 @@
 import jsonFormat from "json-format";
 import chalk from "chalk";
 import fs from "fs";
+import process from "process";
 
 async function createUser(githubUsername, answers) {
   let jsonSchema = {

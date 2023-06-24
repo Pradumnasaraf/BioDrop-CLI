@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import enquirer from "enquirer";
+import process from "process";
 import fs from "fs";
 import jsonFormat from "json-format";
 import {

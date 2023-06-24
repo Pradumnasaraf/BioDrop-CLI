@@ -3,6 +3,7 @@
 import chalk from "chalk";
 import enquirer from "enquirer";
 import fs from "fs";
+import process from "process";
 import createUser from "./helper/createUser.js";
 import checkUser from "../shared/checkUser.js";
 import basics from "../shared/questions/basics.js";
