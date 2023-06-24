@@ -1,3 +1,12 @@
+## [2.5.1](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.5.0...v2.5.1) (2023-06-24)
+
+
+### Bug Fixes
+
+* lint issues ([904e2e7](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/904e2e7f74c8afd54ae9368c69145893595565cb))
+
+
+
 # [2.5.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.4.0...v2.5.0) (2023-06-17)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * remove the profile type option([#62](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/62)) ([2cc4906](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/2cc49063dc0105b992d4f6a918869006abc24583))
-
-
-
-# [2.3.0](https://github.com/Pradumnasaraf/LinkFree-CLI/compare/v2.2.2...v2.3.0) (2023-06-02)
-
-
-### Features
-
-* Add color and group property in links ([#61](https://github.com/Pradumnasaraf/LinkFree-CLI/issues/61)) ([c247aae](https://github.com/Pradumnasaraf/LinkFree-CLI/commit/c247aae9016b3fe3d4dcda89b4111284e801e465))
 
 
 
