@@ -22,7 +22,7 @@ const addEvent = async () => {
   } else if (!fs.existsSync(`./data/${eventWriter}.json`)) {
     console.log(
       chalk.black.bgYellow(
-        ` You don't have a LinkFree JSON file!. Create an account first! `
+        ` You don't have a BioDrop JSON file!. Create an account first! `
       )
     );
     process.exit(0);

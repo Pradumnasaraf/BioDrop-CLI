@@ -1,30 +1,30 @@
-<img align="right" src="https://user-images.githubusercontent.com/51878265/186825286-499db16b-5b95-488d-b6d5-09d44521b890.png" height="35px"> <h2>LinkFree CLI </h2>
+<img align="right" src="https://user-images.githubusercontent.com/51878265/186825286-499db16b-5b95-488d-b6d5-09d44521b890.png" height="35px"> <h2>BioDrop CLI </h2>
 
 <div align="center">
 
-**LinkFree CLI** is a command line tool that helps us to create and update your **[LinkFree](https://github.com/EddieHubCommunity/LinkFree)** profile through CLI. We can also give testimonials and add events through it.
+**BioDrop CLI** is a command line tool that helps us to create and update your **[BioDrop](https://github.com/EddieHubCommunity/BioDrop)** profile through CLI. We can also give testimonials and add events through it.
 
 <br>
   
-[![NPM Package](https://github.com/Pradumnasaraf/LinkFree-CLI/actions/workflows/publish.yml/badge.svg)](https://github.com/Pradumnasaraf/LinkFree-CLI/actions/workflows/publish.yml) 
-[![Releases](https://github.com/Pradumnasaraf/LinkFree-CLI/actions/workflows/releases.yml/badge.svg)](https://github.com/Pradumnasaraf/LinkFree-CLI/actions/workflows/releases.yml) 
-[![Npm package total downloads](https://badgen.net/npm/dt/linkfree-cli)](https://npmjs.com/package/linkfree-cli)
+[![NPM Package](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml) 
+[![Releases](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml) 
+[![Npm package total downloads](https://badgen.net/npm/dt/biodrop-cli)](https://npmjs.com/package/biodrop-cli)
 
 </div>
 
-![LinkFree CLI demo GIF](https://user-images.githubusercontent.com/51878265/226284599-5702dfd2-0825-471f-a693-8a216c2d7cfe.gif)
+![BioDrop CLI demo GIF](https://user-images.githubusercontent.com/51878265/226284599-5702dfd2-0825-471f-a693-8a216c2d7cfe.gif)
 
 ### ⭐️ Features
 
-- Creating a LinkFree profile.
-- Searching for a LinkFree profile.
-- Updating an existing LinkFree profile.
-- Giving a testimonial to a LinkFree profile.
+- Creating a BioDrop profile.
+- Searching for a BioDrop profile.
+- Updating an existing BioDrop profile.
+- Giving a testimonial to a BioDrop profile.
 - Adding events (conferences, meetups, etc).
 
 ### 👨‍💻 Using the CLI tool
 
-To create, update, give a testimonial, etc. Check out this detailed documentation - [linkfree.io/docs/environments/linkfree-cli](https://linkfree.io/docs/environments/linkfree-cli)
+To create, update, give a testimonial, etc. Check out this detailed documentation - [BioDrop.io/docs/environments/BioDrop-cli](https://BioDrop.io/docs/environments/BioDrop-cli)
 
 ### 📦 Development and Contribution
 
@@ -48,7 +48,7 @@ npm run start
 
 Gitpod is the easiest way to set up the project development environment. Click on the button below, and it will set everything up for you.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Pradumnasaraf/LinkFree-CLI)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Pradumnasaraf/BioDrop-CLI)
 
 ### 📝 License
 

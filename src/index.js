@@ -10,14 +10,14 @@ import reportBug from "./reportbug/reportBug.js";
 import searchProfile from "./searchprofile/searchProfile.js";
 
 console.log(
-  chalk.black.bgYellow(` Welcome to LinkFree CLI! Let's get started. `)
+  chalk.black.bgYellow(` Welcome to BioDrop CLI! Let's get started. `)
 );
 
 const choices = [
-  "Create a LinkFree JSON file",
-  "Search for a LinkFree user",
+  "Create a BioDrop JSON file",
+  "Search for a BioDrop user",
   "Update an existing JSON file",
-  "Provide a testimonial to a LinkFree user",
+  "Provide a testimonial to a BioDrop user",
   "Add an event",
   "Report a bug",
 ];
@@ -34,11 +34,11 @@ enquirer
   .then(async (answers) => {
     const { selectedtask } = answers;
     switch (selectedtask) {
-      case "Create a LinkFree JSON file": {
+      case "Create a BioDrop JSON file": {
         createJson();
         break;
       }
-      case "Search for a LinkFree user": {
+      case "Search for a BioDrop user": {
         searchProfile();
         break;
       }
@@ -46,7 +46,7 @@ enquirer
         checkUpdate();
         break;
       }
-      case "Provide a testimonial to a LinkFree user": {
+      case "Provide a testimonial to a BioDrop user": {
         giveTestimonial();
         break;
       }

@@ -17,7 +17,7 @@ async function createtestimonialfile(
 
   const json = jsonFormat(jsonSchema, { type: "space", size: 2 });
 
-  // Check if we are in the root directory of LinkFree
+  // Check if we are in the root directory of BioDrop
   if (fs.existsSync("./data")) {
     // Check if user reciving the testimonial has a "testimonials" directory.
     if (fs.existsSync(`./data/${testimonialReceiver}/testimonials`)) {
@@ -81,7 +81,7 @@ async function createtestimonialfile(
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` You are not in the root directory of LinkFree. Try again! `
+        ` You are not in the root directory of BioDrop. Try again! `
       )
     );
     process.exit(0);

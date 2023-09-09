@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "linkfree-cli",
+  "name": "biodrop-cli",
   "version": "2.5.1",
-  "description": "Generate LinkFree profile.json file via CLI",
+  "description": "Generate BioDrop profile.json file via CLI",
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
@@ -12,8 +12,8 @@
     "lint:fix": "eslint --fix ."
   },
   "keywords": [
-    "LinkFree-cli",
-    "LinkFree"
+    "BioDrop-cli",
+    "BioDrop"
   ],
   "files": [
     "src",
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pradumnasaraf/LinkFree-CLI.git"
+    "url": "git+https://github.com/Pradumnasaraf/BioDrop-CLI.git"
   },
   "bugs": {
-    "url": "https://github.com/Pradumnasaraf/LinkFRee-CLI.git/issues"
+    "url": "https://github.com/Pradumnasaraf/BioDrop-CLI.git/issues"
   },
   "engines": {
     "node": ">=18.0.0"

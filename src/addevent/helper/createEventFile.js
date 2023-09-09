@@ -119,7 +119,7 @@ function createEventFile(eventWriter, answers) {
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` You are not in the root directory of LinkFree. Try again! `
+        ` You are not in the root directory of BioDrop. Try again! `
       )
     );
     process.exit(0);

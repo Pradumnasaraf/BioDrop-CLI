@@ -26,7 +26,7 @@ async function givetestimonial() {
   } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
     console.log(
       chalk.black.bgYellow(
-        ` You don't have a LinkFree JSON file!. Create an account first! `
+        ` You don't have a BioDrop JSON file!. Create an account first! `
       )
     );
     process.exit(0);
@@ -49,7 +49,7 @@ async function givetestimonial() {
     } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
       console.log(
         chalk.black.bgYellow(
-          ` The person you want to give a testimonial to doesn't have a LinkFree JSON file!. Ask them to create an account first! `
+          ` The person you want to give a testimonial to doesn't have a BioDrop JSON file!. Ask them to create an account first! `
         )
       );
       process.exit(0);

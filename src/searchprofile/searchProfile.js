@@ -39,7 +39,7 @@ const usernameValidation = () => {
         .then(async (res) => {
           if (res.status === 200) {
             await axios
-              .get(`https://linkfree.io/api/profiles/${githubUsername}`)
+              .get(`https://biodrop.io/api/profiles/${githubUsername}`)
               .then((res) => {
                 if (res.status === 200) {
                   displayData(res.data);
@@ -48,7 +48,7 @@ const usernameValidation = () => {
               .catch(() => {
                 console.log(
                   chalk.white.bgRed.bold(
-                    ` LinkFree profile not found with ${githubUsername}! `
+                    ` BioDrop profile not found with ${githubUsername}! `
                   )
                 );
                 process.exit(0);
@@ -70,7 +70,7 @@ const usernameValidation = () => {
 function displayData(data) {
   // Welcome block
   const rainbow = chalkAnimation.karaoke(
-    `\nHi, welcome to ${data.name}'s (${data.username}) LinkFree profile!\n`
+    `\nHi, welcome to ${data.name}'s (${data.username}) BioDrop profile!\n`
   );
   setTimeout(() => {
     rainbow.start();
