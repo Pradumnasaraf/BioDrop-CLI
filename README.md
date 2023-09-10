@@ -12,7 +12,7 @@
 
 </div>
 
-![BioDrop CLI demo GIF](https://user-images.githubusercontent.com/51878265/226284599-5702dfd2-0825-471f-a693-8a216c2d7cfe.gif)
+![BioDrop CLI demo GIF](https://github.com/Pradumnasaraf/BioDrop-CLI/assets/51878265/25c74ca0-22bf-473c-8ad2-fe9e768c989c)
 
 ### ⭐️ Features
 
@@ -24,7 +24,7 @@
 
 ### 👨‍💻 Using the CLI tool
 
-To create, update, give a testimonial, etc. Check out this detailed documentation - [BioDrop.io/docs/environments/BioDrop-cli](https://BioDrop.io/docs/environments/BioDrop-cli)
+To create, update, give a testimonial, etc. Check out this detailed documentation - [BioDrop.io/docs/environments/biodrop-cli](https://biodrop.io/docs/environments/biodrop-cli)
 
 ### 📦 Development and Contribution
 
