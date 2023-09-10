@@ -1,5 +1,7 @@
 <img align="right" src="https://user-images.githubusercontent.com/51878265/186825286-499db16b-5b95-488d-b6d5-09d44521b890.png" height="35px"> <h2>BioDrop CLI </h2>
 
+> The project was renamed from **LinkFree CLI** to **BioDrop CLI** (please update your local git clones with the new remote name)
+
 <div align="center">
 
 **BioDrop CLI** is a command line tool that helps us to create and update your **[BioDrop](https://github.com/EddieHubCommunity/BioDrop)** profile through CLI. We can also give testimonials and add events through it.
@@ -11,6 +13,8 @@
 [![Npm package total downloads](https://badgen.net/npm/dt/biodrop-cli)](https://npmjs.com/package/biodrop-cli)
 
 </div>
+
+
 
 ![BioDrop CLI demo GIF](https://github.com/Pradumnasaraf/BioDrop-CLI/assets/51878265/25c74ca0-22bf-473c-8ad2-fe9e768c989c)
 
