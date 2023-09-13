@@ -1,4 +1,4 @@
-import FaIcons from "react-icons/fa/index.js";
+import FaIcons from "react-icons/fa6/index.js";
 import SiIcons from "react-icons/si/index.js";
 import enquirer from "enquirer";
 import chalk from "chalk";
