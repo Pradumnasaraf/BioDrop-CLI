@@ -14,8 +14,6 @@
 
 </div>
 
-
-
 ![BioDrop CLI demo GIF](https://github.com/Pradumnasaraf/BioDrop-CLI/assets/51878265/25c74ca0-22bf-473c-8ad2-fe9e768c989c)
 
 ### ⭐️ Features
