@@ -12,6 +12,8 @@
     "lint:fix": "eslint --fix ."
   },
   "keywords": [
+    "CLI",
+    "Node CLI",
     "BioDrop-cli",
     "BioDrop"
   ],
@@ -30,7 +32,7 @@
     "enquirer": "^2.3.6",
     "json-format": "^1.0.1",
     "open": "^9.1.0",
-    "react-icons": "^4.9.0"
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "eslint": "^8.43.0",
