@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/Pradumnasaraf/BioDrop-CLI/compare/v2.6.0...v2.7.0) (2023-09-13)
+
+
+### Features
+
+* upgrade icons to Font Awesome 6 ([#75](https://github.com/Pradumnasaraf/BioDrop-CLI/issues/75)) ([4c99c16](https://github.com/Pradumnasaraf/BioDrop-CLI/commit/4c99c16fee33f0d6fc2cc90916b4b21a4dbb7eb4))
+
+
+
 # [2.6.0](https://github.com/Pradumnasaraf/BioDrop-CLI/compare/v2.5.1...v2.6.0) (2023-09-10)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * Add profile search functionality ([#66](https://github.com/Pradumnasaraf/BioDrop-CLI/issues/66)) ([5716860](https://github.com/Pradumnasaraf/BioDrop-CLI/commit/57168606a0f77bfb9303c9b9e6cd9ef489026cfd))
-
-
-
-## [2.3.2](https://github.com/Pradumnasaraf/BioDrop-CLI/compare/v2.3.1...v2.3.2) (2023-06-11)
-
-
-### Bug Fixes
-
-* GitHub workflows ([78c7b3d](https://github.com/Pradumnasaraf/BioDrop-CLI/commit/78c7b3de1204b4cccdcf3cf3a34cf72feca95b69))
 
 
 
