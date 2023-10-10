@@ -8,7 +8,6 @@
 
 - [Git](https://git-scm.com/)
 - [Markdown](https://www.markdownguide.org/basic-syntax/)
-- [Git with Atlassian](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
 
 #### Code
 
