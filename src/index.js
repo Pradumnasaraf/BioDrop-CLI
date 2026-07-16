@@ -10,7 +10,7 @@ import reportBug from "./reportbug/reportBug.js";
 import searchProfile from "./searchprofile/searchProfile.js";
 
 console.log(
-  chalk.black.bgYellow(` Welcome to BioDrop CLI! Let's get started. `)
+  chalk.black.bgYellow(` Welcome to BioDrop CLI! Let's get started. `),
 );
 
 const choices = [

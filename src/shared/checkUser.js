@@ -4,7 +4,7 @@ import axios from "axios";
 async function checkUser(username) {
   try {
     const response = await axios.get(
-      `https://api.github.com/users/${username}`
+      `https://api.github.com/users/${username}`,
     );
     if (response.status === 200) {
       return true;

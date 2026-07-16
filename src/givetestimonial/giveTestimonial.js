@@ -20,14 +20,14 @@ async function givetestimonial() {
   testimonialWriter = githubUsername;
   if (githubUsername === "") {
     console.log(
-      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `),
     );
     givetestimonial();
   } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
     console.log(
       chalk.black.bgYellow(
-        ` You don't have a BioDrop JSON file!. Create an account first! `
-      )
+        ` You don't have a BioDrop JSON file!. Create an account first! `,
+      ),
     );
     process.exit(0);
   } else {
@@ -43,20 +43,20 @@ async function givetestimonial() {
     testimonialReceiver = githubUsername;
     if (githubUsername === "") {
       console.log(
-        chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+        chalk.white.bgRed.bold(` Please enter a valid GitHub username. `),
       );
       givetestimonial();
     } else if (!fs.existsSync(`./data/${githubUsername}.json`)) {
       console.log(
         chalk.black.bgYellow(
-          ` The person you want to give a testimonial to doesn't have a BioDrop JSON file!. Ask them to create an account first! `
-        )
+          ` The person you want to give a testimonial to doesn't have a BioDrop JSON file!. Ask them to create an account first! `,
+        ),
       );
       process.exit(0);
     } else {
       if (testimonialReceiver == testimonialWriter) {
         console.log(
-          chalk.white.bgRed.bold(` You can't give a testimonial to yourself! `)
+          chalk.white.bgRed.bold(` You can't give a testimonial to yourself! `),
         );
         process.exit(0);
       } else if (
@@ -64,8 +64,8 @@ async function givetestimonial() {
       ) {
         console.log(
           chalk.white.bgRed.bold(
-            ` You have already given a testimonial to this person! `
-          )
+            ` You have already given a testimonial to this person! `,
+          ),
         );
         process.exit(0);
       } else {
@@ -75,7 +75,7 @@ async function givetestimonial() {
           testimonialWriter,
           testimonialReceiver,
           title,
-          description
+          description,
         );
       }
     }
@@ -93,7 +93,7 @@ async function testimonialtitle() {
   const { testimonialtitle } = answers;
   if (testimonialtitle === "") {
     console.log(
-      chalk.white.bgRed.bold(` Please enter a valid testimonial title. `)
+      chalk.white.bgRed.bold(` Please enter a valid testimonial title. `),
     );
     testimonialtitle();
   } else {

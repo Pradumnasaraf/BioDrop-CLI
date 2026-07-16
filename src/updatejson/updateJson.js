@@ -121,7 +121,7 @@ const updateJson = async (githubUsername) => {
                   }
                 } else {
                   console.log(
-                    chalk.black.bgYellow("You don't have any tags to remove!")
+                    chalk.black.bgYellow("You don't have any tags to remove!"),
                   );
                 }
                 break;
@@ -131,7 +131,7 @@ const updateJson = async (githubUsername) => {
                   json.tags = [...(await updatetags(json.tags))];
                 } else {
                   console.log(
-                    chalk.black.bgYellow("You don't have any tags to update!")
+                    chalk.black.bgYellow("You don't have any tags to update!"),
                   );
                 }
               }
@@ -183,8 +183,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any socials to remove!"
-                    )
+                      "You don't have any socials to remove!",
+                    ),
                   );
                 }
                 break;
@@ -195,8 +195,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any socials to update!"
-                    )
+                      "You don't have any socials to update!",
+                    ),
                   );
                 }
               }
@@ -243,7 +243,7 @@ const updateJson = async (githubUsername) => {
                   }
                 } else {
                   console.log(
-                    chalk.black.bgYellow("You don't have any links to remove!")
+                    chalk.black.bgYellow("You don't have any links to remove!"),
                   );
                 }
                 break;
@@ -253,7 +253,7 @@ const updateJson = async (githubUsername) => {
                   json.links = [...(await updatelinks(json.links))];
                 } else {
                   console.log(
-                    chalk.black.bgYellow("You don't have any links to update!")
+                    chalk.black.bgYellow("You don't have any links to update!"),
                   );
                 }
               }
@@ -310,8 +310,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any testimonials to remove!"
-                    )
+                      "You don't have any testimonials to remove!",
+                    ),
                   );
                 }
                 break;
@@ -324,8 +324,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any testimonials to update!"
-                    )
+                      "You don't have any testimonials to update!",
+                    ),
                   );
                 }
               }
@@ -382,8 +382,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any milestones to remove!"
-                    )
+                      "You don't have any milestones to remove!",
+                    ),
                   );
                 }
                 break;
@@ -396,8 +396,8 @@ const updateJson = async (githubUsername) => {
                 } else {
                   console.log(
                     chalk.black.bgYellow(
-                      "You don't have any milestones to update!"
-                    )
+                      "You don't have any milestones to update!",
+                    ),
                   );
                 }
               }
@@ -415,14 +415,14 @@ const updateJson = async (githubUsername) => {
       if (isProfileUpdated) {
         console.log(
           chalk.black.bgYellow(
-            ` File ${githubUsername}.json updated successfully! `
-          )
+            ` File ${githubUsername}.json updated successfully! `,
+          ),
         );
       } else {
         console.log(
           chalk.black.bgYellow(
-            ` No updates were made in ${githubUsername}.json `
-          )
+            ` No updates were made in ${githubUsername}.json `,
+          ),
         );
       }
     }

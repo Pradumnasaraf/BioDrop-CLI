@@ -78,7 +78,7 @@ async function removemilestones(milestones) {
       },
     ]);
     choiceMilestones = choiceMilestones.filter(
-      (milestone) => milestone.title !== answers.milestone
+      (milestone) => milestone.title !== answers.milestone,
     );
     if (choiceMilestones.length !== 0) {
       const res = await enquirer.prompt([

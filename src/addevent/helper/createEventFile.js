@@ -57,8 +57,8 @@ function createEventFile(eventWriter, answers) {
           if (err) {
             console.log(
               chalk.black.bgYellow(
-                `Something went wrong while creating the file. Try again! part 1`
-              )
+                `Something went wrong while creating the file. Try again! part 1`,
+              ),
             );
             process.exit(0);
           } else {
@@ -67,11 +67,11 @@ function createEventFile(eventWriter, answers) {
                 ` File ${start.split("T")[0]}-${name
                   .toLowerCase()
                   .split(" ")
-                  .join("-")}.json created successfully! `
-              )
+                  .join("-")}.json created successfully! `,
+              ),
             );
           }
-        }
+        },
       );
     } else {
       // If the user doesn't have a "events" directory, create one.
@@ -90,8 +90,8 @@ function createEventFile(eventWriter, answers) {
               if (err) {
                 console.log(
                   chalk.black.bgYellow(
-                    `Something went wrong while creating the file. Try again! part 2`
-                  )
+                    `Something went wrong while creating the file. Try again! part 2`,
+                  ),
                 );
                 process.exit(0);
               } else {
@@ -100,18 +100,18 @@ function createEventFile(eventWriter, answers) {
                     ` File ${start.split("T")[0]}-${name
                       .toLowerCase()
                       .split(" ")
-                      .join("-")}.json created successfully! `
-                  )
+                      .join("-")}.json created successfully! `,
+                  ),
                 );
               }
-            }
+            },
           );
         })
         .catch(() => {
           console.log(
             chalk.black.bgYellow(
-              `Something went wrong while creating the directory. Try again!`
-            )
+              `Something went wrong while creating the directory. Try again!`,
+            ),
           );
           process.exit(0);
         });
@@ -119,8 +119,8 @@ function createEventFile(eventWriter, answers) {
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` You are not in the root directory of BioDrop. Try again! `
-      )
+        ` You are not in the root directory of BioDrop. Try again! `,
+      ),
     );
     process.exit(0);
   }

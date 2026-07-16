@@ -4,7 +4,7 @@ import fs from "fs";
 async function checktestimonial(testimonialWriter, testimonialReceiver) {
   if (
     fs.existsSync(
-      `./data/${testimonialReceiver}/testimonials/${testimonialWriter}.json`
+      `./data/${testimonialReceiver}/testimonials/${testimonialWriter}.json`,
     )
   ) {
     return true;

@@ -7,7 +7,7 @@ async function createtestimonialfile(
   testimonialWriter,
   testimonialReceiver,
   title,
-  description
+  description,
 ) {
   let jsonSchema = {
     title: `${title}`,
@@ -28,18 +28,18 @@ async function createtestimonialfile(
           if (err) {
             console.log(
               chalk.black.bgYellow(
-                `Something went wrong while creating the file. Try again! part 1`
-              )
+                `Something went wrong while creating the file. Try again! part 1`,
+              ),
             );
             process.exit(0);
           } else {
             console.log(
               chalk.black.bgYellow(
-                ` File ${testimonialReceiver}.json created successfully! `
-              )
+                ` File ${testimonialReceiver}.json created successfully! `,
+              ),
             );
           }
-        }
+        },
       );
     } else {
       // If the user doesn't have a "testimonials" directory, create one.
@@ -55,25 +55,25 @@ async function createtestimonialfile(
               if (err) {
                 console.log(
                   chalk.black.bgYellow(
-                    `Something went wrong while creating the file. Try again! part 2`
-                  )
+                    `Something went wrong while creating the file. Try again! part 2`,
+                  ),
                 );
                 process.exit(0);
               } else {
                 console.log(
                   chalk.black.bgYellow(
-                    ` File ${testimonialReceiver}.json created successfully! `
-                  )
+                    ` File ${testimonialReceiver}.json created successfully! `,
+                  ),
                 );
               }
-            }
+            },
           );
         })
         .catch(() => {
           console.log(
             chalk.black.bgYellow(
-              `Something went wrong while creating the directory. Try again!`
-            )
+              `Something went wrong while creating the directory. Try again!`,
+            ),
           );
           process.exit(0);
         });
@@ -81,8 +81,8 @@ async function createtestimonialfile(
   } else {
     console.log(
       chalk.black.bgYellow(
-        ` You are not in the root directory of BioDrop. Try again! `
-      )
+        ` You are not in the root directory of BioDrop. Try again! `,
+      ),
     );
     process.exit(0);
   }

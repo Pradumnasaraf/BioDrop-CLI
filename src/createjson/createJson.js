@@ -28,12 +28,12 @@ const createJson = () => {
       const { githubUsername } = answers;
       if (githubUsername === "") {
         console.log(
-          chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+          chalk.white.bgRed.bold(` Please enter a valid GitHub username. `),
         );
         createJson();
       } else if (fs.existsSync(`./data/${githubUsername}.json`)) {
         console.log(
-          chalk.black.bgYellow(` File ${githubUsername}.json already exists!`)
+          chalk.black.bgYellow(` File ${githubUsername}.json already exists!`),
         );
         enquirer
           .prompt([
@@ -47,7 +47,7 @@ const createJson = () => {
             const { overwrite } = answers;
             if (overwrite) {
               console.log(
-                chalk.bgGreen.bold(` Proceed with updating file... `)
+                chalk.bgGreen.bold(` Proceed with updating file... `),
               );
               updateJson(githubUsername);
             } else {
@@ -131,8 +131,8 @@ async function start(githubUsername) {
     } else {
       console.log(
         chalk.white.bgRed.bold(
-          ` User with username '${githubUsername}' does not exist on GitHub, try again! `
-        )
+          ` User with username '${githubUsername}' does not exist on GitHub, try again! `,
+        ),
       );
       createJson();
     }

@@ -7,9 +7,9 @@
 **BioDrop CLI** is a command line tool that helps us to create and update your **[BioDrop](https://github.com/EddieHubCommunity/BioDrop)** profile through CLI. We can also give testimonials and add events through it.
 
 <br>
-  
-[![NPM Package](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml) 
-[![Releases](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml) 
+
+[![NPM Package](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/publish.yml)
+[![Releases](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml/badge.svg)](https://github.com/Pradumnasaraf/BioDrop-CLI/actions/workflows/releases.yml)
 [![Npm package total downloads](https://badgen.net/npm/dt/biodrop-cli)](https://npmjs.com/package/biodrop-cli)
 
 </div>

@@ -46,7 +46,7 @@ async function removesocials(socials) {
       },
     ]);
     choiceSocials = choiceSocials.filter(
-      (social) => social.name !== answers.social
+      (social) => social.name !== answers.social,
     );
     if (choiceSocials.length !== 0) {
       const res = await enquirer.prompt([

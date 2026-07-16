@@ -27,15 +27,15 @@ async function createUser(githubUsername, answers) {
     if (err) {
       console.log(
         chalk.black.bgYellow(
-          ` You are not in the root directory of BioDrop. Try again! `
-        )
+          ` You are not in the root directory of BioDrop. Try again! `,
+        ),
       );
       process.exit(0);
     } else {
       console.log(
         chalk.black.bgYellow(
-          ` File ${githubUsername}.json created successfully! `
-        )
+          ` File ${githubUsername}.json created successfully! `,
+        ),
       );
     }
   });

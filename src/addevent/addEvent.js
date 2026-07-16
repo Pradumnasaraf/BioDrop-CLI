@@ -16,14 +16,14 @@ const addEvent = async () => {
 
   if (eventWriter === "") {
     console.log(
-      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+      chalk.white.bgRed.bold(` Please enter a valid GitHub username. `),
     );
     addEvent();
   } else if (!fs.existsSync(`./data/${eventWriter}.json`)) {
     console.log(
       chalk.black.bgYellow(
-        ` You don't have a BioDrop JSON file!. Create an account first! `
-      )
+        ` You don't have a BioDrop JSON file!. Create an account first! `,
+      ),
     );
     process.exit(0);
   } else {

@@ -30,7 +30,7 @@ const usernameValidation = () => {
       const { githubUsername } = answers;
       if (githubUsername === "") {
         console.log(
-          chalk.white.bgRed(` Please enter a valid GitHub username. `)
+          chalk.white.bgRed(` Please enter a valid GitHub username. `),
         );
         process.exit(0);
       }
@@ -48,8 +48,8 @@ const usernameValidation = () => {
               .catch(() => {
                 console.log(
                   chalk.white.bgRed.bold(
-                    ` BioDrop profile not found with ${githubUsername}! `
-                  )
+                    ` BioDrop profile not found with ${githubUsername}! `,
+                  ),
                 );
                 process.exit(0);
               });
@@ -57,7 +57,7 @@ const usernameValidation = () => {
         })
         .catch(() => {
           console.log(
-            chalk.white.bgRed.bold(` Please enter a valid GitHub username. `)
+            chalk.white.bgRed.bold(` Please enter a valid GitHub username. `),
           );
           process.exit(0);
         });
@@ -70,7 +70,7 @@ const usernameValidation = () => {
 function displayData(data) {
   // Welcome block
   const rainbow = chalkAnimation.karaoke(
-    `\nHi, welcome to ${data.name}'s (${data.username}) BioDrop profile!\n`
+    `\nHi, welcome to ${data.name}'s (${data.username}) BioDrop profile!\n`,
   );
   setTimeout(() => {
     rainbow.start();
@@ -114,7 +114,9 @@ function getDescription(data) {
       tagLine += `${tag}, `;
     }
     console.log(
-      chalk.magentaBright.bold(`${data.name} talks about ${tagLine}and more!\n`)
+      chalk.magentaBright.bold(
+        `${data.name} talks about ${tagLine}and more!\n`,
+      ),
     );
   }
 }
@@ -123,7 +125,7 @@ function getLinks(data) {
   console.log(`   ` + chalk.yellowBright.bold(`Check out their links:`));
   for (let link of data.links) {
     console.log(
-      `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`
+      `   > ${chalk.greenBright(link.name)} --> ${chalk.whiteBright(link.url)}`,
     );
     // This added data will used in the contact block for enquirer.prompt
     extractContactData(link);
@@ -179,7 +181,7 @@ async function getOtherElements(data) {
 
 function getMilestones(data) {
   console.log(
-    `\n   ` + chalk.yellowBright.bold(`Checkout their accomplishments:`)
+    `\n   ` + chalk.yellowBright.bold(`Checkout their accomplishments:`),
   );
 
   for (let milestone of data) {
@@ -191,11 +193,11 @@ function getMilestones(data) {
       console.log(
         `   > ${chalk.cyanBright(milestone.title)} ${
           milestone.date
-        } (Future Goal)`
+        } (Future Goal)`,
       );
     } else {
       console.log(
-        `   > ${chalk.cyanBright(milestone.title)} ${milestone.date}`
+        `   > ${chalk.cyanBright(milestone.title)} ${milestone.date}`,
       );
     }
   }
@@ -209,8 +211,8 @@ function getTestimonials(data) {
       console.log(
         ` -> ${chalk.cyanBright.italic(
           // break the line after 10 words
-          testimonial.description.replace(/((?:\S+\s+){20}\S+)/g, "$1\n")
-        )}" - ${chalk.whiteBright(testimonial.username)}` + `\n`
+          testimonial.description.replace(/((?:\S+\s+){20}\S+)/g, "$1\n"),
+        )}" - ${chalk.whiteBright(testimonial.username)}` + `\n`,
       );
     }
   }

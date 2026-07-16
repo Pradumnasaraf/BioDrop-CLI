@@ -35,7 +35,7 @@ async function removetestimonials(testimonials) {
       },
     ]);
     choiceTestimonials = choiceTestimonials.filter(
-      (testimonial) => testimonial.name !== answers.testimonial
+      (testimonial) => testimonial.name !== answers.testimonial,
     );
     if (choiceTestimonials.length !== 0) {
       const res = await enquirer.prompt([
