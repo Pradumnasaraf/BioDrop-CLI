@@ -1,5 +1,5 @@
-import FaIcons from "react-icons/fa6/index.js";
-import SiIcons from "react-icons/si/index.js";
+import * as FaIcons from "react-icons/fa6";
+import * as SiIcons from "react-icons/si";
 import enquirer from "enquirer";
 import chalk from "chalk";
 let icons = [];

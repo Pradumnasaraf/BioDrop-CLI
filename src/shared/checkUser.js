@@ -11,7 +11,7 @@ async function checkUser(username) {
     } else {
       return false;
     }
-  } catch (error) {
+  } catch {
     return false;
   }
 }
