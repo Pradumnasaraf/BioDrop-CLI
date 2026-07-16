@@ -30,7 +30,7 @@ To create, update, give a testimonial, etc. Check out this detailed documentatio
 
 ### 📦 Development and Contribution
 
-You can choose to develop the CLI by setting up the project locally and installing the dependencies, or by using Gitpod to run the project in a cloud-based development environment without having to install anything locally.
+You can develop the CLI by setting up the project locally and installing the dependencies.
 
 #### Local Development
 
@@ -45,12 +45,6 @@ To run the project/CLI, use the following command:
 ```bash
 npm run start
 ```
-
-#### Gitpod
-
-Gitpod is the easiest way to set up the project development environment. Click on the button below, and it will set everything up for you.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Pradumnasaraf/BioDrop-CLI)
 
 ### 📝 License
 
