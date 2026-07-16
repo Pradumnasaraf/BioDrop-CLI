@@ -8,19 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chekout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Node Setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-          node-version: "18"
+          node-version: "22"
       - name: Install Dependencies
         run: npm ci
       - name: Prettier
         run: npm run format
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v7
         if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
         with:
           commit_message: "style: format files"

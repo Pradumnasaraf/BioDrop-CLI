@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chekout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Node Setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-          node-version: 18
+          node-version: 22
       - run: npm ci
 
   publish-npm:
@@ -23,11 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chekout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Node Setup
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-          node-version: 18
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       - name: Install Dependencies
         run: npm ci

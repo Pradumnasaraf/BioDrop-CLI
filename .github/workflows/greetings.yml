@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v7
       - name: Welcome Action
         uses: EddieHubCommunity/gh-action-community/src/welcome@main
         with:

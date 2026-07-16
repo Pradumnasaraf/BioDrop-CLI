@@ -11,11 +11,11 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Changelog + Version update
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: TriPSs/conventional-changelog-action@v6
         with:
           github-token: ${{ secrets.PA_TOKEN}}
           version-file: './package.json,./package-lock.json'
